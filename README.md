@@ -1,2 +1,2 @@
 # Documentation
-[Api documentation](wiki/api-documentation)
+[Api documentation](https://github.com/PinMeTo/documentation/wiki/Api-Documentation)
