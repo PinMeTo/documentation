@@ -1,2 +1,2 @@
-# api
-Api documentation
+# Documentation
+[Api documentation](wiki/api-documentation)
