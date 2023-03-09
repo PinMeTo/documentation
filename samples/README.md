@@ -2,6 +2,6 @@
 
 Example implementations for accessing PinMeTo APIs.
 
-- [PHP sample for authentication](/src/authenticate.php)
+- [PHP sample for authentication](src/authenticate.php)
 - Node.js
 - [PinMeTo.Net](https://github.com/permagne/PinMeTo.Net) An implementation of an API client. Not created or maintained by PinMeTo. Note that this code uses the deprecated v1 API.
