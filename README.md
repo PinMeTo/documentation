@@ -13,7 +13,7 @@ Integration with PinMeTo offers the ability to fetch information and send update
 
 Authentication to all APIs is done through standard OAuth 2.0.
 
-Documentation on how to obtain an access token can be found [here](https://github.com/PinMeTo/documentation/wiki/Insights-API-Documentation).
+Documentation on how to obtain an access token can be found [here](docs/access_token.md).
 
 ## Location API Reference
 
