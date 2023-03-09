@@ -64,7 +64,7 @@ HEADER
 
 ## Access Token
 
-[Documented here](Api-access-token)
+[Documented here](access_token.md)
 
 ## Custom Data
 
