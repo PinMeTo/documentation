@@ -9,6 +9,11 @@ Integration with PinMeTo offers the ability to fetch information and send update
 - Insights
 - Reviews
 
+## Endpoints
+
+- Test: https://api.test.pinmeto.com
+- Production: https://api.pinmeto.com
+
 ## Authentication API Reference
 
 Authentication to all APIs is done through standard OAuth 2.0.
