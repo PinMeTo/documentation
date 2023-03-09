@@ -24,7 +24,7 @@ Documentation on how to obtain an access token can be found [here](docs/access_t
 
 The Location API is a REST API for fetching and updating Listings data.
 
-[Current version (v2.0)](https://github.com/PinMeTo/documentation/wiki/Location-API-v2-documentation)
+[Current version (v2.0)](docs/locations-v2.md)
 
 ## Insights & Reviews API Reference
 
