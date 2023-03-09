@@ -30,10 +30,10 @@ The Location API is a REST API for fetching and updating Listings data.
 
 Insights and Reviews can be queried through GraphQL interfaces.
 
-[Facebook Insights & Reviews](https://github.com/PinMeTo/documentation/wiki/Insights-API-Documentation)
+[Facebook Insights & Reviews](docs/insights-v2.md)
 
 Google Insights: found in [PinMeTo Places](https://places.pinmeto.com/listings) under API > Documentation after logging into the product.
 
 ## Sample Code
 
-[Examples](https://github.com/PinMeTo/documentation/wiki/Examples)
+[Examples](samples/)
