@@ -1,6 +1,6 @@
 # PinMeTo API Documentation
 
-This page has technical documentation on PinMeTo APIs. For a non-technical description, see our [help article](https://help.pinmeto.com/en/article/places-api-k3bugm/).
+This page has technical documentation on PinMeTo APIs. For a non-technical description, see our [help article](https://help.pinmeto.com/en/article/introducing-the-pinmeto-api-kl3pwj/).
 
 ## Overview
 
