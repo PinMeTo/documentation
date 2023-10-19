@@ -169,7 +169,7 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
      <li><b>start</b>: (ISO Date string, YYYY-MM-DD)</li>
      <li><b>end</b>: (ISO Date string, YYYY-MM-DD)</li>
      <li><b>openTime</b>: (String, HHMM)</li>
-     <li><b>endTime</b>: (String, HHMM)</li>
+     <li><b>closeTime</b>: (String, HHMM)</li>
      <li><b>isClosed</b>: (Boolean)</li>
     </ul>
    </li>
@@ -583,7 +583,7 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
      <li><b>start</b>: (ISO Date string, YYYY-MM-DD)</li>
      <li><b>end</b>: (ISO Date string, YYYY-MM-DD)</li>
      <li><b>openTime</b>: (String)</li>
-     <li><b>endTime</b>: (String)</li>
+     <li><b>closeTime</b>: (String)</li>
      <li><b>isClosed</b>: (Boolean)</li>
     </ul>
    </li>
@@ -866,7 +866,7 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
    <li><b>start</b>: (ISO Date string, YYYY-MM-DD)</li>
    <li><b>end</b>: (ISO Date string, YYYY-MM-DD)</li>
    <li><b>openTime</b>: (String)</li>
-   <li><b>endTime</b>: (String)</li>
+   <li><b>closeTime</b>: (String)</li>
    <li><b>isClosed</b>: (Boolean)</li>
   </ul>
  </li>
@@ -1000,7 +1000,7 @@ All properties are optional unless stated otherwise. If an optional property con
    <li><b>start</b>: (ISO Date string, YYYY-MM-DD) <b>required</b></li>
    <li><b>end</b>: (ISO Date string, YYYY-MM-DD) <b>required</b></li>
    <li><b>openTime</b>: (String) <b>required</b></li>
-   <li><b>endTime</b>: (String) <b>required</b></li>
+   <li><b>closeTime</b>: (String) <b>required</b></li>
    <li><b>isClosed</b>: (Boolean) <b>required</b></li>
   </ul>
  </li>
