@@ -1,30 +1,6 @@
-## Changes from v1
-
-### Description
-
-`shortDescription` and `longDescription` has been moved to a `description` node and renamed to `short` and `long`.
-
-### Pending Changes
-
-When a location is updated changes to address and location (lat/lon) are put in a pending change state and needs to be reviewed in Listings.
-
-The data returned under `address` and `location` is the values that are presented on the location details in listings, values yet to be applied are returned under the `pendingChanges` node. A change can either be applied or ignored in listings depending on the quality of the data sent.
-
-### Special Open Hours
-
-`startDate` and `endDate` are now named `start` and `end`, the format has changed to be *YYYY-MM-DD*
-
-### Images
-
-Links to cover and profile images on facebook & google.
-
-### Foursquare
-
-Foursquare and Factual have merged. `Foursquare` is removed from `network` since Foursquare no longer has a 2-way API.
-
 # General
 
-PinMeTo API v2 is JSON API for get and update information about your locations.
+PinMeTo API v2 is a JSON API that allows you to integrate with PinMeTo to access and manage your location data through your own systems and services. Typically, customers integrate with PinMeTo Locations API to have a single place for managing location data and to use that information for keeping websites, store locators, etc. up-to-date. Please read our [API Help Article](https://help.pinmeto.com/en/article/introducing-the-pinmeto-api-kl3pwj/) for more information.
 
 ## Login into Listings to get these keys
 
@@ -1086,5 +1062,30 @@ If a querystring parameter `upsert=true` is passed to [Create location](#create-
 **Get location:**
 
 404: Location with storeId ${storeId} not found
+
+## Changes from v1
+
+### Description
+
+`shortDescription` and `longDescription` has been moved to a `description` node and renamed to `short` and `long`.
+
+### Pending Changes
+
+When a location is updated changes to address and location (lat/lon) are put in a pending change state and needs to be reviewed in Listings.
+
+The data returned under `address` and `location` is the values that are presented on the location details in listings, values yet to be applied are returned under the `pendingChanges` node. A change can either be applied or ignored in listings depending on the quality of the data sent.
+
+### Special Open Hours
+
+`startDate` and `endDate` are now named `start` and `end`, the format has changed to be *YYYY-MM-DD*
+
+### Images
+
+Links to cover and profile images on facebook & google.
+
+### Foursquare
+
+Foursquare and Factual have merged. `Foursquare` is removed from `network` since Foursquare no longer has a 2-way API.
+
 
 If an error not covered by these messages occurs, a status code of 500 will be returned with the message “An error occurred.”
