@@ -32,6 +32,8 @@ Insights for Facebook and Reviews can be queried through the [API v2 GraphQL int
 
 Ratings and Insights for Google and Facebook can be queried through the API v3 OpenAPI interface. Documentation for API v3 is found after logging in to the PinMeTo platform in [Listings](https://places.pinmeto.com/listings) under API > Documentation.
 
+If unable to login, use this link instead (https://api.pinmeto.com/documentation/v3/) to access page anonymously.
+
 ## Sample Code
 
 [Examples](samples/)
