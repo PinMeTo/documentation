@@ -6,7 +6,7 @@ This page has technical documentation on PinMeTo APIs. For a non-technical descr
 
 Integration with PinMeTo offers the ability to fetch information and send updates through our APIs for:
 - Locations
-- Insights for Google and Facebook
+- Insights (Google and Facebook)
 - Reviews
 
 ## Endpoints
@@ -26,7 +26,7 @@ The Location API is a REST API for fetching and updating Listings data.
 
 [Current version (v2.0)](docs/locations-v2.md)
 
-## Insights for Google and Facebook API Reference
+## Insights (Google and Facebook) API Reference
 
 Insights for Google and Facebook can be queried through the API v3 OpenAPI interface. Documentation for API v3 is found after logging in to the PinMeTo platform in [Account Settings](https://places.pinmeto.com/account-settings/) under API > Documentation. For testing purposes, some parameters will be filled with account data.
 
