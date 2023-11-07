@@ -1051,13 +1051,13 @@ Body:
 curl \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
-  --data '{ "name": "storeName", "storeId": "0987654", "locationDescriptor": "API locationDescriptor","address": {"street": "testgatan 4","zip": "217 41","city": "Malmö","country": "Sweden"},"location": {"lat": 59.333755678571,"lon": 18.056143908447},"contact": {"phone": "+46 70 2336879","email": "test@example.com","homepage": "http://www.google.com"}}' \
+  --data '{ "name": "storeName", "storeId": "0987654", "locationDescriptor": "API locationDescriptor","address": {"street": "testgatan 4","zip": "217 41","city": "Malmö","country": "Sweden"},"location": {"lat": 59.333755678571,"lon": 18.056143908447},"contact": {"phone": "+46 70 2336879","email": "test@pinmeto.com","homepage": "http://www.pinmeto.com"}}' \
   https://api.pinmeto.com/v2/&lt;&lt;account_id&gt;&gt;/locations
 ```
 
 ## "Upsert" a location
 
-If a querystring parameter `upsert=true` is passed to [Create location](#create-a-location) it will check if a location with the storeId in the request body already exist, if it does it will do an update instead. If the location doesn't exist it will be created.
+If a querystring parameter `upsert=true` is passed to [Create location](#create-a-location) it will check if a location with the storeId in the request body already exists, if it does it will do an update. If the location doesn't exist it will be created.
 
 #### Endpoint POST: `/v2/<<account_id>>/locations?upsert=true`
 
