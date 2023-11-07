@@ -2,29 +2,23 @@
 
 PinMeTo API v2 is a JSON API that allows you to integrate with PinMeTo to access and manage your location data through your own systems and services. Typically, customers integrate with PinMeTo Locations API to have a single place for managing location data and to use that information for keeping websites, store locators, etc. up-to-date. Please read our [API Help Article](https://help.pinmeto.com/en/article/introducing-the-pinmeto-api-kl3pwj/) for more information.
 
-## Login into Listings to get these keys
+## First step: Get an Access Token
 
-- AccountId, `<<account_id>>`
-- App id, `<<app_id>>`
+Follow [these instructions](access_token.md) to get the access token, using the proper keys shown in [Account Settings > API](https://places.pinmeto.com/account-settings/pinmeto/api/v3):
+
+- Account Id, `<<account_id>>`
+- App Id, `<<app_id>>`
 - App Secret, `<<app_secret>>`
-
-## Field encoding notes
-
-- OpeningDate, temporarilyClosedUntil: formatted YYYY-MM-DD, to unset send '' or null
-- SpecialOpenHours: use [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) formatting of date strings
-  ie. *YYYY-MM-DD*
-  - When setting closed dates (`isClosed: true`) an entry is needed for each day that is closed.
-  - Cannot last longer than 24 hours, must end at latest 1159.
 
 ## Recommendations
 
-- An accesstoken is valid for 1 hour so *do* cache it
+- An access token is valid for 1 hour so *do* cache it
 - When using this api to build a storelocator *do* cache the result on your webserver and avoid calling `/locations` for every search
 
 ## Rate limit
 
 You are allowed to do 3600 request/hour. In the header from each response you get information about your
-ratelimit
+ratelimit.
 
 ### Example of ratelimit in header
 
@@ -38,9 +32,13 @@ HEADER
  date: 'Thu, 14 Jan 2016 15:04:25 GMT'
 ```
 
-## Access Token
+## Field encoding notes
 
-[Documented here](access_token.md)
+- OpeningDate, temporarilyClosedUntil: formatted YYYY-MM-DD, to unset send '' or null
+- SpecialOpenHours: use [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) formatting of date strings
+  ie. *YYYY-MM-DD*
+  - When setting closed dates (`isClosed: true`) an entry is needed for each day that is closed.
+  - Cannot last longer than 24 hours, must end at latest 1159.
 
 ## Custom Data
 
@@ -61,9 +59,16 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
 - **pagesize** = (Number) Number of locations that the request returns, default 100, max 250 | optional
 - **next** = (String) Id of starting point to next page
 - **before** = (String) Id of starting point to previous page
+  
 
-#### Result
+#### Curl call to get all locations
 
+`curl -H "Authorization: Bearer YOUR_ACCESS_TOKEN" -X GET https://api.pinmeto.com/v2/<<account_id>>/locations`
+
+<details>
+<summary>Result structure and example</summary>
+<br>
+<b>Result structure</b>
 <ul>
  <li><b>paging</b>: (Object)
   <ul>
@@ -201,8 +206,7 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
   </ul>
  </li>
 </ul>
-
-#### Example result
+<b>Result example</b>
 
 ```Javascript
 {
@@ -467,10 +471,7 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
     }
   }
 ```
-
-#### Curl call to get all locations
-
-`curl -H "Authorization: Bearer YOUR_ACCESS_TOKEN" -X GET https://api.pinmeto.com/v2/<<account_id>>/locations`
+</details>
 
 ## Fetch one location
 
