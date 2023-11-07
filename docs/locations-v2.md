@@ -922,6 +922,8 @@ curl -X PUT \
 
 All properties are optional unless stated otherwise. If an optional property contains <b>required</b> fields, those fields must be included if you wish to include the optional property.
 
+<details>
+<summary><b>List of properties</b></summary>
 <ul>
  <!--li ng-show="customGoogleName"><b>googleName</b>: (String) <b>required</b></li>
 <li ng-show="customFacebookName"><b>facebookName</b>: (String) <b>required</b></li-->
@@ -1006,9 +1008,13 @@ All properties are optional unless stated otherwise. If an optional property con
  <li><b>wifiSsid</b>: (String, max length 32)</li>
  <li><b>customData</b>: (Object, depends on your custom data definition)</li>
 </ul>
+</details>
 
-#### Example of POST with token in Authorization-header
 
+<details>
+<summary><b>Example of POST with token in Authorization-header</b></summary>
+<br>
+	
 ```
 POST /v2/<<account_id>>/locations HTTP/1.1
 Authorization: Bearer 77813e40da005550c53bd8e06fc59e8ae76e2694
@@ -1037,6 +1043,7 @@ Body:
  }
 }
 ```
+</details>
 
 #### Curl call to create a location
 
@@ -1068,6 +1075,7 @@ If a querystring parameter `upsert=true` is passed to [Create location](#create-
 
 500: Location already exists
 
+
 **Update location:**
 
 400: No properties to update, wrong content-type?
@@ -1076,13 +1084,16 @@ If a querystring parameter `upsert=true` is passed to [Create location](#create-
 
 404: No location found
 
+
 **Get locations:**
 
 404: Site not found
 
+
 **Get location:**
 
 404: Location with storeId ${storeId} not found
+
 
 ## Changes from v1
 
