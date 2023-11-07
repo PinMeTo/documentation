@@ -66,9 +66,9 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
 `curl -H "Authorization: Bearer YOUR_ACCESS_TOKEN" -X GET https://api.pinmeto.com/v2/<<account_id>>/locations`
 
 <details>
-<summary>Result structure and example</summary>
+<summary><b>Result structure</b></summary>
 <br>
-<b>Result structure</b>
+
 <ul>
  <li><b>paging</b>: (Object)
   <ul>
@@ -206,7 +206,11 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
   </ul>
  </li>
 </ul>
-<b>Result example</b>
+</details>
+
+<details>
+<summary><b>Result example</b></summary>
+<br>
 
 ```Javascript
 {
@@ -475,7 +479,7 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
 
 ## Fetch one location
 
-If you have your access token you can get information about one location
+If you have your access token, you can get information about one location
 
 #### Endpoint GET: `/v2/<<account_id>>/locations/YOUR_STORE_ID`
 
@@ -483,7 +487,14 @@ If you have your access token you can get information about one location
 
 And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
 
-#### Result
+
+#### Curl call to get a location
+
+`curl -H "Authorization: Bearer YOUR_ACCESS_TOKEN" -X GET https://api.pinmeto.com/v2/<<account_id>>/locations/YOUR_STORE_ID`
+
+<details>
+<summary><b>Result structure</b></summary>
+<br>
 
 <ul>
  <li>
@@ -616,8 +627,11 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
   </ul>
  </li>
 </ul>
+</details>
 
-#### Example result
+<details>
+<summary><b>Result example</b></summary>
+<br>
 
 ```Javascript
 {
@@ -758,10 +772,7 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
   }
 }
 ```
-
-#### Curl call to get a location
-
-`curl -H "Authorization: Bearer YOUR_ACCESS_TOKEN" -X GET https://api.pinmeto.com/v2/<<account_id>>/locations/YOUR_STORE_ID`
+</details>
 
 ## Update a location
 
