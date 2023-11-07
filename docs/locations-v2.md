@@ -780,8 +780,10 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
 
 `https://api.pinmeto.com/v2/<<account_id>>/locations/YOUR_STORE_ID`
 
-#### Properties to update
 
+<details>
+<summary><b>List of properties to update</b></summary>
+<br> 
 <ul>
  <!--li ng-show="customGoogleName"><b>googleName</b>: (String)</li>
 	<li ng-show="customFacebookName"><b>facebookName</b>: (String)</li-->
@@ -863,8 +865,14 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
  <li><b>wifiSsid</b>: (String, max length 32)</li>
  <li><b>customData</b>: (Object, depends on your custom data definition)</li>
 </ul>
+</details>
 
-#### Example of PUT request with access_token in Authorization-header
+
+
+<details>
+<summary><b>Example of PUT request with access_token in Authorization-header</b></summary>
+<br> 
+
 
 ```
 PUT /v2/<<account_id>>/locations/YOUR_STORE_ID HTTP/1.1
@@ -892,6 +900,7 @@ Body:
  }
 }
 ```
+</details>
 
 #### Curl call to update a location
 
