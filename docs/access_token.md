@@ -3,8 +3,8 @@
 
 ## Obtain a token
 
-To obtain a token you POST to `https://api.pinmeto.com/oauth/token` (`https://api.test.pinmeto.com/oauth/token` for **test** environment). You need to include your
-credentials in the Authorization header (`"Basic " + '<<app id>>:<<app secret>>'`), make sure to concatenate and then **base64 encode** the `app_id:app_secret`. Pass
+To obtain a token, make a POST request to `https://api.pinmeto.com/oauth/token` (`https://api.test.pinmeto.com/oauth/token` for **test** environment). You need to include your
+credentials in the Authorization header (`"Basic " + '<<app id>>:<<app secret>>'`). Make sure to concatenate `app_id:app_secret` and then **base64 encode** it, before concatinating it to `"Basic "`. Pass
 `grant_type="client_credentials"` in the request body, for example:
 
 ```
