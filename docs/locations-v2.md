@@ -2,6 +2,11 @@
 
 PinMeTo API v2 is a JSON API that allows you to integrate with PinMeTo to access and manage your location data through your own systems and services. Typically, customers integrate with PinMeTo Locations API to have a single place for managing location data and to use that information for keeping websites, store locators, etc. up-to-date. Please read our [API Help Article](https://help.pinmeto.com/en/article/introducing-the-pinmeto-api-kl3pwj/) for more information.
 
+## Endpoints
+
+- Test: https://api.test.pinmeto.com
+- Production: https://api.pinmeto.com
+  
 ## First step: Get an Access Token
 
 Follow [these instructions](access_token.md) to get the access token, using the proper keys shown in [Account Settings > API](https://places.pinmeto.com/account-settings/pinmeto/api/v3):
@@ -1097,27 +1102,32 @@ If a querystring parameter `upsert=true` is passed to [Create location](#create-
 
 ## Changes from v1
 
-### Description
+<details>
+<summary><b>List of changes</b></summary>
+
+<h3>Description</h3>
 
 `shortDescription` and `longDescription` has been moved to a `description` node and renamed to `short` and `long`.
 
-### Pending Changes
+<h3>Pending Changes</h3>
 
 When a location is updated changes to address and location (lat/lon) are put in a pending change state and needs to be reviewed in Listings.
 
 The data returned under `address` and `location` is the values that are presented on the location details in listings, values yet to be applied are returned under the `pendingChanges` node. A change can either be applied or ignored in listings depending on the quality of the data sent.
 
-### Special Open Hours
+<h3>Special Open Hours</h3>
 
 `startDate` and `endDate` are now named `start` and `end`, the format has changed to be *YYYY-MM-DD*
 
-### Images
+<h3>Images</h3>
 
 Links to cover and profile images on facebook & google.
 
-### Foursquare
+<h3>Foursquare</h3>
 
 Foursquare and Factual have merged. `Foursquare` is removed from `network` since Foursquare no longer has a 2-way API.
 
 
 If an error not covered by these messages occurs, a status code of 500 will be returned with the message “An error occurred.”
+
+</details>
