@@ -1,6 +1,6 @@
 # PinMeTo API Documentation
 
-This page has technical documentation on PinMeTo APIs. For a non-technical description, see our [help article](https://help.pinmeto.com/en/article/introducing-the-pinmeto-api-kl3pwj/).
+This page has technical documentation on PinMeTo APIs. For an overview of when and how to use the APIs in an integration, see our [help article](https://help.pinmeto.com/en/article/introducing-the-pinmeto-api-kl3pwj/).
 
 ## Overview
 
@@ -30,7 +30,7 @@ The Location API is a REST API for fetching and updating Listings data.
 
 Insights for Google and Facebook can be queried through the API v3 OpenAPI interface. Documentation for API v3 is found after logging in to the PinMeTo platform in [Account Settings](https://places.pinmeto.com/account-settings/) under API > Documentation. For testing purposes, some parameters will be filled with account data.
 
-If unable to login, use this link instead (https://api.pinmeto.com/documentation/v3/) to access the page anonymously.
+If you do not have an account to login with you can access the page anonymously using this link (https://api.pinmeto.com/documentation/v3/).
 
 ## Reviews API Reference
 
