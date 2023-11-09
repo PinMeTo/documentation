@@ -1,5 +1,8 @@
-# Access tokens
-**The access_token expires after 1 hour**
+# Authentication API reference
+
+## Recommendations
+
+- An **access token is valid for 1 hour** so *do* cache it
 
 ## Obtain a token
 
