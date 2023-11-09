@@ -1,4 +1,4 @@
-# General
+# Locations API reference
 
 PinMeTo Locations API v2 is a JSON API that allows you to integrate with PinMeTo to access and manage your location data through your own systems and services. Typically, customers integrate with PinMeTo Locations API to have a single place for managing location data and to use that information for keeping websites, store locators, etc. up-to-date. Please read our [API Help Article](https://help.pinmeto.com/en/article/introducing-the-pinmeto-api-kl3pwj/) for more information.
 
