@@ -1,6 +1,6 @@
 # General
 
-PinMeTo API v2 is a JSON API that allows you to integrate with PinMeTo to access and manage your location data through your own systems and services. Typically, customers integrate with PinMeTo Locations API to have a single place for managing location data and to use that information for keeping websites, store locators, etc. up-to-date. Please read our [API Help Article](https://help.pinmeto.com/en/article/introducing-the-pinmeto-api-kl3pwj/) for more information.
+PinMeTo Locations API v2 is a JSON API that allows you to integrate with PinMeTo to access and manage your location data through your own systems and services. Typically, customers integrate with PinMeTo Locations API to have a single place for managing location data and to use that information for keeping websites, store locators, etc. up-to-date. Please read our [API Help Article](https://help.pinmeto.com/en/article/introducing-the-pinmeto-api-kl3pwj/) for more information.
 
 ## Endpoints
 
@@ -47,13 +47,15 @@ HEADER
 
 ## Custom Data
 
-If the account have custom data enabled you can get, set and update that data
+If the account have custom data enabled you can get, set and update that data.
+
+# Methods
 
 ## Fetch all locations
 
 If you have your access token you can get information about all your locations.
 
-### Endpoint `/v2/<<account_id>>/locations`
+#### Endpoint GET: `/v2/<<account_id>>/locations`
 
 `https://api.pinmeto.com/v2/<<account_id>>/locations`
 
