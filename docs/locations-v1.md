@@ -1,12 +1,12 @@
 # Locations API v1 reference
 
+## Notice
+
 **IMPORTANT! Locations API v1 is deprecated as of 2020-04-27**
 
 All functionality of the Locations API has been migrated to [Locations API v2](locations-v2.md). We recommend modifying any clients to use v2 instead, and not implementing any new clients with v1 as this version will be removed in the future.
 
-<br />
-<br />
-<br />
+## Usage
 
 ### PinMeTo API v1 is JSON API for get and update information about your locations
 
