@@ -1,8 +1,7 @@
-## General
+# Locations API v1 reference
 
-**Deprecated as of 2020-04-27**
-
-Documentation for version 2 of the api is [here](locations-v2.md).
+**IMPORTANT! Locations API v1 is deprecated as of 2020-04-27**
+All functionality of the Locations API has been migrated to [Locations API v2](locations-v2.md). We recommend modifying any clients to use v2 instead, and not implementing any new clients with v1 as this version will be removed in the future.
 
 <br />
 <br />
