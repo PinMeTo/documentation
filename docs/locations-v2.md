@@ -943,7 +943,7 @@ All properties are optional unless stated otherwise. If an optional property con
   </ul>
  </li>
  <li><b style="text-decoration: line-through;">text</b> (deprecated, use shortDescription) : (String)</li>
- <li><b>contact</b>: (Object) <b>required</b>
+ <li><b>contact</b>: (Object)
   <ul>
    <li><b>phone</b>: (String)</li>
    <li><b>homepage</b>: (String)</li>
