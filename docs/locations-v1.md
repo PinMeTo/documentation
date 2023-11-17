@@ -857,7 +857,7 @@ You need to include your access_token in the Authorization header ("Bearer " + Y
  <li><b>shortDescription</b>: (String, max length 240)</li>
  <li><b>longDescription</b>: (String, max length 750)</li>
  <li><b style="text-decoration: line-through;">text</b> (deprecated, use shortDescription) : (String)</li>
- <li><b>contact</b>: (Object) <b>required</b>
+ <li><b>contact</b>: (Object)
   <ul>
    <li><b>phone</b>: (String)</li>
    <li><b>homepage</b>: (String)</li>
