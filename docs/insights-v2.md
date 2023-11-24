@@ -19,3 +19,4 @@ Obtain an API access token as documented in [Api access token](access_token.md)
 Use the GraphQL GUI to explore data and see query documentation.
 
 Endpoint for GraphQL GUI: `https://api.pinmeto.com/v2/<<account_id>>/insights/?access_token=<<access_token>>`
+- Your account id is in the url, e.g. https://places.pinmeto.com/account-settings/ `<<account_id>>` /
