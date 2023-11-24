@@ -11,7 +11,7 @@ PinMeTo Locations API v2 is a JSON API that allows you to integrate with PinMeTo
 
 Follow [these instructions](access_token.md) to get the access token, using the proper keys shown in [Account Settings > API](https://places.pinmeto.com/account-settings/pinmeto/api/v3):
 
-- Account Id, `<<account_id>>`
+- Account Id, `<<account_id>>` (the id part of the url for your account, e.g. https://places.pinmeto.com/account-settings/<<account_id>>/)
 - App Id, `<<app_id>>`
 - App Secret, `<<app_secret>>`
 
