@@ -1,6 +1,6 @@
 # Insights API v2 reference
 
-PinMeTo Insights API v2 is a GraphQL interface to perform queries about your **reviews** and **insights** for Google and Facebook.
+PinMeTo Insights API v2 is a GraphQL interface to perform queries about your **reviews**.
 
 ## Notice
 
