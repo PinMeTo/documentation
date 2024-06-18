@@ -1,10 +1,9 @@
 # Posts API
 
-**Please note those API endpoints will not work in Test or Production at this time of writing, and this document will keep updating.**
+**Please note those API endpoints will only work in Test environment at this time of writing, and this document will keep updating.**
 
 * Test: `https://api.test.pinmeto.com`
-* Production: `https://api.pinmeto.com`
-
+ 
 In order to use this API, you need to first prepare image and text.
 Then get the correct location information from listing API, three fields are
 mandatory: `locationId`, `name`, `locationDescriptor`
@@ -18,7 +17,7 @@ Basic steps are:
 
 ## 1. Authentication
 
-Firstly, please create an app with Posts related permissions in account settings.
+Firstly, please create an app with **location create** permissions in account settings.
 
 Secondly, follow [this document](https://github.com/PinMeTo/documentation/blob/master/docs/access_token.md) to get
 access token. Please be aware that this token is only valid for an hour so cache and refresh it whenever necessary
