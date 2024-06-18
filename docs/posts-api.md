@@ -302,7 +302,7 @@ Field `_id` is a unique ID that will be used for future reference. This post wil
 
 if you want to delete all locations, in this example, Bangkok and Helsinki, don't set request body.
 
-if you want to delete only one or some of it, first use get draft API again to get `postsStatusSummary`, i.e.
+if you want to delete only one or some of it, first use get posts API to get `postsStatusSummary`, i.e.
 
 ```json
 {
@@ -338,7 +338,7 @@ then, include  `postId`(**not** `locationId`) with your delete request.
 }
 ```
 
-## 6. Appendix
+## 5. Appendix
 
 ### Image specifications
 
