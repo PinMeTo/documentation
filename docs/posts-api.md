@@ -342,6 +342,6 @@ then, include  `postId`(**not** `locationId`) with your delete request.
 
 ### Image specifications
 
-* Recommended image format is JPG or PNG
+* Image format has to be JPG or PNG
 * Image has to be minimum 250x250 pixels
-* Image file must be at least 10240 bytes
+* Image file size must be at least 10240 bytes
