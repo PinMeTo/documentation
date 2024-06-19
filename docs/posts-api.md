@@ -293,7 +293,7 @@ Field `_id` is a unique ID that will be used for future reference. This post wil
 
 ## 4. Delete post
 
-* DELETE `https://api.test.pinmeto.com/posts/v3/site/locationPosts/:id`
+* DELETE `https://api.test.pinmeto.com/posts/v3/:site/locationPosts/:id`
 * query parameters: the `id` of the post you want to delete
 * query parameter: `site` your site name
 
@@ -338,6 +338,12 @@ then, include  `postId`(**not** `locationId`) with your delete request.
 ```
 
 ## 5. Appendix
+### location selector API
+This API can help you to obtain a list of locaitons which is available for posting
+* GET `https://api.test.pinmeto.com/posts/v3/:site/google/locationselector`
+* query parameter: `site` your site name
+
+It will return two fieds: `data` which is available for posting, `unselectables` unavailable locations
 
 ### Image specifications
 
