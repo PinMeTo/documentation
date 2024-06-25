@@ -4,15 +4,15 @@ PinMeTo Locations API v2 is a JSON API that allows you to integrate with PinMeTo
 
 ## Endpoints
 
-- Test: https://api.test.pinmeto.com
-- Production: https://api.pinmeto.com
-  
+- Test: <https://api.test.pinmeto.com>
+- Production: <https://api.pinmeto.com>
+
 ## First step: Get an Access Token
 
 Follow [these instructions](access_token.md) to get the access token, using the proper keys shown in Account Settings > API:
 
 - Account Id, `<<account_id>>`
-    - Your account id is in the url, e.g. https://places.pinmeto.com/account-settings/ `<<account_id>>` /
+  - Your account id is in the url, e.g. <https://places.pinmeto.com/account-settings/> `<<account_id>>` /
 - App Id, `<<app_id>>`
 - App Secret, `<<app_secret>>`
 
@@ -28,7 +28,7 @@ ratelimit.
 
 ### Example of ratelimit in header
 
-```
+```http
 HEADER
  x-ratelimit-limit: '3600'
  x-ratelimit-reset: '1452787466'
@@ -50,13 +50,13 @@ HEADER
 
 If the account have custom data enabled you can get, set and update that data.
 
-# Methods
+## Methods
 
 ## Fetch all locations
 
 If you have your access token you can get information about all your locations.
 
-#### Endpoint GET: `/v2/<<account_id>>/locations`
+### Endpoint GET: `/v2/<<account_id>>/locations`
 
 `https://api.pinmeto.com/v2/<<account_id>>/locations`
 
@@ -67,7 +67,6 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
 - **pagesize** = (Number) Number of locations that the request returns, default 100, max 250 | optional
 - **next** = (String) Id of starting point to next page
 - **before** = (String) Id of starting point to previous page
-  
 
 #### Curl call to get all locations
 
@@ -483,18 +482,18 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
     }
   }
 ```
+
 </details>
 
 ## Fetch one location
 
 If you have your access token, you can get information about one location
 
-#### Endpoint GET: `/v2/<<account_id>>/locations/YOUR_STORE_ID`
+### Endpoint GET: `/v2/<<account_id>>/locations/YOUR_STORE_ID`
 
 `https://api.pinmeto.com/v2/<<account_id>>/locations/YOUR_STORE_ID`
 
 And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
-
 
 #### Curl call to get a location
 
@@ -780,18 +779,18 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
   }
 }
 ```
+
 </details>
 
 ## Update a location
 
-#### Endpoint PUT: `/v2/<<account_id>>/locations/YOUR_STORE_ID`
+### Endpoint PUT: `/v2/<<account_id>>/locations/YOUR_STORE_ID`
 
 `https://api.pinmeto.com/v2/<<account_id>>/locations/YOUR_STORE_ID`
 
-
 <details>
 <summary><b>List of properties to update</b></summary>
-<br> 
+<br>
 <ul>
  <!--li ng-show="customGoogleName"><b>googleName</b>: (String)</li>
 	<li ng-show="customFacebookName"><b>facebookName</b>: (String)</li-->
@@ -875,14 +874,11 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
 </ul>
 </details>
 
-
-
 <details>
 <summary><b>Example of PUT request with access_token in Authorization-header</b></summary>
-<br> 
+<br>
 
-
-```
+```http
 PUT /v2/<<account_id>>/locations/YOUR_STORE_ID HTTP/1.1
 Authorization: Bearer 77813e40da005550c53bd8e06fc59e8ae76e2694
 Host: https://api.pinmeto.com
@@ -908,6 +904,7 @@ Body:
  }
 }
 ```
+
 </details>
 
 #### Curl call to update a location
@@ -920,9 +917,11 @@ curl -X PUT \
   https://api.pinmeto.com/v2/<<account_id>>/locations/YOUR_STORE_ID
 ```
 
+Note: Only the fields sent in the update request will be updated.
+
 ## Create a location
 
-#### Endpoint POST: `/v2/<<account_id>>/locations`
+### Endpoint POST: `/v2/<<account_id>>/locations`
 
 `https://api.pinmeto.com/v2/<<account_id>>/locations`
 
@@ -1018,11 +1017,10 @@ All properties are optional unless stated otherwise. If an optional property con
 </ul>
 </details>
 
-
 <details>
 <summary><b>Example of POST with token in Authorization-header</b></summary>
 <br>
-	
+
 ```
 POST /v2/<<account_id>>/locations HTTP/1.1
 Authorization: Bearer 77813e40da005550c53bd8e06fc59e8ae76e2694
@@ -1051,6 +1049,7 @@ Body:
  }
 }
 ```
+
 </details>
 
 #### Curl call to create a location
@@ -1083,7 +1082,6 @@ If a querystring parameter `upsert=true` is passed to [Create location](#create-
 
 500: Location already exists
 
-
 **Update location:**
 
 400: No properties to update, wrong content-type?
@@ -1092,16 +1090,13 @@ If a querystring parameter `upsert=true` is passed to [Create location](#create-
 
 404: No location found
 
-
 **Get locations:**
 
 404: Site not found
 
-
 **Get location:**
 
 404: Location with storeId ${storeId} not found
-
 
 ## Changes from v1
 
@@ -1129,7 +1124,6 @@ Links to cover and profile images on facebook & google.
 <h3>Foursquare</h3>
 
 Foursquare and Factual have merged. `Foursquare` is removed from `network` since Foursquare no longer has a 2-way API.
-
 
 If an error not covered by these messages occurs, a status code of 500 will be returned with the message “An error occurred.”
 
