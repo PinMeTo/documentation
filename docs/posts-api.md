@@ -4,16 +4,16 @@
 
 - Test: `https://api.test.pinmeto.com`
 
-In order to use this API, you need to first prepare image and text.
-Then get the correct location information from listing API, three fields are
-mandatory: `locationId`, `name`, `locationDescriptor`
+In order to publish a google post, you need to first prepare image and text.
+And get the correct location `storeId` from the locations API.
 
 Basic steps are:
 
 1. Authentication
-2. Publish post
-3. Get post data, optional
-4. Delete post, optional
+2. Get available location list and choose one or more locations (with storeId)
+3. Publish post to the chosen locations
+4. Get post data, optional
+5. Delete post, optional
 
 ## 1. Authentication
 
@@ -41,17 +41,12 @@ You can add multiple locations at once, in this example we would like to publish
   "name": "test",
   "locations": [
     {
-      "locationId": "5bd2f55c6d85d227e53121f4",
-      "name": "PinMeTo",
-      "locationDescriptor": "Bangkok"
+      "storeId": "66"
     },
     {
-      "locationId": "5e2721ef0f67ee1803feccaa",
-      "name": "PinMeTo",
-      "locationDescriptor": "Helsinki"
+      "storeId": "67"
     }
   ],
-  "source": "pinmeto",
   "googlePostData": {
     "images": [
       {
@@ -93,17 +88,9 @@ Call to Actions could be chosen from the following variants:
   "name": "test",
   "locations": [
     {
-      "locationId": "5bd2f55c6d85d227e53121f4",
-      "name": "PinMeTo",
-      "locationDescriptor": "Bangkok"
-    },
-    {
-      "locationId": "5e2721ef0f67ee1803feccaa",
-      "name": "PinMeTo",
-      "locationDescriptor": "Helsinki"
+      "storeId": "66"
     }
   ],
-  "source": "pinmeto",
   "googlePostData": {
     "offerData": {
       "title": "offer title",
@@ -164,6 +151,7 @@ Field `_id` is a unique ID that will be used for future reference. This post wil
   "name": "direct test",
   "locations": [
     {
+      "storeId": "66",
       "locationId": "5bd2f55c6d85d227e53121f4",
       "name": "PinMeTo",
       "locationDescriptor": "Bangkok"
@@ -235,14 +223,10 @@ Field `_id` is a unique ID that will be used for future reference. This post wil
   "name": "test",
   "locations": [
     {
+      "storeId": "66",
       "locationId": "5bd2f55c6d85d227e53121f4",
       "name": "PinMeTo",
       "locationDescriptor": "Bangkok"
-    },
-    {
-      "locationId": "5e2721ef0f67ee1803feccaa",
-      "name": "PinMeTo",
-      "locationDescriptor": "Helsinki"
     }
   ],
   "googlePostData": {
@@ -331,7 +315,7 @@ then, include `postId`(**not** `locationId`) with your delete request.
 
 This API can help you to obtain a list of locaitons which is available for posting
 
-- GET `https://api.test.pinmeto.com/posts/v3/:site/google/locationselector`
+- GET `https://api.test.pinmeto.com/posts/v3/:site/google/locations`
 - query parameter: `site` your site name
 
 It will return two fieds: `data` which is available for posting, `unselectables` unavailable locations
