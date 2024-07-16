@@ -28,8 +28,8 @@ ratelimit.
 
 ### Example of ratelimit in header
 
-```http
-HEADER
+```
+HTTP Header 
  x-ratelimit-limit: '3600'
  x-ratelimit-reset: '1452787466'
  x-ratelimit-remaining: '3599'
