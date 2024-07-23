@@ -35,6 +35,7 @@ You can add multiple locations at once, in this example we would like to publish
 - query parameter: `site` your site name
 
 ### Request body - Google Update
+* message: maximum 1500 characters
 
 ```json
 {
@@ -61,7 +62,7 @@ You can add multiple locations at once, in this example we would like to publish
       }
     ],
     "topicType": "Standard",
-    "message": "Hey there!",
+    "message": "message, 1500 chars max",
     "callToAction": {
       "actionType": "None",
       "url": null
@@ -82,6 +83,10 @@ Call to Actions could be chosen from the following variants:
 - Order online: actionType `Order` and your url
 
 ### Request body - Google offer
+* offer title: maximum 58 characters
+* message: maximum 1500 characters
+* coupoun code: maximum 56 characters
+* terms: maximum 5000 characters
 
 ```json
 {
@@ -93,14 +98,14 @@ Call to Actions could be chosen from the following variants:
   ],
   "googlePostData": {
     "offerData": {
-      "title": "offer title",
+      "title": "offer title, required, 58 chars max",
       "startDate": "2024-06-10T10:00:00.000Z",
       "endDate": "2024-06-26T10:00:00.000Z",
-      "url": "Redeem Online URL optional",
-      "coupon": "coupon code - optional",
-      "terms": "Terms and Conditions optional"
+      "url": "Redeem Online URL, optional",
+      "coupon": "coupon code, optional, 56 chars max",
+      "terms": "Terms and Conditions, optional, 5000 chars max"
     },
-    "message": "offer details",
+    "message": "offer details, 1500 chars max",
     "topicType": "Offer",
     "images": [
       {
