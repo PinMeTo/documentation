@@ -16,6 +16,17 @@ Follow [these instructions](access_token.md) to get the access token, using the 
 - App Id, `<<app_id>>`
 - App Secret, `<<app_secret>>`
 
+## Change log - <mark> **New!** </mark>
+<details>
+<summary><b>2024-07-26:</b> Network categories added</summary>
+<br>
+<ul>
+	<li>New endpoint added to <a href="#fetch-network-categories">get categories per network</a>: <b>`GET /v2/<<account_id>>/categories/NETWORK_NAME`</b>.</li>
+	<li>Optional `network` attribute added to the request body in <a href="#update-a-location">Update Location</a>, to support setting categories per network.</li>
+	<li>`network` attribute updated in the response of <a href="#fetch-all-locations">Fetch all locations</a> and <a href="#fetch-one-location">Fetch one location</a>. Now it returns the categories per network.</li>
+</ul>
+</details>
+	
 ## Recommendations
 
 - An access token is valid for 1 hour so *do* cache it
@@ -1000,7 +1011,8 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
 
 
  
-## Fetch network categories <mark> **New!** </mark>
+## Fetch network categories 
+### <mark> **New!** </mark>
 
 If you have your access token, you can get the list of categories per network
 
