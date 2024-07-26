@@ -169,6 +169,22 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
        <li><b>link</b>: (String)</li>
        <li><b>profileImage</b>: (String)</li>
        <li><b>coverImage</b>: (String)</li>
+       <li><b>categories</b>: (Object)
+	<ul>
+		<li><b>primaryCategory</b>: (Object)
+		  <ul>
+			<li><b>name</b> (String)</li>
+			<li><b>id</b> (String)</li>
+		  </ul>		
+		</li>
+		<li><b>additionalCategories</b>: (Array)
+		  <ul>
+			<li><b>name</b> (String)</li>
+			<li><b>id</b> (String)</li>
+		  </ul>		
+		</li>
+	</ul>
+       </li>
       </ul>
      </li>
      <li><b>google</b>: (Object)
@@ -178,11 +194,64 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
        <li><b>newReviewUrl</b>: (String)</li>
        <li><b>profileImage</b>: (String)</li>
        <li><b>coverImage</b>: (String)</li>
+       <li><b>categories</b>: (Object)
+	<ul>
+		<li><b>primaryCategory</b>: (Object)
+		  <ul>
+			<li><b>name</b> (String)</li>
+			<li><b>id</b> (String)</li>
+		  </ul>		
+		</li>
+		<li><b>additionalCategories</b>: (Array)
+		  <ul>
+			<li><b>name</b> (String)</li>
+			<li><b>id</b> (String)</li>
+		  </ul>		
+		</li>
+	</ul>
+       </li>
       </ul>
      </li>
      <li><b>bing</b>: (Object)
       <ul>
        <li><b>link</b>: (String)</li>
+       <li><b>categories</b>: (Object)
+	<ul>
+		<li><b>primaryCategory</b>: (Object)
+		  <ul>
+			<li><b>name</b> (String)</li>
+			<li><b>id</b> (String)</li>
+		  </ul>		
+		</li>
+		<li><b>additionalCategories</b>: (Array)
+		  <ul>
+			<li><b>name</b> (String)</li>
+			<li><b>id</b> (String)</li>
+		  </ul>		
+		</li>
+	</ul>
+       </li>
+      </ul>
+     </li>
+     <li><b>apple</b>: (Object)
+      <ul>
+       <li><b>link</b>: (String)</li>
+       <li><b>categories</b>: (Object)
+	<ul>
+		<li><b>primaryCategory</b>: (Object)
+		  <ul>
+			<li><b>name</b> (String)</li>
+			<li><b>id</b> (String)</li>
+		  </ul>		
+		</li>
+		<li><b>additionalCategories</b>: (Array)
+		  <ul>
+			<li><b>name</b> (String)</li>
+			<li><b>id</b> (String)</li>
+		  </ul>		
+		</li>
+	</ul>
+       </li>
       </ul>
      </li>
     </ul>
@@ -329,31 +398,60 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
       ],
       "network": {
         "facebook": {
-          "pageId": "1605390276379843",
+          "pageId": "12345678901234567890",
           "link": "https://www.facebook.com/Pinmeto.Malmo/"
-          "profileImage": "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-1/p720x720/78063569_2439243212994541_4444163125444345856_o.jpg?_nc_cat=103&_nc_sid=0c64ff&_nc_ohc=empRK1Pb1KoAX900cWE&_nc_ht=scontent-arn2-1.xx&tp=6&oh=76e3097e2e0b63b528bc355b9ea07083&oe=5F9BB09B",
-          "coverImage": "https://scontent-arn2-2.xx.fbcdn.net/v/t1.0-9/s720x720/103323620_2607531456165715_1759303419147657987_o.jpg?_nc_cat=100&_nc_sid=dd9801&_nc_ohc=ZfPnPPzbMUEAX-sbjis&_nc_ht=scontent-arn2-2.xx&tp=7&oh=0b2ae55c8118bf0ecdd4839677e1528b&oe=5F9A4ADA"
+          "profileImage": "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-1/p720x720/78063569_2439243212994541_4444163125444345856_o.jpg?_nc_cat=103&_nc_sid=0c64ff&_nc_ohc=empRK1Pb1KoAX900cWE&_nc_ht=scontent-arn2-1.xx&tp=6&oh=12345678901234567890&oe=5F9BB09B",
+          "coverImage": "https://scontent-arn2-2.xx.fbcdn.net/v/t1.0-9/s720x720/103323620_2607531456165715_1759303419147657987_o.jpg?_nc_cat=100&_nc_sid=dd9801&_nc_ohc=ZfPnPPzbMUEAX-sbjis&_nc_ht=scontent-arn2-2.xx&tp=7&oh=12345678901234567890&oe=5F9A4ADA",
+	  "categories": {
+          	"primaryCategory": {
+            	  "id": "01234567890123456789",
+            	  "name": "Internet Marketing Service"
+          	},
+          	"additionalCategories": [
+		  {
+              		"id": "12345678901234567890",
+              		"name": "Software Company"
+		  }
+          	]
+	  }
         },
         "google": {
-          "placeId": "ChIJpbpzuV6hU0YRG49xL3Bp8m8",
-          "link": "https://maps.google.com/?cid=8066625813127204635",
-          "newReviewUrl": "https://search.google.com/local/writereview?placeid=ChIJF9eIJ12dX0YRogcSnTh1G6s",
-          "profileImage": "https://lh3.googleusercontent.com/lCki9MaIOKvhpvwBh_AExUE3_liYXv-8vyr2RH4EPrkSt90__vZImAKkzllwq85JV3PZtUxl8dWivdc7=s0",
-          "coverImage": "https://lh3.googleusercontent.com/FrmkuiTtzLt8LbiPHHcoJlJtK1Ab21YahnQKRjs-5Nd7cv_yRwigjodcWy59xNE_frU-9dqT90e5WuWd=s0"
+          "placeId": "L3Bp8m81234567kjhgf1234567890",
+          "link": "https://maps.google.com/?cid=12345678901234567890",
+          "newReviewUrl": "https://search.google.com/local/writereview?placeid=Ch12345678901234567890s",
+          "profileImage": "https://lh3.googleusercontent.com/lCki9MaIOKvhpvwBh_AExUE3_liY1234567890_1234567890",
+          "coverImage": "https://lh3.googleusercontent.com/F12345678901234567890js-5Nd7cv_yd59",
+	  "categories": {
+		"primaryCategory": {
+	            "name": "Software company",
+	            "id": "gcid:network_category"
+		},
+		"additionalCategories": [
+	            {
+	              "id": "gcid:company_category",
+	              "name": "Internet marketing service"
+	            }
+		]
+	  }
         },
+    },
     "wifiSsid": "pinmeto",
-        "pendingChanges": {
+    "pendingChanges": {
           "address": {
             "street": "Adelgatan 11"
-          },
-        "location": {
+    	}
+    },
+    "location": {
           "lon": 13.00093,
           "lat": 55.60736
-         }
-        }
-      },
-        ...
-      {
+    }
+  },
+ 
+      
+    ...
+
+
+  {
         "name": "Name of location",
         "storeId": "store-id",
         "description": {
@@ -459,26 +557,51 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
         ],
         "network": {
           "facebook": {
-            "pageId": "1605390276379843",
+            "pageId": "12345678901234567890",
             "link": "https://www.facebook.com/Pinmeto.Malmo/",
-            "profileImage": "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-1/p720x720/78063569_2439243212994541_4444163125444345856_o.jpg?_nc_cat=103&_nc_sid=0c64ff&_nc_ohc=empRK1Pb1KoAX900cWE&_nc_ht=scontent-arn2-1.xx&tp=6&oh=76e3097e2e0b63b528bc355b9ea07083&oe=5F9BB09B",
-            "coverImage": "https://scontent-arn2-2.xx.fbcdn.net/v/t1.0-9/s720x720/103323620_2607531456165715_1759303419147657987_o.jpg?_nc_cat=100&_nc_sid=dd9801&_nc_ohc=ZfPnPPzbMUEAX-sbjis&_nc_ht=scontent-arn2-2.xx&tp=7&oh=0b2ae55c8118bf0ecdd4839677e1528b&oe=5F9A4ADA"
+            "profileImage": "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-1/p720x720/78063569_2439243212994541_4444163125444345856_o.jpg?_nc_cat=103&_nc_sid=0c64ff&_nc_ohc=empRK1Pb1KoAX900cWE&_nc_ht=scontent-arn2-1.xx&tp=6&oh=12345678901234567890&oe=5F9BB09B",
+            "coverImage": "https://scontent-arn2-2.xx.fbcdn.net/v/t1.0-9/s720x720/103323620_2607531456165715_1759303419147657987_o.jpg?_nc_cat=100&_nc_sid=dd9801&_nc_ohc=ZfPnPPzbMUEAX-sbjis&_nc_ht=scontent-arn2-2.xx&tp=7&oh=0123456789012345678907e1528b&oe=5F9A4ADA",
+	    "categories": {
+          	"primaryCategory": {
+            	  "id": "01234567890123456789",
+            	  "name": "Internet Marketing Service"
+          	},
+          	"additionalCategories": [
+		  {
+              		"id": "12345678901234567890",
+              		"name": "Software Company"
+		  }
+          	]
+	    }
           },
           "google": {
-            "placeId": "ChIJpbpzuV6hU0YRG49xL3Bp8m8",
-            "link": "https://maps.google.com/?cid=8066625813127204635",
+            "placeId": "CpzuV6huytgjk09rewqas788",
+            "link": "https://maps.google.com/?cid=806612345678901234567890",
             "newReviewUrl": "https://search.google.com/local/writereview?placeid=ChIJF9eIJ12dX0YRogcSnTh1G6s",
-            "profileImage": "https://lh3.googleusercontent.com/lCki9MaIOKvhpvwBh_AExUE3_liYXv-8vyr2RH4EPrkSt90__vZImAKkzllwq85JV3PZtUxl8dWivdc7=s0",
-            "coverImage": "https://lh3.googleusercontent.com/FrmkuiTtzLt8LbiPHHcoJlJtK1Ab21YahnQKRjs-5Nd7cv_yRwigjodcWy59xNE_frU-9dqT90e5WuWd=s0"
-          },
+            "profileImage": "https://lh3.googleusercontent.com/lCki9MaIOKvhpvwBh_AExUE3_12345678901234567890",
+            "coverImage": "https://lh3.googleusercontent.com/FrmkuiTtzL12345678901234567890hnQKRjs-5Nd7cv_12345678901234567890",
+	    "categories": {
+		"primaryCategory": {
+	            "name": "Software company",
+	            "id": "gcid:company_category"
+		},
+		"additionalCategories": [
+	            {
+	              "id": "gcid:another_category",
+	              "name": "Internet marketing service"
+	            }
+		]
+	      }
+	    }
+	},
         "googleName": "custom google name",
         "facebookName": "custom fb name",
         "wifiSsid": "pinmeto"
       }
     ],
     "paging": {
-        before: "https://api.pinmeto.com/v2/pinmeto/locations?before=569649b49c5ec8685e11175e"
-        next: "https://api.pinmeto.com/v2/pinmeto/locations?next=569652a91151474860f5e173"
+        before: "https://api.pinmeto.com/v2/pinmeto/locations?before=12345678901234567890"
+        next: "https://api.pinmeto.com/v2/pinmeto/locations?next=2345678901234567899"
     }
   }
 ```
@@ -590,6 +713,22 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
        <li><b>link</b>: (String)</li>
        <li><b>profileImage</b>: (String)</li>
        <li><b>coverImage</b>: (String)</li>
+       <li><b>categories</b>: (Object)
+	<ul>
+		<li><b>primaryCategory</b>: (Object)
+		  <ul>
+			<li><b>name</b> (String)</li>
+			<li><b>id</b> (String)</li>
+		  </ul>		
+		</li>
+		<li><b>additionalCategories</b>: (Array)
+		  <ul>
+			<li><b>name</b> (String)</li>
+			<li><b>id</b> (String)</li>
+		  </ul>		
+		</li>
+	</ul>
+       </li>
       </ul>
      </li>
      <li><b>google</b>: (Object)
@@ -599,11 +738,64 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
        <li><b>newReviewUrl</b>: (String)</li>
        <li><b>profileImage</b>: (String)</li>
        <li><b>coverImage</b>: (String)</li>
+       <li><b>categories</b>: (Object)
+	<ul>
+		<li><b>primaryCategory</b>: (Object)
+		  <ul>
+			<li><b>name</b> (String)</li>
+			<li><b>id</b> (String)</li>
+		  </ul>		
+		</li>
+		<li><b>additionalCategories</b>: (Array)
+		  <ul>
+			<li><b>name</b> (String)</li>
+			<li><b>id</b> (String)</li>
+		  </ul>		
+		</li>
+	</ul>
+       </li>
       </ul>
      </li>
      <li><b>bing</b>: (Object)
       <ul>
        <li><b>link</b>: (String)</li>
+       <li><b>categories</b>: (Object)
+	<ul>
+		<li><b>primaryCategory</b>: (Object)
+		  <ul>
+			<li><b>name</b> (String)</li>
+			<li><b>id</b> (String)</li>
+		  </ul>		
+		</li>
+		<li><b>additionalCategories</b>: (Array)
+		  <ul>
+			<li><b>name</b> (String)</li>
+			<li><b>id</b> (String)</li>
+		  </ul>		
+		</li>
+	</ul>
+       </li>
+      </ul>
+     </li>
+     <li><b>apple</b>: (Object)
+      <ul>
+       <li><b>link</b>: (String)</li>
+       <li><b>categories</b>: (Object)
+	<ul>
+		<li><b>primaryCategory</b>: (Object)
+		  <ul>
+			<li><b>name</b> (String)</li>
+			<li><b>id</b> (String)</li>
+		  </ul>		
+		</li>
+		<li><b>additionalCategories</b>: (Array)
+		  <ul>
+			<li><b>name</b> (String)</li>
+			<li><b>id</b> (String)</li>
+		  </ul>		
+		</li>
+	</ul>
+       </li>
       </ul>
      </li>
     </ul>
@@ -749,20 +941,44 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
         "label": "Black friday"
       }
     ],
-    "network": {
-      "facebook": {
-        "pageId": "1605390276379843",
-        "link": "https://www.facebook.com/Pinmeto.Malmo/",
-  "profileImage": "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-1/p720x720/78063569_2439243212994541_4444163125444345856_o.jpg?_nc_cat=103&_nc_sid=0c64ff&_nc_ohc=empRK1Pb1KoAX900cWE&_nc_ht=scontent-arn2-1.xx&tp=6&oh=76e3097e2e0b63b528bc355b9ea07083&oe=5F9BB09B",
-  "coverImage": "https://scontent-arn2-2.xx.fbcdn.net/v/t1.0-9/s720x720/103323620_2607531456165715_1759303419147657987_o.jpg?_nc_cat=100&_nc_sid=dd9801&_nc_ohc=ZfPnPPzbMUEAX-sbjis&_nc_ht=scontent-arn2-2.xx&tp=7&oh=0b2ae55c8118bf0ecdd4839677e1528b&oe=5F9A4ADA"
-      },
-      "google": {
-        "placeId": "ChIJpbpzuV6hU0YRG49xL3Bp8m8",
-        "link": "https://maps.google.com/?cid=8066625813127204635",
-  "newReviewUrl": "https://search.google.com/local/writereview?placeid=ChIJF9eIJ12dX0YRogcSnTh1G6s",
-  "profileImage": "https://lh3.googleusercontent.com/lCki9MaIOKvhpvwBh_AExUE3_liYXv-8vyr2RH4EPrkSt90__vZImAKkzllwq85JV3PZtUxl8dWivdc7=s0",
-  "coverImage": "https://lh3.googleusercontent.com/FrmkuiTtzLt8LbiPHHcoJlJtK1Ab21YahnQKRjs-5Nd7cv_yRwigjodcWy59xNE_frU-9dqT90e5WuWd=s0"
-      },
+      "network": {
+        "facebook": {
+          "pageId": "12345678901234567890",
+          "link": "https://www.facebook.com/Pinmeto.Malmo/"
+          "profileImage": "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-1/p720x720/78063569_2439243212994541_4444163125444345856_o.jpg?_nc_cat=103&_nc_sid=0c64ff&_nc_ohc=empRK1Pb1KoAX900cWE&_nc_ht=scontent-arn2-1.xx&tp=6&oh=12345678901234567890&oe=5F9BB09B",
+          "coverImage": "https://scontent-arn2-2.xx.fbcdn.net/v/t1.0-9/s720x720/103323620_2607531456165715_1759303419147657987_o.jpg?_nc_cat=100&_nc_sid=dd9801&_nc_ohc=ZfPnPPzbMUEAX-sbjis&_nc_ht=scontent-arn2-2.xx&tp=7&oh=12345678901234567890&oe=5F9A4ADA",
+	  "categories": {
+          	"primaryCategory": {
+            	  "id": "01234567890123456789",
+            	  "name": "Internet Marketing Service"
+          	},
+          	"additionalCategories": [
+		  {
+              		"id": "12345678901234567890",
+              		"name": "Software Company"
+		  }
+          	]
+	  }
+        },
+        "google": {
+          "placeId": "L3Bp8m81234567kjhgf1234567890",
+          "link": "https://maps.google.com/?cid=12345678901234567890",
+          "newReviewUrl": "https://search.google.com/local/writereview?placeid=Ch12345678901234567890s",
+          "profileImage": "https://lh3.googleusercontent.com/lCki9MaIOKvhpvwBh_AExUE3_liY1234567890_1234567890",
+          "coverImage": "https://lh3.googleusercontent.com/F12345678901234567890js-5Nd7cv_yd59",
+	  "categories": {
+		"primaryCategory": {
+	            "name": "Software company",
+	            "id": "gcid:network_category"
+		},
+		"additionalCategories": [
+	            {
+	              "id": "gcid:company_category",
+	              "name": "Internet marketing service"
+	            }
+		]
+	  }
+        },
     },
     "googleName": "custom google name",
     "facebookName": "custom fb name",
@@ -781,7 +997,6 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
 ```
 
 </details>
-
 
 
  
@@ -811,7 +1026,7 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
 
 <ul>
  <li>
-  <b>status</b>: (String - Possible values "ok", "not_found")
+  <b>status</b>: (String) - Possible values "ok", "not_found"
  </li>	
  <li>
   <b>data</b>: (Array)
@@ -953,7 +1168,7 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
  <li><b>network<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover="" popover-body="{{description.specialOpenHours}} {{description.specialOpenHours_update}}"></sup></b>:
   (Object)
   <ul>
-   <li><b>NETWORK_NAME</b> (Possible values: "google", "apple", "facebook", "bing"): (Object)
+   <li><b>NETWORK_NAME</b>: (Object) - Possible values: "google", "apple", "facebook", "bing"
    <ul>
     <li><b>categories</b>: (Object)
      <ul>
