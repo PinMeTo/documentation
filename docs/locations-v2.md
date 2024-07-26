@@ -21,9 +21,9 @@ Follow [these instructions](access_token.md) to get the access token, using the 
 <summary><b>2024-07-26:</b> Network categories added</summary>
 <br>
 <ul>
-	<li>New endpoint added to <a href="#fetch-network-categories">get categories per network</a>: <b>`GET /v2/[ACCOUNT_ID]/categories/[NETWORK_NAME]`</b>.</li>
-	<li>Optional `network` attribute added to the request body in <a href="#update-a-location">Update Location</a>, to support setting categories per network.</li>
-	<li>`network` attribute updated in the response of <a href="#fetch-all-locations">Fetch all locations</a> and <a href="#fetch-one-location">Fetch one location</a>. Now it returns the categories per network.</li>
+	<li>New endpoint added to <a href="#fetch-network-categories">get categories per network</a>: <code>GET /v2/[ACCOUNT_ID]/categories/[NETWORK_NAME]</code>.</li>
+	<li>Optional <code>network</code> attribute added to the request body in <a href="#update-a-location">Update Location</a>, to support setting categories per network.</li>
+	<li><code>network</code> attribute updated in the response of <a href="#fetch-all-locations">Fetch all locations</a> and <a href="#fetch-one-location">Fetch one location</a>. Now it also returns the categories per network.</li>
 </ul>
 </details>
 	
