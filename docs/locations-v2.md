@@ -782,6 +782,85 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
 
 </details>
 
+
+
+ 
+## Fetch network categories <mark> **New!** </mark>
+
+If you have your access token, you can get the list of categories per network
+
+### Endpoint GET: `/v2/<<account_id>>/categories/NETWORK_NAME`
+
+`https://api.pinmeto.com/v2/<<account_id>>/categories/NETWORK_NAME`
+
+And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
+
+`NETWORK_NAME` can be one of the following: 
+- `google`
+- `apple`
+- `facebook`
+- `bing`
+
+#### Curl call to get the list of categories
+
+`curl -H "Authorization: Bearer YOUR_ACCESS_TOKEN" -X GET https://api.pinmeto.com/v2/<<account_id>>/categories/NETWORK_NAME`
+
+<details>
+<summary><b>Result structure</b></summary>
+<br>
+
+<ul>
+ <li>
+  <b>status</b>: (String - Possible values "ok", "not_found")
+ </li>	
+ <li>
+  <b>data</b>: (Array)
+  <ul>
+   <li><b>name</b>: (String)</li>
+   <li><b>id</b>: (String)</li>
+  <ul>
+ </li>	
+</ul>
+</details>
+
+<details>
+<summary><b>Result example</b></summary>
+<br>
+
+```Javascript
+{
+  "status": "ok",
+  "data": [    
+    {
+      "name": "Abrasives supplier",
+      "id": "gcid:abrasives_supplier"
+    },
+    {
+      "name": "Acaraje restaurant",
+      "id": "gcid:acaraje_restaurant"
+    },
+    {
+      "name": "Accountant",
+      "id": "gcid:accountant"
+    },
+    {
+      "name": "Accounting firm",
+      "id": "gcid:accounting_firm"
+    },
+    {
+      "name": "Accounting school",
+      "id": "gcid:accounting_school"
+    },
+    {
+      "name": "Accounting software company",
+      "id": "gcid:accounting_software_company"
+    }
+  ] 
+}
+```
+
+</details>
+
 ## Update a location
 
 ### Endpoint PUT: `/v2/<<account_id>>/locations/YOUR_STORE_ID`
@@ -871,6 +950,31 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
  <li><b>facebookName</b>: (String) - if facebook custom name is enabled</li>
  <li><b>wifiSsid</b>: (String, max length 32)</li>
  <li><b>customData</b>: (Object, depends on your custom data definition)</li>
+ <li><b>network<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover="" popover-body="{{description.specialOpenHours}} {{description.specialOpenHours_update}}"></sup></b>:
+  (Object)
+  <ul>
+   <li><b>NETWORK_NAME</b> (Possible values: "google", "apple", "facebook", "bing"): (Object)
+   <ul>
+    <li><b>categories</b>: (Object)
+     <ul>
+	<li><b>primaryCategory</b>: (Object)
+	  <ul>
+		<li><b>name</b>: (String)</li>
+		<li><b>id</b>: (String)</li>
+	  </ul>
+	</li>
+	<li><b>additionalCategories</b>: (Array)
+	  <ul>
+		<li><b>name</b>: (String)</li>
+		<li><b>id</b>: (String)</li>
+	  </ul>
+	</li>
+     </ul>   
+    </li>
+   </ul>
+   </li>
+  </ul>
+ </li>
 </ul>
 </details>
 
@@ -880,7 +984,7 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
 
 ```http
 PUT /v2/<<account_id>>/locations/YOUR_STORE_ID HTTP/1.1
-Authorization: Bearer 77813e40da005550c53bd8e06fc59e8ae76e2694
+Authorization: Bearer YOUR_ACCESS_TOKEN
 Host: https://api.pinmeto.com
 Content-Type: application/json
 
@@ -901,8 +1005,57 @@ Body:
   "phone": "+46 70 2336879",
   "email": "test@example.com",
   "homepage": "http://www.google.com"
- }
+ },
+ "network": {
+        "facebook": {
+          "categories": {
+            "primaryCategory": {
+              "id": "123456",
+              "name": "Facebook Category"
+            },
+            "additionalCategories": []
+          }
+        },
+        "google": {
+          "categories": {
+            "primaryCategory": {
+              "name": "Google Category",
+              "id": "gcid:abcde"
+            },
+            "additionalCategories": [
+		    {
+		      "name": "Another Google Category",
+		      "id": "gcid:fghijk"
+		    }
+	    ]
+          }
+        },
+        "bing": {
+          "categories": {
+            "primaryCategory": {
+              "id": "654321",
+              "name": "Bing Category"
+            },
+            "additionalCategories": []
+          }
+        },
+        "apple": {
+         "categories": {
+            "primaryCategory": {
+              "id": "abc.defg.hijk",
+              "name": "Apple Category"
+            },
+            "additionalCategories": [
+		    {
+		      "name": "Another Apple Category",
+		      "id": "lmn.opqr.stuvwxyz"
+		    }
+	    ]
+          }
+        }
+      }
 }
+
 ```
 
 </details>
@@ -1023,7 +1176,7 @@ All properties are optional unless stated otherwise. If an optional property con
 
 ```
 POST /v2/<<account_id>>/locations HTTP/1.1
-Authorization: Bearer 77813e40da005550c53bd8e06fc59e8ae76e2694
+Authorization: Bearer YOUR_TOKEN
 Host: https://api.pinmeto.com
 Content-Type: application/json
 
@@ -1047,7 +1200,6 @@ Body:
   "email": "test@example.com",
   "homepage": "http://www.google.com"
  }
-}
 ```
 
 </details>
