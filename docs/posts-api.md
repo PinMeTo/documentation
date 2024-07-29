@@ -62,7 +62,7 @@ You can add multiple locations at once, in this example we would like to publish
       }
     ],
     "topicType": "Standard",
-    "message": "message1x",
+    "message": "message, 1500 chars max",
     "callToAction": {
       "actionType": "None",
       "url": null
