@@ -62,7 +62,7 @@ You can add multiple locations at once, in this example we would like to publish
       }
     ],
     "topicType": "Standard",
-    "message": "message, 1500 chars max",
+    "message": "message1x",
     "callToAction": {
       "actionType": "None",
       "url": null
@@ -128,69 +128,52 @@ Call to Actions could be chosen from the following variants:
 
 ### Response
 
-Field `_id` is a unique ID that will be used for future reference. This post will be published asynchronously.
+Field `id` is a unique ID that will be used for future reference. This post will be published asynchronously.
 
 ```json
 {
-  "createdBy": {
-    "name": "SpiderAds ",
-    "email": "api@pinmeto.com",
-    "userId": "666c03f24c478a0492aab9db"
-  },
-  "publishedBy": {
-    "name": "SpiderAds ",
-    "email": "api@pinmeto.com",
-    "userId": "666c03f24c478a0492aab9db"
-  },
-  "deletedBy": {
-    "name": "",
-    "email": ""
-  },
-  "status": "published",
-  "publishDate": "2024-06-17T12:01:56.006Z",
-  "scheduledDate": null,
-  "source": "pinmeto",
-  "copyFrom": null,
-  "sentEmails": [],
-  "_id": "667025b48629a192fc976ae3",
-  "name": "direct test",
-  "locations": [
-    {
-      "storeId": "66",
-      "locationId": "5bd2f55c6d85d227e53121f4",
-      "name": "PinMeTo",
-      "locationDescriptor": "Bangkok"
-    }
-  ],
-  "googlePostData": {
-    "callToAction": {
-      "actionType": "None",
-      "url": null
-    },
-    "message": "Hey there!",
-    "topicType": "Standard",
-    "images": [
-      {
-        "previewUrl": "https://example.com/.png",
-        "name": "",
-        "url": "https://example.com/.png",
-        "meta": {
-          "width": 971,
-          "height": 971,
-          "format": "jpeg"
-        },
-        "fileSize": 114024
-      }
-    ],
-    "languageCode": "sv"
-  },
-  "siteName": "pinmeto",
-  "postsStatusSummary": [],
-  "brandpages": [],
-  "createdAt": "2024-06-17T12:01:56.020Z",
-  "updatedAt": "2024-06-17T12:01:56.020Z",
-  "__v": 0,
-  "id": "667025b48629a192fc976ae3"
+	"id": "66a758f70981f30e6e48cd8b",
+	"status": "published",
+	"publishDate": "2024-07-29T08:55:19.330Z",
+	"scheduledDate": null,
+	"createdAt": "2024-07-29T08:55:19.376Z",
+	"updatedAt": "2024-07-29T08:55:19.376Z",
+	"name": "test",
+	"siteName": "pinmeto",
+	"locations": [
+		{
+			"storeId": "66",
+			"name": "PinMeTo",
+			"locationDescriptor": "Bangkok"
+		},
+		{
+			"storeId": "67"
+		}
+	],
+	"brandpages": [],
+	"postsStatusSummary": [],
+	"googlePostData": {
+		"callToAction": {
+			"actionType": "None",
+			"url": null
+		},
+		"message": "message1x",
+		"topicType": "Standard",
+		"images": [
+			{
+				"previewUrl": "https://example.com/1.jpg",
+				"name": "",
+				"url": "https://example.com/1.jpg",
+				"meta": {
+					"width": 971,
+					"height": 971,
+					"format": "jpeg"
+				},
+				"fileSize": 114024
+			}
+		],
+		"languageCode": "sv"
+	}
 }
 ```
 
@@ -204,72 +187,52 @@ Field `_id` is a unique ID that will be used for future reference. This post wil
 
 ```json
 {
-  "_id": "667025b48629a192fc976ae3",
-  "createdBy": {
-    "name": "SpiderAds ",
-    "email": "api@pinmeto.com",
-    "userId": "666c03f24c478a0492aab9db"
-  },
-  "publishedBy": {
-    "name": "SpiderAds ",
-    "email": "api@pinmeto.com",
-    "userId": "666c03f24c478a0492aab9db"
-  },
-  "deletedBy": {
-    "name": "Benny Liu",
-    "email": "benny.liu@pinmeto.com"
-  },
-  "status": "published",
-  "publishDate": null,
-  "scheduledDate": null,
-  "source": "pinmeto",
-  "copyFrom": null,
-  "sentEmails": [],
-  "name": "test",
-  "locations": [
-    {
-      "storeId": "66",
-      "locationId": "5bd2f55c6d85d227e53121f4",
-      "name": "PinMeTo",
-      "locationDescriptor": "Bangkok"
-    }
-  ],
-  "googlePostData": {
-    "callToAction": {
-      "actionType": "None",
-      "url": null
-    },
-    "message": "Hey there!",
-    "topicType": "Standard",
-    "images": [
-      {
-        "previewUrl": "https://example.com/1.png",
-        "name": "",
-        "url": "https://example.com/1.png",
-        "meta": {
-          "width": 971,
-          "height": 971,
-          "format": "jpeg"
-        },
-        "fileSize": 114024
-      }
-    ],
-    "languageCode": "sv"
-  },
-  "siteName": "pinmeto",
-  "postsStatusSummary": [
-    {
-      "postId": "667025b48629a192fc976af4",
-      "postType": "location",
-      "locationId": "5bd2f55c6d85d227e53121f4",
-      "status": "published"
-    }
-  ],
-  "brandpages": [],
-  "createdAt": "2024-06-17T12:01:56.020Z",
-  "updatedAt": "2024-06-17T12:02:39.491Z",
-  "__v": 0,
-  "canEdit": false
+	"id": "66a23f5c0c494e69199f84f8",
+	"status": "published",
+	"publishDate": "2024-07-25T12:04:44.128Z",
+	"scheduledDate": null,
+	"createdAt": "2024-07-25T12:04:44.160Z",
+	"updatedAt": "2024-07-25T12:04:44.191Z",
+	"name": "test",
+	"siteName": "pinmeto",
+	"locations": [
+		{
+			"storeId": "66",
+			"name": "PinMeTo",
+			"locationDescriptor": "Bangkok"
+		}
+	],
+	"brandpages": [],
+	"postsStatusSummary": [
+		{
+			"postId": "66a23f5c0c494e69199f8509",
+			"postType": "location",
+			"storeId": "66",
+			"status": "notPublished"
+		}
+	],
+	"googlePostData": {
+		"callToAction": {
+			"actionType": "None",
+			"url": null
+		},
+		"message": "message, 1500 ch max",
+		"topicType": "Standard",
+		"images": [
+			{
+				"previewUrl": "https://example.com/1.jpg",
+				"name": "",
+				"url": "https://example.com/1.jpg",
+				"meta": {
+					"width": 971,
+					"height": 971,
+					"format": "jpeg"
+				},
+				"fileSize": 114024
+			}
+		],
+		"languageCode": "sv"
+	}
 }
 ```
 
@@ -289,16 +252,16 @@ if you want to delete only one or some of it, first use get posts API to get `po
 {
   "postsStatusSummary": [
     {
-      "postId": "666aa3d5b3b705ade982048b",
-      "postType": "location",
-      "locationId": "5bd2f55c6d85d227e53121f4",
-      "status": "published"
-    }
+			"postId": "66a23f5c0c494e69199f8509",
+			"postType": "location",
+			"storeId": "66",
+			"status": "notPublished"
+		}
   ]
 }
 ```
 
-then, include `postId`(**not** `locationId`) with your delete request.
+then, include `postId` with your delete request.
 
 ```json
 {
