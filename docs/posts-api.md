@@ -287,7 +287,38 @@ This API can help you to obtain a list of locaitons which is available for posti
 - query parameter: `site` your site name
 
 It will return two fieds: `data` which is available for posting, `unselectables` unavailable locations
+```json
+{
+  "data": [
+    {
+      "storeId": "1337",
+      "name": "PinMeTo",
+      "locationDescriptor": "Malmö",
+      "street": "Adelgatan 9",
+      "zip": "211 22",
+      "city": "Malmö",
+      "state": "Skåne County",
+      "country": "Sweden",
+      "created": "2015-07-24T12:57:12.000Z"
+    }
+  ],
+  "unselectables": [
+    {
+      "storeId": "1338",
+      "name": "PinMeTo",
+      "locationDescriptor": "Ö-kontoret.",
+      "street": "Båtbyggaregatan 189",
+      "zip": "216 42",
+      "city": "Malmö",
+      "state": "",
+      "country": "Sweden",
+      "created": "2015-07-24T12:57:12.000Z",
+      "reason": "Location is not claimed on Google"
+    }
+  ]
+}
 
+```
 ### Image specifications
 
 - Image format has to be JPG or PNG
