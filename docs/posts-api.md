@@ -12,8 +12,9 @@ Basic steps are:
 1. Authentication
 2. Get available location list and choose one or more locations (with storeId)
 3. Publish post to the chosen locations
-4. Get post data, optional
-5. Delete post, optional
+4. Edit message, images, or offerData of the published post, optional
+5. Get post data, optional
+6. Delete post, optional
 
 ## 1. Authentication
 
@@ -87,7 +88,10 @@ Call to Actions could be chosen from the following variants:
 * message: maximum 1500 characters
 * coupoun code: maximum 56 characters
 * terms: maximum 5000 characters
-
+* **`startDate` and `endDate`**:
+Google use local time responding to the location when publishing post. Hence when you set the startDate and endDate, please attach
+`startDateOffset` and `endDateOffset`, which are `timeZoneOffset` of the location. For example, if the utc time is `2023-05-08T22:00:00.000Z` of a location in Sweden (whose timeZoneOffset is -120), send the `startDateOffset` and `endDateOffset` as `-120`. So that on Google, the date will be on `2023-05-09 00:00:00` for Swedish people.
+  
 ```json
 {
   "name": "test",
@@ -100,7 +104,9 @@ Call to Actions could be chosen from the following variants:
     "offerData": {
       "title": "offer title, required, 58 chars max",
       "startDate": "2024-06-10T10:00:00.000Z",
+      "startDateOffset": -120,
       "endDate": "2024-06-26T10:00:00.000Z",
+      "endDateOffset": -120,
       "url": "Redeem Online URL, optional",
       "coupon": "coupon code, optional, 56 chars max",
       "terms": "Terms and Conditions, optional, 5000 chars max"
