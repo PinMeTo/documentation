@@ -133,7 +133,7 @@ Field `id` is a unique ID that will be used for future reference. This post will
 ```json
 {
 	"id": "66a758f70981f30e6e48cd8b",
-	"status": "published",
+	"status": "processing",
 	"publishDate": "2024-07-29T08:55:19.330Z",
 	"scheduledDate": null,
 	"createdAt": "2024-07-29T08:55:19.376Z",
@@ -145,9 +145,6 @@ Field `id` is a unique ID that will be used for future reference. This post will
 			"storeId": "66",
 			"name": "PinMeTo",
 			"locationDescriptor": "Bangkok"
-		},
-		{
-			"storeId": "67"
 		}
 	],
 	"brandpages": [],
@@ -235,6 +232,104 @@ Field `id` is a unique ID that will be used for future reference. This post will
 	}
 }
 ```
+
+## 4. Edit Published Post 
+- POST `https://api.test.pinmeto.com/posts/v3/:site/locationPosts/:id/editPublished`
+- query parameters: the `id` of the post you want to update
+- query parameter: `site` your site name
+
+Send the whole locationPost object to the API, including the fields that not to change. 
+Currently only 4 fields are allowed to edit: name, `message`, `images` and `offerData`. 
+And the api is only avaible after the post is published. If the post is still `processing`, wait untill it's `published`.
+
+### Example Request body - Google offer
+```json
+{
+  "name": "[updated] test",
+  "locations": [
+    {
+      "storeId": "66"
+    }
+  ],
+  "googlePostData": {
+    "offerData": {
+      "title": "[updated] offer title, required, 58 chars max",
+      "startDate": "2024-06-10T10:00:00.000Z",
+      "endDate": "2024-06-26T10:00:00.000Z",
+      "url": "[updated] Redeem Online URL, optional",
+      "coupon": "[updated] coupon code",
+      "terms": "[updated] Terms and Conditions, optional, 5000 chars max"
+    },
+    "message": "[updated] offer details, 1500 chars max",
+    "topicType": "Offer",
+    "images": [
+      {
+        "previewUrl": "https://example.com/1-[updated].jpg",
+        "url": "https://example.com/1-[updated].jpg",
+        "meta": {
+          "width": 971,
+          "height": 971,
+          "format": "jpeg"
+        },
+        "fileSize": 114024
+      }
+    ],
+    "languageCode": "sv"
+  }
+}
+```
+### Example Response body - Google offer
+```json
+{
+	"id": "66a758f70981f30e6e48cd8b",
+	"status": "processing",
+	"publishDate": "2024-07-29T08:55:19.330Z",
+	"scheduledDate": null,
+	"createdAt": "2024-07-29T08:55:19.376Z",
+	"updatedAt": "2024-09-27T08:55:19.376Z",
+	"name": "test",
+	"siteName": "pinmeto",
+	"locations": [
+		{
+			"storeId": "66",
+			"name": "PinMeTo",
+			"locationDescriptor": "Bangkok"
+		}
+	],
+	"brandpages": [],
+	"postsStatusSummary": [],
+	"googlePostData": {
+		"callToAction": {
+			"actionType": "None",
+			"url": null
+		},
+		"message": "[updated] offer details, 1500 chars max",
+		"topicType": "Offer",
+		"images": [
+		      {
+		        "previewUrl": "https://example.com/1-[updated].jpg",
+		        "url": "https://example.com/1-[updated].jpg",
+		        "meta": {
+		          "width": 971,
+		          "height": 971,
+		          "format": "jpeg"
+		        },
+		        "fileSize": 114024
+		      }
+		    ],
+		"offerData": {
+		      "title": "[updated] offer title, required, 58 chars max",
+		      "startDate": "2024-06-10T10:00:00.000Z",
+		      "endDate": "2024-06-26T10:00:00.000Z",
+		      "url": "[updated] Redeem Online URL, optional",
+		      "coupon": "[updated] coupon code",
+		      "terms": "[updated] Terms and Conditions, optional, 5000 chars max"
+		    },
+		"languageCode": "sv"
+	}
+}
+```
+
 
 ## 4. Delete post
 
