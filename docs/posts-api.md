@@ -90,7 +90,7 @@ Call to Actions could be chosen from the following variants:
 * terms: maximum 5000 characters
 * **`startDate` and `endDate`**:
 Google use local time corresponding to the location when publishing post. Hence when you set the startDate and endDate, please attach
-`startDateOffset` and `endDateOffset`, which are `timeZoneOffset` of the location. For example, if the utc time is `2023-05-08T22:00:00.000Z` of a location in Sweden (whose timeZoneOffset is -120), send the `startDateOffset` and `endDateOffset` as `-120`. So that on Google, the date will be on `2023-05-09 00:00:00` for Swedish people.
+`startDateOffset` and `endDateOffset`, which are `timeZoneOffset` of the user. For example, if the utc time of the user is `2023-05-08T22:00:00.000Z` in Sweden (whose timeZoneOffset is -120), send the `startDateOffset` and `endDateOffset` as `-120`. So that on Google, the date will be on `2023-05-09 00:00:00` for Swedish people.
   
 ```json
 {
