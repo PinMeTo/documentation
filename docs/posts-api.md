@@ -245,7 +245,7 @@ Field `id` is a unique ID that will be used for future reference. This post will
 - query parameter: `site` your site name
 
 Send the whole locationPost object to the API, including the fields that not to change. 
-Currently only 4 fields are allowed to edit: name, `message`, `images` and `offerData`. 
+Allow to edit fields: name, `message`, `languageCode`, `images` and `offerData`. Don't change `topicType`. Changing from "Offer" to "Update" is not allowed.
 And the api is only avaible after the post is published. If the post is still `processing`, wait untill it's `published`.
 
 ### Example Request body - Google offer
