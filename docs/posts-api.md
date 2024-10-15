@@ -337,7 +337,7 @@ And the api is only avaible after the post is published. If the post is still `p
 ```
 
 
-## 4. Delete post
+## 5. Delete post
 
 - DELETE `https://api.test.pinmeto.com/posts/v3/:site/locationPosts/:id`
 - query parameters: the `id` of the post you want to delete
@@ -378,7 +378,7 @@ then, include `postId` with your delete request.
 }
 ```
 
-## 5. Get Posts List
+## 6. Get Posts List
 - GET `https://api.test.pinmeto.com/posts/v3/:site/locationPosts?pageSize=100&filter={"filterDefinition":[{"property":"storeIds","value":["66"]}]}`
 - params: `pageSize` the size of each page, default is 100.
 - params: `offset` is the size of the skipped post list.
@@ -387,7 +387,7 @@ then, include `postId` with your delete request.
 
 ```json
 {
-  filterDefinition: [
+  "filterDefinition": [
 	{
  		"property":  "storeIds",    // filter the query result by this property
 		"value":     ["66"]         // the value list to filter out the query result
@@ -461,7 +461,7 @@ then, include `postId` with your delete request.
 }
 ```
 
-## 6. Appendix
+## 7. Appendix
 
 ### location selector API
 
