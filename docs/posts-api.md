@@ -453,10 +453,10 @@ then, include `postId` with your delete request.
   ],
   "sortBy": "createdAt",
   "sortDesc": true,
-  "**pagination**": {
-    "**total**": 220,
-    "**size**": 100,
-    "**nextOffset**": 100
+  "pagination": {
+    "total": 220,
+    "size": 100,
+    "nextOffset": 100
   }
 }
 ```
