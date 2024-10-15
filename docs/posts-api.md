@@ -378,7 +378,90 @@ then, include `postId` with your delete request.
 }
 ```
 
-## 5. Appendix
+## 5. Get Posts List
+- GET `https://api.test.pinmeto.com/posts/v3/:site/locationPosts?pageSize=100&filter={"filterDefinition":[{"property":"storeIds","value":["66"]}]}`
+- params: `pageSize` the size of each page, default is 100.
+- params: `offset` is the size of the skipped post list.
+- params: `filter` get filtered result by filterDefinition.
+`filter` is a json string, it has a structure like this:
+
+```json
+{
+  filterDefinition: [
+	{
+ 		"property":  "storeIds",    // filter the query result by this property
+		"value":     ["66"]         // the value list to filter out the query result
+	}
+  ]
+}
+```
+
+
+### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "6708e58d4944e1d8138f99dc",
+      "status": "published",
+      "publishDate": "2024-10-11T08:46:56.657Z",
+      "scheduledDate": null,
+      "createdAt": "2024-10-11T08:45:01.363Z",
+      "updatedAt": "2024-10-11T08:46:56.657Z",
+      "name": "test google offer",
+      "siteName": "pinmeto",
+      "locations": 1,
+      "brandpages": 0,
+      "postsStatusSummary": [
+        {
+          "postId": "6708e58d4944e1d8138f99df",
+          "postType": "location",
+          "storeId": "66",
+          "status": "published"
+        }
+      ],
+      "googlePostData": {
+        "languageCode": "sv",
+        "message": "offer details",
+        "callToAction": {
+          "actionType": "None"
+        },
+        "images": [
+          {
+            "url": "https://www.example.com/img/sample.png",
+            "previewUrl": null,
+            "name": "sample image",
+            "meta": {
+              "format": "png"
+            }
+          }
+        ],
+        "topicType": "Offer",
+        "offerData": {
+          "title": "Offer title",
+          "startDate": "2025-06-10T22:00:00.000Z",
+          "startDateOffset": -120,
+          "endDate": "2025-06-25T22:00:00.000Z",
+          "endDateOffset": -120,
+          "url": "https://www.pinmeto.com/our-offer",
+          "terms": "Terms and Conditions, optional, 5000 chars max",
+          "coupon": "coupon-code"
+        }
+      }
+    }
+  ],
+  "sortBy": "createdAt",
+  "sortDesc": true,
+  "**pagination**": {
+    "**total**": 220,
+    "**size**": 100,
+    "**nextOffset**": 100
+  }
+}
+```
+
+## 6. Appendix
 
 ### location selector API
 
