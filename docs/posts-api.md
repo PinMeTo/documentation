@@ -83,6 +83,8 @@ Call to Actions could be chosen from the following variants:
 - Buy: actionType `Shop` and your url
 - Order online: actionType `Order` and your url
 
+[Link to the details of the call-to-actions on Google](https://developers.google.com/my-business/reference/rest/v4/accounts.locations.localPosts#actiontype)
+
 ### Request body - Google offer
 * offer title: maximum 58 characters
 * message: maximum 1500 characters
