@@ -461,7 +461,59 @@ then, include `postId` with your delete request.
 }
 ```
 
-## 7. Appendix
+## 7. Get the posts list of the locationPost
+- GET `https://api.test.pinmeto.com/posts/v3/:site/locationPosts/:id/posts`
+
+
+### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "6720d21a3e08a89028a0e764",
+      "locationPostId": "6720d21a3e08a89028a0e761",
+      "postType": "location",
+      "siteName": "pinmeto",
+      "storeId": "66",
+      "name": "PinMeTo",
+      "locationDescriptor": "Bangkok",
+      "edit": false,
+      "google": {
+        "error": {
+          "numberOfTries": 0,
+          "errorDate": null
+        },
+        "status": "published",
+        "post": {
+	      "name": "accounts/109521985373058355621/locations/12101883566920497897/localPosts/5960109214985150895",
+	      "postId": "locations/12101883566920497897/localPosts/5960109214985150895",
+	      "languageCode": "sv",
+	      "summary": "offer details, 1500 chars max",
+	      "createTime": "2024-10-28T14:31:55.603421Z",
+	      "updateTime": "2024-10-28T14:31:55.603421Z",
+	      "state": "LIVE",
+	      "searchUrl": "https://local.google.com/place?id=9265023520374253951&use=posts&lpsid=CIHM0ogKEICAgIDX8fag8AE"
+	},
+        "postMessage": "offer details, 1500 chars max",
+        "publishDate": "2024-10-29T12:16:26.567Z",
+        "deletedDate": null
+      },
+      "createdAt": "2024-10-29T12:16:26.568Z",
+      "updatedAt": "2024-10-29T12:16:26.615Z"
+    }
+  ]
+}
+```
+If the `locationPost` is still in `processing`, the `google.post` field of the post would be en empty object. Once it's published, 
+the fields in `google.post` would be filled with data from Google.   
+`google.post.name`: is the unique key of the localPost on Google.  
+`searchUrl`: is the link to the localPost on Google.
+
+If the post isn't published successfully on Google, `google.post` would keep in empty. And `google.status` would be in `error` state, 
+`google.error` would be the error details.
+
+## 8. Appendix
 
 ### location selector API
 
