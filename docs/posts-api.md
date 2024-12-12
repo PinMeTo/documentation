@@ -559,6 +559,7 @@ It will return two fieds: `data` which is available for posting, `unselectables`
 ```
 ### Image specifications
 
-- Image format has to be JPG or PNG
+- Image format has to be `jpeg` or `png`.
+  - Please [provide the meta data of the image](https://github.com/PinMeTo/documentation/blob/posts-api/docs/posts-api.md#request-body---google-update) when creating the post through API, specifically `width`, `height` and `format` of the image. And of course if for example the image is too large, we are still gonna auto compress the image a little bit so that google is gonna accept. 
 - Image has to be minimum 250x250 pixels
 - Image file size must be at least 10240 bytes
