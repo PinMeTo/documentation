@@ -26,9 +26,15 @@ Documentation on how to obtain an access token can be found [here](docs/access_t
 
 The [Locations API v2](docs/locations-v2.md) is a REST API for fetching and updating location data that is managed in Listings.
 
-### Querying Insights (Google and Facebook)
+### Querying Insights (Google, Facebook and Apple)
 
-Insights for Google and Facebook can be queried through the Insights API v3 OpenAPI interface. Documentation for Insights API v3 is found after logging in to the PinMeTo platform in [Account Settings](https://places.pinmeto.com/account-settings/) under API > Documentation. For testing purposes, some parameters will be filled with account data.
+Insights for Google, Facebook and Apple can be queried through the Insights API v4 OpenAPI interface. Documentation for Insights API v4 is found after logging in to the PinMeTo platform in [Account Settings](https://places.pinmeto.com/account-settings/) under API > Documentation. For testing purposes, some parameters will be filled with account data.
+
+If you do not have an account to login with you can access the page anonymously using this link (https://api.pinmeto.com/documentation/v4/).
+
+### Querying Keywords and Ratings
+
+Keywords and Ratings metrics can be queried through the Insights API v3 OpenAPI interface. Documentation for Insights API v3 is found after logging in to the PinMeTo platform in [Account Settings](https://places.pinmeto.com/account-settings/) under API > Documentation. For testing purposes, some parameters will be filled with account data.
 
 If you do not have an account to login with you can access the page anonymously using this link (https://api.pinmeto.com/documentation/v3/).
 
