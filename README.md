@@ -6,8 +6,9 @@ This page has technical documentation on PinMeTo APIs. For an overview of when a
 
 Integration with PinMeTo offers the ability to fetch information and send updates through our APIs for:
 - Locations
-- Insights (Google and Facebook)
-- Reviews
+- Insights (Google, Facebook and Apple)
+- Keywords and Ratings
+- Reviews' details
 
 ## Endpoints
 
