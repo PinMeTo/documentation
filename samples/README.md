@@ -9,4 +9,3 @@ External implementations of libraries for using the PinMeTo APIs. Note that thes
 
 - [Standalone PHP library](https://github.com/liviu-hariton/pinmeto-php-api)
 - [Laravel framework package](https://github.com/liviu-hariton/pinmeto-laravel)
-- [PinMeTo.Net](https://github.com/permagne/PinMeTo.Net) An implementation of an API client. Note that this code uses the deprecated v1 API.
