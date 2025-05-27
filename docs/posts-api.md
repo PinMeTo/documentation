@@ -393,6 +393,10 @@ then, include `postId` with your delete request.
 	{
  		"property":  "storeIds",    // filter the query result by this property
 		"value":     ["66"]         // the value list to filter out the query result
+	},
+        {
+  		"property": "network",     // filter out the query result to get only google posts
+		"value": ["Google"]
 	}
   ]
 }
