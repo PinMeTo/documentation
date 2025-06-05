@@ -23,26 +23,31 @@ Documentation on how to obtain an access token can be found [here](docs/access_t
 
 ## Usage
 
-### Managing Locations data - Locations API v2
+### Locations API v2 for managing locations data
 
 The [Locations API v2](docs/locations-v2.md) is a REST API for fetching and updating location data that is managed in Listings.
 
-### Querying Reviews - Insights API v2
+### Reviews API v2 for querying reviews with text
 
 Reviews can be queried through the [Insights API v2 GraphQL interface](docs/insights-v2.md).
 
-### Querying Keywords and Ratings - Insights API v3
+### Keywords and Ratings API v3 for querying keywords and reviews without text
 
 Keywords and Ratings metrics can be queried through the Insights API v3 OpenAPI interface. Documentation for Insights API v3 is found after logging in to the PinMeTo platform in [Account Settings](https://places.pinmeto.com/account-settings/) under API > Documentation. For testing purposes, some parameters will be filled with account data.
 
 If you do not have an account to login with, you can access the page anonymously using this link (https://api.pinmeto.com/documentation/v3/).
 
-### Querying Insights (Google, Facebook and Apple) - Insights API v4
+### Insights API v4 for quering metrics coming from Google, Facebook and Apple 
 
 Insights for Google, Facebook and Apple are available through the Insights API v4 OpenAPI interface. The documentation can be found in [Account Settings](https://places.pinmeto.com/account-settings/) under API > Documentation.
 
 If you do not have an account to login with, you can access the page anonymously using this link (https://api.pinmeto.com/documentation/v4/).
 
+### Media API v1 for managing locations media 
+
+Images can be manage via Media API v1 OpenAPI interface. The documentation can be found in [Account Settings](https://places.pinmeto.com/account-settings/) under API > Documentation.
+
+If you do not have an account to login with, you can access the page anonymously using this link (https://api.pinmeto.com/documentation/media/v1/).
 
 ## Sample code
 
