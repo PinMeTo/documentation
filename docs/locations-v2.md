@@ -1105,6 +1105,8 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
    <li><b>long</b>: (String, max length 750)</li>
   </ul>
  </li>
+ <li><b>name</b>: (String)</li>
+ <li><b>openingDate</b>: (ISO Date string, YYYY-MM-DD)</li>
  <li><b>contact</b>: (Object)
   <ul>
    <li><b>phone</b>: (String)</li>
@@ -1227,6 +1229,8 @@ Body:
   "lat": 59.333755678571,
   "lon": 18.056143908447
  },
+ "name": "MyBrand",
+ "openingDate": "2020-01-01",
  "contact": {
   "phone": "+46 70 2336879",
   "email": "test@example.com",
@@ -1322,6 +1326,8 @@ All properties are optional unless stated otherwise. If an optional property con
   </ul>
  </li>
  <li><b style="text-decoration: line-through;">text</b> (deprecated, use shortDescription) : (String)</li>
+ <li><b>name</b>: (String)</li>
+ <li><b>openingDate</b>: (ISO Date string, YYYY-MM-DD)</li>
  <li><b>contact</b>: (Object)
   <ul>
    <li><b>phone</b>: (String)</li>
@@ -1407,8 +1413,9 @@ Host: https://api.pinmeto.com
 Content-Type: application/json
 
 Body:
-{
+{ 
  "name": "storeName",
+ "openingDate": "2020-01-01",
  "storeId": "store-id",
  "locationDescriptor": "API locationDescriptor",
  "address": {
