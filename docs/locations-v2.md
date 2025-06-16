@@ -16,7 +16,7 @@ Follow [these instructions](access_token.md) to get the access token, using the 
 - App Id, `<<app_id>>`
 - App Secret, `<<app_secret>>`
 
-## Change log - <mark> **New!** </mark>
+## Change log
 <details>
 <summary><b>2024-07-26:</b> Network categories added</summary>
 <br>
@@ -1012,7 +1012,6 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
 
  
 ## Fetch network categories 
-### <mark> **New!** </mark>
 
 If you have your access token, you can get the list of categories per network
 
