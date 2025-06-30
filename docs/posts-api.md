@@ -381,7 +381,7 @@ then, include `postId` with your delete request.
 ```
 
 ## 6. Get Posts List
-- GET `https://api.test.pinmeto.com/posts/v3/:site/locationPosts?pageSize=100&filter={"filterDefinition":[{"property":"storeIds","value":["66"]}]}`
+- GET `https://api.test.pinmeto.com/posts/v3/:site/locationPosts?pageSize=100&filter={"filterDefinition":[{"property":"storeIds","value":["66"]},{"property":"network","value":"Google"}]}`
 - params: `pageSize` the size of each page, default is 100.
 - params: `offset` is the size of the skipped post list.
 - params: `filter` get filtered result by filterDefinition.
