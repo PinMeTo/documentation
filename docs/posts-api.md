@@ -415,6 +415,9 @@ then, include `postId` with your delete request.
       "scheduledDate": null,
       "createdAt": "2024-10-11T08:45:01.363Z",
       "updatedAt": "2024-10-11T08:46:56.657Z",
+      "createdBy": "SpiderAds app 2025",
+      "publishedBy": "SpiderAds app 2025",
+      // "deletedBy": "SpiderAds app 2025", // Only shows if the post is deleted.
       "name": "test google offer",
       "siteName": "pinmeto",
       "locations": 1,
