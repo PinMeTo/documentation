@@ -386,6 +386,9 @@ then, include `postId` with your delete request.
 - params: `pageSize` the size of each page, default is 100.
 - params: `offset` is the size of the skipped post list.
 - params: `filter` get filtered result by filterDefinition.
+- returns: `createdBy`, `publishedBy` and `deletedBy` indicates who took the actions, usually it's the App name you created. You might want to use these properties to filter out
+posts that don't belong to you.
+
 `filter` is a json string, it has a structure like this:
 
 ```json
