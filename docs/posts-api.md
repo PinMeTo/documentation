@@ -3,6 +3,7 @@
 **Please note those API endpoints are still in Beta testing at this time of writing, and this document will keep updating.**
 
 - Test: `https://api.test.pinmeto.com`
+- Production: `https://api.pinmeto.com`
 
 In order to publish a google post, you need to first prepare image and text.
 And get the correct location `storeId` from the locations API.
@@ -18,7 +19,7 @@ Basic steps are:
 
 ## 1. Authentication
 
-Firstly, please create an app with **location create** permissions in account settings.
+Firstly, please create an app with **Read posts**, **Publish posts** etc. permissions in account settings.
 
 Secondly, follow [this document](https://github.com/PinMeTo/documentation/blob/master/docs/access_token.md) to get
 access token. Please be aware that this token is only valid for an hour so cache and refresh it whenever necessary
