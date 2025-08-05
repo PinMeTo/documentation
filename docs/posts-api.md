@@ -1,6 +1,6 @@
 # Posts API
 
-**Please note those API endpoints will only work in Test environment at this time of writing, and this document will keep updating.**
+**Please note those API endpoints are still in Beta testing at this time of writing, and this document will keep updating.**
 
 - Test: `https://api.test.pinmeto.com`
 
