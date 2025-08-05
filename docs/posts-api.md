@@ -20,6 +20,7 @@ Basic steps are:
 ## 1. Authentication
 
 Firstly, please create an app with **Read posts**, **Publish posts** etc. permissions in account settings.
+*Note: if you don't see the `Create new App for Posts` button in the API management of your account settings, please contact our customer success for help.*
 
 Secondly, follow [this document](https://github.com/PinMeTo/documentation/blob/master/docs/access_token.md) to get
 access token. Please be aware that this token is only valid for an hour so cache and refresh it whenever necessary
