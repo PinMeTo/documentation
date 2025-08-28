@@ -17,20 +17,39 @@ Follow [these instructions](access_token.md) to get the access token, using the 
 - App Secret, `<<app_secret>>`
 
 ## Change log
+
 <details>
-<summary><b>2024-07-26:</b> Network categories added</summary>
-<br>
-<ul>
-	<li>New endpoint added to <a href="#fetch-network-categories">get categories per network</a>: <code>GET /v2/[ACCOUNT_ID]/categories/[NETWORK_NAME]</code>.</li>
-	<li>Optional <code>network</code> attribute added to the request body in <a href="#update-a-location">Update Location</a>, to support setting categories per network.</li>
-	<li><code>network</code> attribute updated in the response of <a href="#fetch-all-locations">Fetch all locations</a> and <a href="#fetch-one-location">Fetch one location</a>. Now it also returns the categories per network.</li>
-</ul>
+  <summary><b>2025-08-28</b> Added more networks</summary>
+  <br>
+  <p>This adds support for networks: </p>
+  <ul>
+    <li><code>foursquare</code></li>
+    <li><code>overture</code></li>
+    <li><code>here</code></li>
+    <li><code>tomtom</code>*</li>
+  </ul>
+  <i>*Note: Tomtom only supports a single category per location!</i>
 </details>
-	
+
+<br>
+
+<details>
+  <summary><b>2024-07-26:</b> Network categories added</summary>
+  <br>
+  <ul>
+    <li>New endpoint added to <a href="#fetch-network-categories">get categories per network</a>: <code>GET
+        /v2/[ACCOUNT_ID]/categories/[NETWORK_NAME]</code>.</li>
+    <li>Optional <code>network</code> attribute added to the request body in <a href="#update-a-location">Update
+        Location</a>, to support setting categories per network.</li>
+    <li><code>network</code> attribute updated in the response of <a href="#fetch-all-locations">Fetch all locations</a>
+      and <a href="#fetch-one-location">Fetch one location</a>. Now it also returns the categories per network.</li>
+  </ul>
+</details>
+
 ## Recommendations
 
-- An access token is valid for 1 hour so *do* cache it
-- When using this api to build a storelocator *do* cache the result on your webserver and avoid calling `/locations` for every search
+- An access token is valid for 1 hour so _do_ cache it
+- When using this api to build a storelocator _do_ cache the result on your webserver and avoid calling `/locations` for every search
 
 ## Rate limit
 
@@ -39,8 +58,8 @@ ratelimit.
 
 ### Example of ratelimit in header
 
-```
-HTTP Header 
+```http
+HTTP Header
  x-ratelimit-limit: '3600'
  x-ratelimit-reset: '1452787466'
  x-ratelimit-remaining: '3599'
@@ -53,7 +72,7 @@ HTTP Header
 
 - OpeningDate, temporarilyClosedUntil: formatted YYYY-MM-DD, to unset send '' or null
 - SpecialOpenHours: use [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) formatting of date strings
-  ie. *YYYY-MM-DD*
+  ie. _YYYY-MM-DD_
   - When setting closed dates (`isClosed: true`) an entry is needed for each day that is closed.
   - Cannot last longer than 24 hours, must end at latest 1159.
 
@@ -84,222 +103,223 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
 `curl -H "Authorization: Bearer YOUR_ACCESS_TOKEN" -X GET https://api.pinmeto.com/v2/<<account_id>>/locations`
 
 <details>
-<summary><b>Result structure</b></summary>
-<br>
+  <summary><b>Result structure</b></summary>
+  <br>
 
-<ul>
- <li><b>paging</b>: (Object)
   <ul>
-   <li><b>next</b>: (String) | Url to get next page with locations</li>
-   <li><b>before</b>: (String) | Url to get previous page with locations</li>
-  </ul>
- </li>
- <li>
-  <b>data</b>: (Array)
-  <ul>
-   <li><b>name</b>: (String)</li>
-   <li><b>storeId</b>: (String)</li>
-   <li><b>description</b>: (Object)
-    <ul>
-     <li><b>short</b>: (String, max length 240)</li>
-     <li><b>long</b>: (String, max length 750)</li>
-    </ul>
-   </li>
-   <li><b>openingDate</b>: (String)</li>
-   <li><b>contact</b>: (Object)
-    <ul>
-     <li><b>phone</b>: (String)</li>
-     <li><b>homepage</b>: (String)</li>
-     <li><b>email</b>: (String)</li>
-    </ul>
-   </li>
-   <li><b>address</b>: (Object)
-    <ul>
-     <li><b>street</b>: (String)</li>
-     <li><b>zip</b>: (String)</li>
-     <li><b>city</b>: (String)</li>
-     <li><b>country</b>: (String)</li>
-    </ul>
-   </li>
-   <li><b>permanentlyClosed</b>: (Boolean)</li>
-   <li><b>temporarilyClosedUntil</b>: (ISO Date string, YYYY-MM-DD)</li>
-   <li><b>isAlwaysOpen<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover="" popover-body="{{description.isAlwaysOpen}}"></sup></b>:
-    (Boolean)</li>
-   <li><b>locationDescriptor</b>: (String)</li>
-   <li><b>location</b>: (Object)
-    <ul>
-     <li><b>lat</b>: (Number)</li>
-     <li><b>lon</b>: (Number)</li>
-    </ul>
-   </li>
-   <li><b>openHours</b>: (Object)
-    <ul>
-     <li><b>mon</b>: (Object)
+    <li><b>paging</b>: (Object)
       <ul>
-       <li><b>state<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover="" popover-body="{{description.openHours}}"></sup></b>:
-        (String)</li>
-       <li><b>span</b>: (Array)
-        <ul>
-         <li><b>open</b>: (String)</li>
-         <li><b>close</b>: (String)</li>
-        </ul>
-       </li>
+        <li><b>next</b>: (String) | Url to get next page with locations</li>
+        <li><b>before</b>: (String) | Url to get previous page with locations</li>
       </ul>
-     </li>
-     <li>...</li>
-     <li><b>sun</b>: (Object)
-      <ul>
-       <li><b>state<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover="" popover-body="{{description.openHours}}"></sup></b>:
-        (String)</li>
-       <li><b>span</b>: (Array)
-        <ul>
-         <li><b>open</b>: (String)</li>
-         <li><b>close</b>: (String)</li>
-        </ul>
-       </li>
-      </ul>
-     </li>
-    </ul>
-   </li>
-   <li><b>specialOpenHours<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover="" popover-body="{{description.specialOpenHours}}"></sup></b>:
-    (Array)
-    <ul>
-     <li><b>label</b>: (String)</li>
-     <li><b>start</b>: (ISO Date string, YYYY-MM-DD)</li>
-     <li><b>end</b>: (ISO Date string, YYYY-MM-DD)</li>
-     <li><b>openTime</b>: (String, HHMM)</li>
-     <li><b>closeTime</b>: (String, HHMM)</li>
-     <li><b>isClosed</b>: (Boolean)</li>
-    </ul>
-   </li>
-   <li><b>network</b>: (Object)
-    <ul>
-     <li><b>facebook</b>: (Object)
-      <ul>
-       <li><b>pageId</b>: (String)</li>
-       <li><b>link</b>: (String)</li>
-       <li><b>profileImage</b>: (String)</li>
-       <li><b>coverImage</b>: (String)</li>
-       <li><b>categories</b>: (Object)
-	<ul>
-		<li><b>primaryCategory</b>: (Object)
-		  <ul>
-			<li><b>name</b> (String)</li>
-			<li><b>id</b> (String)</li>
-		  </ul>		
-		</li>
-		<li><b>additionalCategories</b>: (Array)
-		  <ul>
-			<li><b>name</b> (String)</li>
-			<li><b>id</b> (String)</li>
-		  </ul>		
-		</li>
-	</ul>
-       </li>
-      </ul>
-     </li>
-     <li><b>google</b>: (Object)
-      <ul>
-       <li><b>placeId</b>: (String)</li>
-       <li><b>link</b>: (String)</li>
-       <li><b>newReviewUrl</b>: (String)</li>
-       <li><b>profileImage</b>: (String)</li>
-       <li><b>coverImage</b>: (String)</li>
-       <li><b>categories</b>: (Object)
-	<ul>
-		<li><b>primaryCategory</b>: (Object)
-		  <ul>
-			<li><b>name</b> (String)</li>
-			<li><b>id</b> (String)</li>
-		  </ul>		
-		</li>
-		<li><b>additionalCategories</b>: (Array)
-		  <ul>
-			<li><b>name</b> (String)</li>
-			<li><b>id</b> (String)</li>
-		  </ul>		
-		</li>
-	</ul>
-       </li>
-      </ul>
-     </li>
-     <li><b>bing</b>: (Object)
-      <ul>
-       <li><b>link</b>: (String)</li>
-       <li><b>categories</b>: (Object)
-	<ul>
-		<li><b>primaryCategory</b>: (Object)
-		  <ul>
-			<li><b>name</b> (String)</li>
-			<li><b>id</b> (String)</li>
-		  </ul>		
-		</li>
-		<li><b>additionalCategories</b>: (Array)
-		  <ul>
-			<li><b>name</b> (String)</li>
-			<li><b>id</b> (String)</li>
-		  </ul>		
-		</li>
-	</ul>
-       </li>
-      </ul>
-     </li>
-     <li><b>apple</b>: (Object)
-      <ul>
-       <li><b>link</b>: (String)</li>
-       <li><b>categories</b>: (Object)
-	<ul>
-		<li><b>primaryCategory</b>: (Object)
-		  <ul>
-			<li><b>name</b> (String)</li>
-			<li><b>id</b> (String)</li>
-		  </ul>		
-		</li>
-		<li><b>additionalCategories</b>: (Array)
-		  <ul>
-			<li><b>name</b> (String)</li>
-			<li><b>id</b> (String)</li>
-		  </ul>		
-		</li>
-	</ul>
-       </li>
-      </ul>
-     </li>
-    </ul>
-   </li>
-   <li><b>googleName</b>: (String) - if google custom name is enabled</li>
-   <li><b>facebookName</b>: (String) - if facebook custom name is enabled</li>
-   <li><b>wifiSsid</b>: (String, max length 32)</li>
-   <li>
-    <b>pendingChanges</b>: (Object)
-    <ul>
-    <li><b>address</b>: (Object)
-     <ul>
-     <li><b>street</b>: (String)</li>
-     <li><b>zip</b>: (String)</li>
-     <li><b>city</b>: (String)</li>
-     <li><b>country</b>: (String)</li>
-     </ul>
     </li>
-    <li><b>location</b> : (Object)
-     <ul>
-     <li><b>lat</b>: (Number)</li>
-     <li><b>lon</b>: (Number)</li>
-     </ul>
+    <li>
+      <b>data</b>: (Array)
+      <ul>
+        <li><b>name</b>: (String)</li>
+        <li><b>storeId</b>: (String)</li>
+        <li><b>description</b>: (Object)
+          <ul>
+            <li><b>short</b>: (String, max length 240)</li>
+            <li><b>long</b>: (String, max length 750)</li>
+          </ul>
+        </li>
+        <li><b>openingDate</b>: (String)</li>
+        <li><b>contact</b>: (Object)
+          <ul>
+            <li><b>phone</b>: (String)</li>
+            <li><b>homepage</b>: (String)</li>
+            <li><b>email</b>: (String)</li>
+          </ul>
+        </li>
+        <li><b>address</b>: (Object)
+          <ul>
+            <li><b>street</b>: (String)</li>
+            <li><b>zip</b>: (String)</li>
+            <li><b>city</b>: (String)</li>
+            <li><b>country</b>: (String)</li>
+          </ul>
+        </li>
+        <li><b>permanentlyClosed</b>: (Boolean)</li>
+        <li><b>temporarilyClosedUntil</b>: (ISO Date string, YYYY-MM-DD)</li>
+        <li><b>isAlwaysOpen<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover=""
+              popover-body="{{description.isAlwaysOpen}}"></sup></b>: (Boolean)</li>
+        <li><b>locationDescriptor</b>: (String)</li>
+        <li><b>location</b>: (Object)
+          <ul>
+            <li><b>lat</b>: (Number)</li>
+            <li><b>lon</b>: (Number)</li>
+          </ul>
+        </li>
+        <li><b>openHours</b>: (Object)
+          <ul>
+            <li><b>mon</b>: (Object)
+              <ul>
+                <li><b>state<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover="" popover-body="{{description.openHours}}"></sup></b>: (String)</li>
+                <li><b>span</b>: (Array)
+                  <ul>
+                    <li><b>open</b>: (String)</li>
+                    <li><b>close</b>: (String)</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>...</li>
+            <li><b>sun</b>: (Object)
+              <ul>
+                <li><b>state<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover=""
+                      popover-body="{{description.openHours}}"></sup></b>:
+                  (String)</li>
+                <li><b>span</b>: (Array)
+                  <ul>
+                    <li><b>open</b>: (String)</li>
+                    <li><b>close</b>: (String)</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><b>specialOpenHours<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover=""
+              popover-body="{{description.specialOpenHours}}"></sup></b>:
+          (Array)
+          <ul>
+            <li><b>label</b>: (String)</li>
+            <li><b>start</b>: (ISO Date string, YYYY-MM-DD)</li>
+            <li><b>end</b>: (ISO Date string, YYYY-MM-DD)</li>
+            <li><b>openTime</b>: (String, HHMM)</li>
+            <li><b>closeTime</b>: (String, HHMM)</li>
+            <li><b>isClosed</b>: (Boolean)</li>
+          </ul>
+        </li>
+        <li><b>network</b>: (Object)
+          <ul>
+            <li><b>facebook</b>: (Object)
+              <ul>
+                <li><b>pageId</b>: (String)</li>
+                <li><b>link</b>: (String)</li>
+                <li><b>profileImage</b>: (String)</li>
+                <li><b>coverImage</b>: (String)</li>
+                <li><b>categories</b>: (Object)
+                  <ul>
+                    <li><b>primaryCategory</b>: (Object)
+                      <ul>
+                        <li><b>name</b> (String)</li>
+                        <li><b>id</b> (String)</li>
+                      </ul>
+                    </li>
+                    <li><b>additionalCategories</b>: (Array)
+                      <ul>
+                        <li><b>name</b> (String)</li>
+                        <li><b>id</b> (String)</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><b>google</b>: (Object)
+              <ul>
+                <li><b>placeId</b>: (String)</li>
+                <li><b>link</b>: (String)</li>
+                <li><b>newReviewUrl</b>: (String)</li>
+                <li><b>profileImage</b>: (String)</li>
+                <li><b>coverImage</b>: (String)</li>
+                <li><b>categories</b>: (Object)
+                  <ul>
+                    <li><b>primaryCategory</b>: (Object)
+                      <ul>
+                        <li><b>name</b> (String)</li>
+                        <li><b>id</b> (String)</li>
+                      </ul>
+                    </li>
+                    <li><b>additionalCategories</b>: (Array)
+                      <ul>
+                        <li><b>name</b> (String)</li>
+                        <li><b>id</b> (String)</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><b>bing</b>: (Object)
+              <ul>
+                <li><b>link</b>: (String)</li>
+                <li><b>categories</b>: (Object)
+                  <ul>
+                    <li><b>primaryCategory</b>: (Object)
+                      <ul>
+                        <li><b>name</b> (String)</li>
+                        <li><b>id</b> (String)</li>
+                      </ul>
+                    </li>
+                    <li><b>additionalCategories</b>: (Array)
+                      <ul>
+                        <li><b>name</b> (String)</li>
+                        <li><b>id</b> (String)</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><b>apple</b>: (Object)
+              <ul>
+                <li><b>link</b>: (String)</li>
+                <li><b>categories</b>: (Object)
+                  <ul>
+                    <li><b>primaryCategory</b>: (Object)
+                      <ul>
+                        <li><b>name</b> (String)</li>
+                        <li><b>id</b> (String)</li>
+                      </ul>
+                    </li>
+                    <li><b>additionalCategories</b>: (Array)
+                      <ul>
+                        <li><b>name</b> (String)</li>
+                        <li><b>id</b> (String)</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><b>googleName</b>: (String) - if google custom name is enabled</li>
+        <li><b>facebookName</b>: (String) - if facebook custom name is enabled</li>
+        <li><b>wifiSsid</b>: (String, max length 32)</li>
+        <li>
+          <b>pendingChanges</b>: (Object)
+          <ul>
+            <li><b>address</b>: (Object)
+              <ul>
+                <li><b>street</b>: (String)</li>
+                <li><b>zip</b>: (String)</li>
+                <li><b>city</b>: (String)</li>
+                <li><b>country</b>: (String)</li>
+              </ul>
+            </li>
+            <li><b>location</b> : (Object)
+              <ul>
+                <li><b>lat</b>: (Number)</li>
+                <li><b>lon</b>: (Number)</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><b>customData</b>: (Object, depends on your custom data definition)</li>
+      </ul>
     </li>
-    </ul>
-   </li>
-   <li><b>customData</b>: (Object, depends on your custom data definition)</li>
   </ul>
- </li>
-</ul>
 </details>
 
 <details>
-<summary><b>Result example</b></summary>
-<br>
+  <summary><b>Result example</b></summary>
+  <br>
 
-```Javascript
+```json
 {
   "data": [
     {
@@ -410,21 +430,21 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
       "network": {
         "facebook": {
           "pageId": "12345678901234567890",
-          "link": "https://www.facebook.com/Pinmeto.Malmo/"
+          "link": "https://www.facebook.com/Pinmeto.Malmo/",
           "profileImage": "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-1/p720x720/78063569_2439243212994541_4444163125444345856_o.jpg?_nc_cat=103&_nc_sid=0c64ff&_nc_ohc=empRK1Pb1KoAX900cWE&_nc_ht=scontent-arn2-1.xx&tp=6&oh=12345678901234567890&oe=5F9BB09B",
           "coverImage": "https://scontent-arn2-2.xx.fbcdn.net/v/t1.0-9/s720x720/103323620_2607531456165715_1759303419147657987_o.jpg?_nc_cat=100&_nc_sid=dd9801&_nc_ohc=ZfPnPPzbMUEAX-sbjis&_nc_ht=scontent-arn2-2.xx&tp=7&oh=12345678901234567890&oe=5F9A4ADA",
-	  "categories": {
-          	"primaryCategory": {
-            	  "id": "01234567890123456789",
-            	  "name": "Internet Marketing Service"
-          	},
-          	"additionalCategories": [
-		  {
-              		"id": "12345678901234567890",
-              		"name": "Software Company"
-		  }
-          	]
-	  }
+          "categories": {
+            "primaryCategory": {
+              "id": "01234567890123456789",
+              "name": "Internet Marketing Service"
+            },
+            "additionalCategories": [
+              {
+                "id": "12345678901234567890",
+                "name": "Software Company"
+              }
+            ]
+          }
         },
         "google": {
           "placeId": "L3Bp8m81234567kjhgf1234567890",
@@ -432,189 +452,236 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
           "newReviewUrl": "https://search.google.com/local/writereview?placeid=Ch12345678901234567890s",
           "profileImage": "https://lh3.googleusercontent.com/lCki9MaIOKvhpvwBh_AExUE3_liY1234567890_1234567890",
           "coverImage": "https://lh3.googleusercontent.com/F12345678901234567890js-5Nd7cv_yd59",
-	  "categories": {
-		"primaryCategory": {
-	            "name": "Software company",
-	            "id": "gcid:network_category"
-		},
-		"additionalCategories": [
-	            {
-	              "id": "gcid:company_category",
-	              "name": "Internet marketing service"
-	            }
-		]
-	  }
-        },
-    },
-    "wifiSsid": "pinmeto",
-    "pendingChanges": {
-          "address": {
-            "street": "Adelgatan 11"
-    	}
-    },
-    "location": {
-          "lon": 13.00093,
-          "lat": 55.60736
-    }
-  },
- 
-      
-    ...
-
-
-  {
-        "name": "Name of location",
-        "storeId": "store-id",
-        "description": {
-          "short": "The location marketing platform for chain businesses.",
-          "long": "The location marketing platform for chain businesses."
-        },
-        "contact": {
-          "phone": "+46 70 2336879",
-          "homepage": "http://www.google.com",
-          "email": "test@pinmeto.com"
-        },
+          "categories": {
+            "primaryCategory": {
+              "name": "Software company",
+              "id": "gcid:network_category"
+            },
+            "additionalCategories": [
+              {
+                "id": "gcid:company_category",
+                "name": "Internet marketing service"
+              }
+            ]
+          }
+        }
+      },
+      "wifiSsid": "pinmeto",
+      "pendingChanges": {
         "address": {
-          "street": "testgatan 2",
-          "zip": "217 41",
-          "city": "Malmö",
-          "country": "Sweden"
-        },
-        "locationDescriptor": "API locationDescriptor",
-        "location": {
-          "lat": 9.333755678571002,
-          "lon": 8.056143908447002
-        },
-        "openHours": {
-          "mon": {
-            "state": "Open",
-            "span": [
-              {
-                "open": "0900",
-                "close": "1700"
-              }
-            ]
-          },
-          "tue": {
-            "state": "Open",
-            "span": [
-              {
-                "open": "0900",
-                "close": "1700"
-              }
-            ]
-          },
-          "wed": {
-            "state": "Open",
-            "span": [
-              {
-                "open": "0900",
-                "close": "1700"
-              }
-            ]
-          },
-          "thu": {
-            "state": "Open",
-            "span": [
-              {
-                "open": "0900",
-                "close": "1500"
-              }
-            ]
-          },
-          "fri": {
-            "state": "Open",
-            "span": [
-              {
-                "open": "0900",
-                "close": "1700"
-              }
-            ]
-          },
-          "sat": {
-            "state": "Closed",
-            "span": []
-          },
-          "sun": {
-            "state": "Closed",
-            "span": []
-          }
-        },
-        "specialOpenHours": [
-          {
-            "start": "2017-05-28",
-            "end": "2017-05-28",
-            "openTime": "1000",
-            "closeTime": "2000",
-            "isClosed": false,
-            "label": "Mothers day"
-          },
-          {
-            "start": "2017-07-04",
-            "end": "2017-07-04",
-            "openTime": "0000",
-            "closeTime": "0000",
-            "isClosed": true,
-            "label": "Independence day"
-          },
-          {
-            "start": "2017-11-24",
-            "end": "2017-11-24",
-            "openTime": "0000",
-            "closeTime": "2400",
-            "isClosed": false,
-            "label": "Black friday"
-          }
-        ],
-        "network": {
-          "facebook": {
-            "pageId": "12345678901234567890",
-            "link": "https://www.facebook.com/Pinmeto.Malmo/",
-            "profileImage": "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-1/p720x720/78063569_2439243212994541_4444163125444345856_o.jpg?_nc_cat=103&_nc_sid=0c64ff&_nc_ohc=empRK1Pb1KoAX900cWE&_nc_ht=scontent-arn2-1.xx&tp=6&oh=12345678901234567890&oe=5F9BB09B",
-            "coverImage": "https://scontent-arn2-2.xx.fbcdn.net/v/t1.0-9/s720x720/103323620_2607531456165715_1759303419147657987_o.jpg?_nc_cat=100&_nc_sid=dd9801&_nc_ohc=ZfPnPPzbMUEAX-sbjis&_nc_ht=scontent-arn2-2.xx&tp=7&oh=0123456789012345678907e1528b&oe=5F9A4ADA",
-	    "categories": {
-          	"primaryCategory": {
-            	  "id": "01234567890123456789",
-            	  "name": "Internet Marketing Service"
-          	},
-          	"additionalCategories": [
-		  {
-              		"id": "12345678901234567890",
-              		"name": "Software Company"
-		  }
-          	]
-	    }
-          },
-          "google": {
-            "placeId": "CpzuV6huytgjk09rewqas788",
-            "link": "https://maps.google.com/?cid=806612345678901234567890",
-            "newReviewUrl": "https://search.google.com/local/writereview?placeid=ChIJF9eIJ12dX0YRogcSnTh1G6s",
-            "profileImage": "https://lh3.googleusercontent.com/lCki9MaIOKvhpvwBh_AExUE3_12345678901234567890",
-            "coverImage": "https://lh3.googleusercontent.com/FrmkuiTtzL12345678901234567890hnQKRjs-5Nd7cv_12345678901234567890",
-	    "categories": {
-		"primaryCategory": {
-	            "name": "Software company",
-	            "id": "gcid:company_category"
-		},
-		"additionalCategories": [
-	            {
-	              "id": "gcid:another_category",
-	              "name": "Internet marketing service"
-	            }
-		]
-	      }
-	    }
-	},
-        "googleName": "custom google name",
-        "facebookName": "custom fb name",
-        "wifiSsid": "pinmeto"
+          "street": "Adelgatan 11"
+        }
+      },
+      "location": {
+        "lon": 13.00093,
+        "lat": 55.60736
       }
-    ],
-    "paging": {
-        before: "https://api.pinmeto.com/v2/pinmeto/locations?before=12345678901234567890"
-        next: "https://api.pinmeto.com/v2/pinmeto/locations?next=2345678901234567899"
+    },
+
+...
+
+    {
+      "name": "Name of location",
+      "storeId": "store-id",
+      "description": {
+        "short": "The location marketing platform for chain businesses.",
+        "long": "The location marketing platform for chain businesses."
+      },
+      "contact": {
+        "phone": "+46 70 2336879",
+        "homepage": "http://www.google.com",
+        "email": "test@pinmeto.com"
+      },
+      "address": {
+        "street": "testgatan 2",
+        "zip": "217 41",
+        "city": "Malmö",
+        "country": "Sweden"
+      },
+      "locationDescriptor": "API locationDescriptor",
+      "location": {
+        "lat": 9.333755678571002,
+        "lon": 8.056143908447002
+      },
+      "openHours": {
+        "mon": {
+          "state": "Open",
+          "span": [
+            {
+              "open": "0900",
+              "close": "1700"
+            }
+          ]
+        },
+        "tue": {
+          "state": "Open",
+          "span": [
+            {
+              "open": "0900",
+              "close": "1700"
+            }
+          ]
+        },
+        "wed": {
+          "state": "Open",
+          "span": [
+            {
+              "open": "0900",
+              "close": "1700"
+            }
+          ]
+        },
+        "thu": {
+          "state": "Open",
+          "span": [
+            {
+              "open": "0900",
+              "close": "1500"
+            }
+          ]
+        },
+        "fri": {
+          "state": "Open",
+          "span": [
+            {
+              "open": "0900",
+              "close": "1700"
+            }
+          ]
+        },
+        "sat": {
+          "state": "Closed",
+          "span": []
+        },
+        "sun": {
+          "state": "Closed",
+          "span": []
+        }
+      },
+      "specialOpenHours": [
+        {
+          "start": "2017-05-28",
+          "end": "2017-05-28",
+          "openTime": "1000",
+          "closeTime": "2000",
+          "isClosed": false,
+          "label": "Mothers day"
+        },
+        {
+          "start": "2017-07-04",
+          "end": "2017-07-04",
+          "openTime": "0000",
+          "closeTime": "0000",
+          "isClosed": true,
+          "label": "Independence day"
+        },
+        {
+          "start": "2017-11-24",
+          "end": "2017-11-24",
+          "openTime": "0000",
+          "closeTime": "2400",
+          "isClosed": false,
+          "label": "Black friday"
+        }
+      ],
+      "network": {
+        "facebook": {
+          "pageId": "12345678901234567890",
+          "link": "https://www.facebook.com/Pinmeto.Malmo/",
+          "profileImage": "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-1/p720x720/78063569_2439243212994541_4444163125444345856_o.jpg?_nc_cat=103&_nc_sid=0c64ff&_nc_ohc=empRK1Pb1KoAX900cWE&_nc_ht=scontent-arn2-1.xx&tp=6&oh=12345678901234567890&oe=5F9BB09B",
+          "coverImage": "https://scontent-arn2-2.xx.fbcdn.net/v/t1.0-9/s720x720/103323620_2607531456165715_1759303419147657987_o.jpg?_nc_cat=100&_nc_sid=dd9801&_nc_ohc=ZfPnPPzbMUEAX-sbjis&_nc_ht=scontent-arn2-2.xx&tp=7&oh=0123456789012345678907e1528b&oe=5F9A4ADA",
+          "categories": {
+            "primaryCategory": {
+              "id": "01234567890123456789",
+              "name": "Internet Marketing Service"
+            },
+            "additionalCategories": [
+              {
+                "id": "12345678901234567890",
+                "name": "Software Company"
+              }
+            ]
+          }
+        },
+        "google": {
+          "placeId": "CpzuV6huytgjk09rewqas788",
+          "link": "https://maps.google.com/?cid=806612345678901234567890",
+          "newReviewUrl": "https://search.google.com/local/writereview?placeid=ChIJF9eIJ12dX0YRogcSnTh1G6s",
+          "profileImage": "https://lh3.googleusercontent.com/lCki9MaIOKvhpvwBh_AExUE3_12345678901234567890",
+          "coverImage": "https://lh3.googleusercontent.com/FrmkuiTtzL12345678901234567890hnQKRjs-5Nd7cv_12345678901234567890",
+          "categories": {
+            "primaryCategory": {
+              "name": "Software company",
+              "id": "gcid:company_category"
+            },
+            "additionalCategories": [
+              {
+                "id": "gcid:another_category",
+                "name": "Internet marketing service"
+              }
+            ]
+          }
+        },
+        "foursquare": {
+          "categories": [
+            {
+              "categoryId": "11168"
+            }
+          ]
+        },
+        "overture": {
+          "categories": {
+            "primaryCategory": {
+              "id": "advertising_agency",
+              "name": "advertising agency"
+            },
+            "additionalCategories": [
+              {
+                "id": "marketing_agency",
+                "name": "marketing agency"
+              },
+              {
+                "id": "internet_marketing_service",
+                "name": "internet marketing service"
+              },
+              {
+                "id": "software_development",
+                "name": "software development"
+              }
+            ]
+          }
+        },
+        "here": {
+          "categories": {
+            "primaryCategory": {
+              "id": "700-7200-0252",
+              "name": "Advertising-Marketing, PR and Market Research"
+            },
+            "additionalCategories": [
+              {
+                "id": "600-6500-0075",
+                "name": "Computer and Software"
+              }
+            ]
+          }
+        },
+        "tomtom": {
+          "category": {
+            "featureTypeId": "9352",
+            "serviceSubCategoryId": "9352003"
+          }
+        }
+      },
+      "googleName": "custom google name",
+      "facebookName": "custom fb name",
+      "wifiSsid": "pinmeto"
     }
+  ],
+  "paging": {
+    "before": "https://api.pinmeto.com/v2/pinmeto/locations?before=12345678901234567890",
+    "next": "https://api.pinmeto.com/v2/pinmeto/locations?next=2345678901234567899"
   }
+}
 ```
 
 </details>
@@ -634,223 +701,227 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
 `curl -H "Authorization: Bearer YOUR_ACCESS_TOKEN" -X GET https://api.pinmeto.com/v2/<<account_id>>/locations/YOUR_STORE_ID`
 
 <details>
-<summary><b>Result structure</b></summary>
-<br>
+  <summary><b>Result structure</b></summary>
+  <br>
 
-<ul>
- <li>
-  <b>data</b>: (Object)
   <ul>
-   <li><b>name</b>: (String)</li>
-   <li><b>storeId</b>: (String)</li>
-      <li><b>description</b>: (Object)
-        <ul>
-       <li><b>short</b>: (String, max length 240)</li>
-       <li><b>long</b>: (String, max length 750)</li>
-        </ul>
-      </li>
-   <li><b style="text-decoration: line-through;">text</b> (deprecated, use shortDescription) : (String)</li>
-   <li><b>contact</b>: (Object)
-    <ul>
-     <li><b>phone</b>: (String)</li>
-     <li><b>homepage</b>: (String)</li>
-     <li><b>email</b>: (String)</li>
-    </ul>
-   </li>
-   <li><b>address</b>: (Object)
-    <ul>
-     <li><b>street</b>: (String)</li>
-     <li><b>zip</b>: (String)</li>
-     <li><b>city</b>: (String)</li>
-     <li><b>country</b>: (String)</li>
-    </ul>
-   </li>
-   <li><b>permanentlyClosed</b>: (Boolean)</li>
-      <li><b>temporarilyClosedUntil</b>: (ISO Date string, YYYY-MM-DD)</li>
-   <li><b>isAlwaysOpen<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover="" popover-body="{{description.isAlwaysOpen}}"></sup></b>:
-    (Boolean)</li>
-   <li><b>locationDescriptor</b>: (String)</li>
-   <li><b>location</b>: (Object)
-    <ul>
-     <li><b>lat</b>: (Number)</li>
-     <li><b>lon</b>: (Number)</li>
-    </ul>
-   </li>
-   <li><b>openHours</b>: (Object)
-    <ul>
-     <li><b>mon</b>: (Object)
+    <li>
+      <b>data</b>: (Object)
       <ul>
-       <li><b>state<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover="" popover-body="{{description.openHours}}"></sup></b>:
-        (String)</li>
-       <li><b>span</b>: (Array)
-        <ul>
-         <li><b>open</b>: (String)</li>
-         <li><b>close</b>: (String)</li>
-        </ul>
-       </li>
+        <li><b>name</b>: (String)</li>
+        <li><b>storeId</b>: (String)</li>
+        <li><b>description</b>: (Object)
+          <ul>
+            <li><b>short</b>: (String, max length 240)</li>
+            <li><b>long</b>: (String, max length 750)</li>
+          </ul>
+        </li>
+        <li><b style="text-decoration: line-through;">text</b> (deprecated, use shortDescription) : (String)</li>
+        <li><b>contact</b>: (Object)
+          <ul>
+            <li><b>phone</b>: (String)</li>
+            <li><b>homepage</b>: (String)</li>
+            <li><b>email</b>: (String)</li>
+          </ul>
+        </li>
+        <li><b>address</b>: (Object)
+          <ul>
+            <li><b>street</b>: (String)</li>
+            <li><b>zip</b>: (String)</li>
+            <li><b>city</b>: (String)</li>
+            <li><b>country</b>: (String)</li>
+          </ul>
+        </li>
+        <li><b>permanentlyClosed</b>: (Boolean)</li>
+        <li><b>temporarilyClosedUntil</b>: (ISO Date string, YYYY-MM-DD)</li>
+        <li><b>isAlwaysOpen<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover=""
+              popover-body="{{description.isAlwaysOpen}}"></sup></b>:
+          (Boolean)</li>
+        <li><b>locationDescriptor</b>: (String)</li>
+        <li><b>location</b>: (Object)
+          <ul>
+            <li><b>lat</b>: (Number)</li>
+            <li><b>lon</b>: (Number)</li>
+          </ul>
+        </li>
+        <li><b>openHours</b>: (Object)
+          <ul>
+            <li><b>mon</b>: (Object)
+              <ul>
+                <li><b>state<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover=""
+                      popover-body="{{description.openHours}}"></sup></b>:
+                  (String)</li>
+                <li><b>span</b>: (Array)
+                  <ul>
+                    <li><b>open</b>: (String)</li>
+                    <li><b>close</b>: (String)</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>...</li>
+            <li><b>sun</b>: (Object)
+              <ul>
+                <li><b>state<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover=""
+                      popover-body="{{description.openHours}}"></sup></b>:
+                  (String)</li>
+                <li><b>span</b>: (Array)
+                  <ul>
+                    <li><b>open</b>: (String)</li>
+                    <li><b>close</b>: (String)</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><b>specialOpenHours<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover=""
+              popover-body="{{description.specialOpenHours}}"></sup></b>:
+          (Array)
+          <ul>
+            <li><b>label</b>: (String)</li>
+            <li><b>start</b>: (ISO Date string, YYYY-MM-DD)</li>
+            <li><b>end</b>: (ISO Date string, YYYY-MM-DD)</li>
+            <li><b>openTime</b>: (String)</li>
+            <li><b>closeTime</b>: (String)</li>
+            <li><b>isClosed</b>: (Boolean)</li>
+          </ul>
+        </li>
+        <li><b>network</b>: (Object)
+          <ul>
+            <li><b>facebook</b>: (Object)
+              <ul>
+                <li><b>pageId</b>: (String)</li>
+                <li><b>link</b>: (String)</li>
+                <li><b>profileImage</b>: (String)</li>
+                <li><b>coverImage</b>: (String)</li>
+                <li><b>categories</b>: (Object)
+                  <ul>
+                    <li><b>primaryCategory</b>: (Object)
+                      <ul>
+                        <li><b>name</b> (String)</li>
+                        <li><b>id</b> (String)</li>
+                      </ul>
+                    </li>
+                    <li><b>additionalCategories</b>: (Array)
+                      <ul>
+                        <li><b>name</b> (String)</li>
+                        <li><b>id</b> (String)</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><b>google</b>: (Object)
+              <ul>
+                <li><b>placeId</b>: (String)</li>
+                <li><b>link</b>: (String)</li>
+                <li><b>newReviewUrl</b>: (String)</li>
+                <li><b>profileImage</b>: (String)</li>
+                <li><b>coverImage</b>: (String)</li>
+                <li><b>categories</b>: (Object)
+                  <ul>
+                    <li><b>primaryCategory</b>: (Object)
+                      <ul>
+                        <li><b>name</b> (String)</li>
+                        <li><b>id</b> (String)</li>
+                      </ul>
+                    </li>
+                    <li><b>additionalCategories</b>: (Array)
+                      <ul>
+                        <li><b>name</b> (String)</li>
+                        <li><b>id</b> (String)</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><b>bing</b>: (Object)
+              <ul>
+                <li><b>link</b>: (String)</li>
+                <li><b>categories</b>: (Object)
+                  <ul>
+                    <li><b>primaryCategory</b>: (Object)
+                      <ul>
+                        <li><b>name</b> (String)</li>
+                        <li><b>id</b> (String)</li>
+                      </ul>
+                    </li>
+                    <li><b>additionalCategories</b>: (Array)
+                      <ul>
+                        <li><b>name</b> (String)</li>
+                        <li><b>id</b> (String)</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><b>apple</b>: (Object)
+              <ul>
+                <li><b>link</b>: (String)</li>
+                <li><b>categories</b>: (Object)
+                  <ul>
+                    <li><b>primaryCategory</b>: (Object)
+                      <ul>
+                        <li><b>name</b> (String)</li>
+                        <li><b>id</b> (String)</li>
+                      </ul>
+                    </li>
+                    <li><b>additionalCategories</b>: (Array)
+                      <ul>
+                        <li><b>name</b> (String)</li>
+                        <li><b>id</b> (String)</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><b>googleName</b>: (String) - if google custom name is enabled</li>
+        <li><b>facebookName</b>: (String) - if facebook custom name is enabled</li>
+        <li><b>wifiSsid</b>: (String, max length 32)</li>
+        <li>
+          <b>pendingChanges</b>: (Object)
+          <ul>
+            <li><b>address</b>: (Object)
+              <ul>
+                <li><b>street</b>: (String)</li>
+                <li><b>zip</b>: (String)</li>
+                <li><b>city</b>: (String)</li>
+                <li><b>country</b>: (String)</li>
+              </ul>
+            </li>
+            <li><b>location</b> : (Object)
+              <ul>
+                <li><b>lat</b>: (Number)</li>
+                <li><b>lon</b>: (Number)</li>
+              </ul>
+            </li>
+            <li><b>customData</b>: (Object, depends on your custom data definition)</li>
+          </ul>
+        </li>
       </ul>
-     </li>
-     <li>...</li>
-     <li><b>sun</b>: (Object)
-      <ul>
-       <li><b>state<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover="" popover-body="{{description.openHours}}"></sup></b>:
-        (String)</li>
-       <li><b>span</b>: (Array)
-        <ul>
-         <li><b>open</b>: (String)</li>
-         <li><b>close</b>: (String)</li>
-        </ul>
-       </li>
-      </ul>
-     </li>
-    </ul>
-   </li>
-   <li><b>specialOpenHours<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover="" popover-body="{{description.specialOpenHours}}"></sup></b>:
-    (Array)
-    <ul>
-     <li><b>label</b>: (String)</li>
-     <li><b>start</b>: (ISO Date string, YYYY-MM-DD)</li>
-     <li><b>end</b>: (ISO Date string, YYYY-MM-DD)</li>
-     <li><b>openTime</b>: (String)</li>
-     <li><b>closeTime</b>: (String)</li>
-     <li><b>isClosed</b>: (Boolean)</li>
-    </ul>
-   </li>
-   <li><b>network</b>: (Object)
-    <ul>
-     <li><b>facebook</b>: (Object)
-      <ul>
-       <li><b>pageId</b>: (String)</li>
-       <li><b>link</b>: (String)</li>
-       <li><b>profileImage</b>: (String)</li>
-       <li><b>coverImage</b>: (String)</li>
-       <li><b>categories</b>: (Object)
-	<ul>
-		<li><b>primaryCategory</b>: (Object)
-		  <ul>
-			<li><b>name</b> (String)</li>
-			<li><b>id</b> (String)</li>
-		  </ul>		
-		</li>
-		<li><b>additionalCategories</b>: (Array)
-		  <ul>
-			<li><b>name</b> (String)</li>
-			<li><b>id</b> (String)</li>
-		  </ul>		
-		</li>
-	</ul>
-       </li>
-      </ul>
-     </li>
-     <li><b>google</b>: (Object)
-      <ul>
-       <li><b>placeId</b>: (String)</li>
-       <li><b>link</b>: (String)</li>
-       <li><b>newReviewUrl</b>: (String)</li>
-       <li><b>profileImage</b>: (String)</li>
-       <li><b>coverImage</b>: (String)</li>
-       <li><b>categories</b>: (Object)
-	<ul>
-		<li><b>primaryCategory</b>: (Object)
-		  <ul>
-			<li><b>name</b> (String)</li>
-			<li><b>id</b> (String)</li>
-		  </ul>		
-		</li>
-		<li><b>additionalCategories</b>: (Array)
-		  <ul>
-			<li><b>name</b> (String)</li>
-			<li><b>id</b> (String)</li>
-		  </ul>		
-		</li>
-	</ul>
-       </li>
-      </ul>
-     </li>
-     <li><b>bing</b>: (Object)
-      <ul>
-       <li><b>link</b>: (String)</li>
-       <li><b>categories</b>: (Object)
-	<ul>
-		<li><b>primaryCategory</b>: (Object)
-		  <ul>
-			<li><b>name</b> (String)</li>
-			<li><b>id</b> (String)</li>
-		  </ul>		
-		</li>
-		<li><b>additionalCategories</b>: (Array)
-		  <ul>
-			<li><b>name</b> (String)</li>
-			<li><b>id</b> (String)</li>
-		  </ul>		
-		</li>
-	</ul>
-       </li>
-      </ul>
-     </li>
-     <li><b>apple</b>: (Object)
-      <ul>
-       <li><b>link</b>: (String)</li>
-       <li><b>categories</b>: (Object)
-	<ul>
-		<li><b>primaryCategory</b>: (Object)
-		  <ul>
-			<li><b>name</b> (String)</li>
-			<li><b>id</b> (String)</li>
-		  </ul>		
-		</li>
-		<li><b>additionalCategories</b>: (Array)
-		  <ul>
-			<li><b>name</b> (String)</li>
-			<li><b>id</b> (String)</li>
-		  </ul>		
-		</li>
-	</ul>
-       </li>
-      </ul>
-     </li>
-    </ul>
-   </li>
-   <li><b>googleName</b>: (String) - if google custom name is enabled</li>
-   <li><b>facebookName</b>: (String) - if facebook custom name is enabled</li>
-   <li><b>wifiSsid</b>: (String, max length 32)</li>
-   <li>
-    <b>pendingChanges</b>: (Object)
-    <ul>
-    <li><b>address</b>: (Object)
-     <ul>
-     <li><b>street</b>: (String)</li>
-     <li><b>zip</b>: (String)</li>
-     <li><b>city</b>: (String)</li>
-     <li><b>country</b>: (String)</li>
-     </ul>
     </li>
-    <li><b>location</b> : (Object)
-     <ul>
-     <li><b>lat</b>: (Number)</li>
-     <li><b>lon</b>: (Number)</li>
-     </ul>
-    </li>
-    <li><b>customData</b>: (Object, depends on your custom data definition)</li>
-    </ul>
-   </li>
   </ul>
- </li>
-</ul>
 </details>
 
 <details>
-<summary><b>Result example</b></summary>
-<br>
+  <summary><b>Result example</b></summary>
+  <br>
 
-```Javascript
+```json
 {
   "data": {
     "name": "Name of location",
     "storeId": "1337",
     "description": {
       "short": "The location marketing platform for chain businesses.",
-      "long": "The location marketing platform for chain businesses.",
+      "long": "The location marketing platform for chain businesses."
     },
     "contact": {
       "phone": "+46 739 60 61 40",
@@ -952,56 +1023,56 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
         "label": "Black friday"
       }
     ],
-      "network": {
-        "facebook": {
-          "pageId": "12345678901234567890",
-          "link": "https://www.facebook.com/Pinmeto.Malmo/"
-          "profileImage": "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-1/p720x720/78063569_2439243212994541_4444163125444345856_o.jpg?_nc_cat=103&_nc_sid=0c64ff&_nc_ohc=empRK1Pb1KoAX900cWE&_nc_ht=scontent-arn2-1.xx&tp=6&oh=12345678901234567890&oe=5F9BB09B",
-          "coverImage": "https://scontent-arn2-2.xx.fbcdn.net/v/t1.0-9/s720x720/103323620_2607531456165715_1759303419147657987_o.jpg?_nc_cat=100&_nc_sid=dd9801&_nc_ohc=ZfPnPPzbMUEAX-sbjis&_nc_ht=scontent-arn2-2.xx&tp=7&oh=12345678901234567890&oe=5F9A4ADA",
-	  "categories": {
-          	"primaryCategory": {
-            	  "id": "01234567890123456789",
-            	  "name": "Internet Marketing Service"
-          	},
-          	"additionalCategories": [
-		  {
-              		"id": "12345678901234567890",
-              		"name": "Software Company"
-		  }
-          	]
-	  }
-        },
-        "google": {
-          "placeId": "L3Bp8m81234567kjhgf1234567890",
-          "link": "https://maps.google.com/?cid=12345678901234567890",
-          "newReviewUrl": "https://search.google.com/local/writereview?placeid=Ch12345678901234567890s",
-          "profileImage": "https://lh3.googleusercontent.com/lCki9MaIOKvhpvwBh_AExUE3_liY1234567890_1234567890",
-          "coverImage": "https://lh3.googleusercontent.com/F12345678901234567890js-5Nd7cv_yd59",
-	  "categories": {
-		"primaryCategory": {
-	            "name": "Software company",
-	            "id": "gcid:network_category"
-		},
-		"additionalCategories": [
-	            {
-	              "id": "gcid:company_category",
-	              "name": "Internet marketing service"
-	            }
-		]
-	  }
-        },
+    "network": {
+      "facebook": {
+        "pageId": "12345678901234567890",
+        "link": "https://www.facebook.com/Pinmeto.Malmo/",
+        "profileImage": "https://scontent-arn2-1.xx.fbcdn.net/v/t1.0-1/p720x720/78063569_2439243212994541_4444163125444345856_o.jpg?_nc_cat=103&_nc_sid=0c64ff&_nc_ohc=empRK1Pb1KoAX900cWE&_nc_ht=scontent-arn2-1.xx&tp=6&oh=12345678901234567890&oe=5F9BB09B",
+        "coverImage": "https://scontent-arn2-2.xx.fbcdn.net/v/t1.0-9/s720x720/103323620_2607531456165715_1759303419147657987_o.jpg?_nc_cat=100&_nc_sid=dd9801&_nc_ohc=ZfPnPPzbMUEAX-sbjis&_nc_ht=scontent-arn2-2.xx&tp=7&oh=12345678901234567890&oe=5F9A4ADA",
+        "categories": {
+          "primaryCategory": {
+            "id": "01234567890123456789",
+            "name": "Internet Marketing Service"
+          },
+          "additionalCategories": [
+            {
+              "id": "12345678901234567890",
+              "name": "Software Company"
+            }
+          ]
+        }
+      },
+      "google": {
+        "placeId": "L3Bp8m81234567kjhgf1234567890",
+        "link": "https://maps.google.com/?cid=12345678901234567890",
+        "newReviewUrl": "https://search.google.com/local/writereview?placeid=Ch12345678901234567890s",
+        "profileImage": "https://lh3.googleusercontent.com/lCki9MaIOKvhpvwBh_AExUE3_liY1234567890_1234567890",
+        "coverImage": "https://lh3.googleusercontent.com/F12345678901234567890js-5Nd7cv_yd59",
+        "categories": {
+          "primaryCategory": {
+            "name": "Software company",
+            "id": "gcid:network_category"
+          },
+          "additionalCategories": [
+            {
+              "id": "gcid:company_category",
+              "name": "Internet marketing service"
+            }
+          ]
+        }
+      }
     },
     "googleName": "custom google name",
     "facebookName": "custom fb name",
     "wifiSsid": "pinmeto",
     "pendingChanges": {
-        "address": {
-            "street": "Adelgatan 11"
-        },
-        "location": {
-            "lon": 13.00093,
-            "lat": 55.60736
-        }
+      "address": {
+        "street": "Adelgatan 11"
+      },
+      "location": {
+        "lon": 13.00093,
+        "lat": 55.60736
+      }
     }
   }
 }
@@ -1009,9 +1080,7 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
 
 </details>
 
-
- 
-## Fetch network categories 
+## Fetch network categories
 
 If you have your access token, you can get the list of categories per network
 
@@ -1021,42 +1090,47 @@ If you have your access token, you can get the list of categories per network
 
 And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
 
-`NETWORK_NAME` can be one of the following: 
+`NETWORK_NAME` can be one of the following:
+
 - `google`
 - `apple`
 - `facebook`
 - `bing`
+- `foursquare`
+- `overture`
+- `here`
+- `tomtom`
 
 #### Curl call to get the list of categories
 
 `curl -H "Authorization: Bearer YOUR_ACCESS_TOKEN" -X GET https://api.pinmeto.com/v2/<<account_id>>/categories/NETWORK_NAME`
 
 <details>
-<summary><b>Result structure</b></summary>
-<br>
+  <summary><b>Result structure</b></summary>
+  <br>
 
-<ul>
- <li>
-  <b>status</b>: (String) - Possible values "ok", "not_found"
- </li>	
- <li>
-  <b>data</b>: (Array)
   <ul>
-   <li><b>name</b>: (String)</li>
-   <li><b>id</b>: (String)</li>
-  <ul>
- </li>	
-</ul>
+    <li>
+      <b>status</b>: (String) - Possible values "ok", "not_found"
+    </li>
+    <li>
+      <b>data</b>: (Array)
+      <ul>
+        <li><b>name</b>: (String)</li>
+        <li><b>id</b>: (String)</li>
+        <ul>
+    </li>
+  </ul>
 </details>
 
 <details>
-<summary><b>Result example</b></summary>
-<br>
+  <summary><b>Result example</b></summary>
+  <br>
 
-```Javascript
+```json
 {
   "status": "ok",
-  "data": [    
+  "data": [
     {
       "name": "Abrasives supplier",
       "id": "gcid:abrasives_supplier"
@@ -1081,7 +1155,7 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
       "name": "Accounting software company",
       "id": "gcid:accounting_software_company"
     }
-  ] 
+  ]
 }
 ```
 
@@ -1094,116 +1168,120 @@ And add http header `Authorization: Bearer YOUR_ACCESS_TOKEN`
 `https://api.pinmeto.com/v2/<<account_id>>/locations/YOUR_STORE_ID`
 
 <details>
-<summary><b>List of properties to update</b></summary>
-<br>
-<ul>
- <!--li ng-show="customGoogleName"><b>googleName</b>: (String)</li>
-	<li ng-show="customFacebookName"><b>facebookName</b>: (String)</li-->
- <li><b>description</b>: (Object)
+  <summary><b>List of properties to update</b></summary>
+  <br>
   <ul>
-   <li><b>short</b>: (String, max length 240)</li>
-   <li><b>long</b>: (String, max length 750)</li>
-  </ul>
- </li>
- <li><b>name</b>: (String)</li>
- <li><b>openingDate</b>: (ISO Date string, YYYY-MM-DD)</li>
- <li><b>contact</b>: (Object)
-  <ul>
-   <li><b>phone</b>: (String)</li>
-   <li><b>homepage</b>: (String)</li>
-   <li><b>email</b>: (String)</li>
-  </ul>
- </li>
- <li><b>address</b>: (Object)
-  <ul>
-   <li><b>street</b>: (String)</li>
-   <li><b>zip</b>: (String)</li>
-   <li><b>city</b>: (String)</li>
-   <li><b>state</b>: (String)</li>
-   <li><b>country</b>: (String)</li>
-  </ul>
- </li>
- <li><b>permanentlyClosed</b>: (Boolean)</li>
-  <li><b>temporarilyClosedUntil</b>: (ISO Date string, YYYY-MM-DD)</li>
- <li><b>isAlwaysOpen<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover="" popover-body="{{description.isAlwaysOpen}}"></sup></b>:
-  (Boolean)</li>
- <li><b>locationDescriptor</b>: (String)</li>
- <li><b>location</b>: (Object)
-  <ul>
-   <li><b>lat</b>: (Number)</li>
-   <li><b>lon</b>: (Number)</li>
-  </ul>
- </li>
- <li><b>openHours</b>: (Object)
-  <ul>
-   <li><b>mon</b>: (Object)
-    <ul>
-     <li><b>state<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover="" popover-body="{{description.openHours}}"></sup></b>:
-      (String)</li>
-     <li><b>span</b>: (Array)
+    <!--li ng-show="customGoogleName"><b>googleName</b>: (String)</li>
+  <li ng-show="customFacebookName"><b>facebookName</b>: (String)</li-->
+    <li><b>description</b>: (Object)
       <ul>
-       <li><b>open</b>: (String)</li>
-       <li><b>close</b>: (String)</li>
+        <li><b>short</b>: (String, max length 240)</li>
+        <li><b>long</b>: (String, max length 750)</li>
       </ul>
-     </li>
-    </ul>
-   </li>
-   <li>...</li>
-   <li><b>sun</b>: (Object)
-    <ul>
-     <li><b>state<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover="" popover-body="{{description.openHours}}"></sup></b>:
-      (String)</li>
-     <li><b>span</b>: (Array)
-      <ul>
-       <li><b>open</b>: (String)</li>
-       <li><b>close</b>: (String)</li>
-      </ul>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li><b>specialOpenHours<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover="" popover-body="{{description.specialOpenHours}} {{description.specialOpenHours_update}}"></sup></b>:
-  (Array)
-  <ul>
-   <li><b>label</b>: (String)</li>
-   <li><b>start</b>: (ISO Date string, YYYY-MM-DD)</li>
-   <li><b>end</b>: (ISO Date string, YYYY-MM-DD)</li>
-   <li><b>openTime</b>: (String)</li>
-   <li><b>closeTime</b>: (String)</li>
-   <li><b>isClosed</b>: (Boolean)</li>
-  </ul>
- </li>
- <li><b>googleName</b>: (String) - if google custom name is enabled</li>
- <li><b>facebookName</b>: (String) - if facebook custom name is enabled</li>
- <li><b>wifiSsid</b>: (String, max length 32)</li>
- <li><b>customData</b>: (Object, depends on your custom data definition)</li>
- <li><b>network<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover="" popover-body="{{description.specialOpenHours}} {{description.specialOpenHours_update}}"></sup></b>:
-  (Object)
-  <ul>
-   <li><b>NETWORK_NAME</b>: (Object) - Possible values: "google", "apple", "facebook", "bing"
-   <ul>
-    <li><b>categories</b>: (Object)
-     <ul>
-	<li><b>primaryCategory</b>: (Object)
-	  <ul>
-		<li><b>name</b>: (String)</li>
-		<li><b>id</b>: (String)</li>
-	  </ul>
-	</li>
-	<li><b>additionalCategories</b>: (Array)
-	  <ul>
-		<li><b>name</b>: (String)</li>
-		<li><b>id</b>: (String)</li>
-	  </ul>
-	</li>
-     </ul>   
     </li>
-   </ul>
-   </li>
+    <li><b>name</b>: (String)</li>
+    <li><b>openingDate</b>: (ISO Date string, YYYY-MM-DD)</li>
+    <li><b>contact</b>: (Object)
+      <ul>
+        <li><b>phone</b>: (String)</li>
+        <li><b>homepage</b>: (String)</li>
+        <li><b>email</b>: (String)</li>
+      </ul>
+    </li>
+    <li><b>address</b>: (Object)
+      <ul>
+        <li><b>street</b>: (String)</li>
+        <li><b>zip</b>: (String)</li>
+        <li><b>city</b>: (String)</li>
+        <li><b>state</b>: (String)</li>
+        <li><b>country</b>: (String)</li>
+      </ul>
+    </li>
+    <li><b>permanentlyClosed</b>: (Boolean)</li>
+    <li><b>temporarilyClosedUntil</b>: (ISO Date string, YYYY-MM-DD)</li>
+    <li><b>isAlwaysOpen<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover=""
+          popover-body="{{description.isAlwaysOpen}}"></sup></b>:
+      (Boolean)</li>
+    <li><b>locationDescriptor</b>: (String)</li>
+    <li><b>location</b>: (Object)
+      <ul>
+        <li><b>lat</b>: (Number)</li>
+        <li><b>lon</b>: (Number)</li>
+      </ul>
+    </li>
+    <li><b>openHours</b>: (Object)
+      <ul>
+        <li><b>mon</b>: (Object)
+          <ul>
+            <li><b>state<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover=""
+                  popover-body="{{description.openHours}}"></sup></b>:
+              (String)</li>
+            <li><b>span</b>: (Array)
+              <ul>
+                <li><b>open</b>: (String)</li>
+                <li><b>close</b>: (String)</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>...</li>
+        <li><b>sun</b>: (Object)
+          <ul>
+            <li><b>state<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover=""
+                  popover-body="{{description.openHours}}"></sup></b>:
+              (String)</li>
+            <li><b>span</b>: (Array)
+              <ul>
+                <li><b>open</b>: (String)</li>
+                <li><b>close</b>: (String)</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><b>specialOpenHours<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover=""
+          popover-body="{{description.specialOpenHours}} {{description.specialOpenHours_update}}"></sup></b>:
+      (Array)
+      <ul>
+        <li><b>label</b>: (String)</li>
+        <li><b>start</b>: (ISO Date string, YYYY-MM-DD)</li>
+        <li><b>end</b>: (ISO Date string, YYYY-MM-DD)</li>
+        <li><b>openTime</b>: (String)</li>
+        <li><b>closeTime</b>: (String)</li>
+        <li><b>isClosed</b>: (Boolean)</li>
+      </ul>
+    </li>
+    <li><b>googleName</b>: (String) - if google custom name is enabled</li>
+    <li><b>facebookName</b>: (String) - if facebook custom name is enabled</li>
+    <li><b>wifiSsid</b>: (String, max length 32)</li>
+    <li><b>customData</b>: (Object, depends on your custom data definition)</li>
+    <li><b>network<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover=""
+          popover-body="{{description.specialOpenHours}} {{description.specialOpenHours_update}}"></sup></b>: (Object)
+      <ul>
+        <li><b>NETWORK_NAME</b>: (Object) - Possible values: <div> "google", "apple", "facebook", "bing", "foursquare", "overture", "here", "tomtom" </div>
+          <ul>
+            <li><b>categories</b>: (Object)
+              <ul>
+                <li><b>primaryCategory</b>: (Object)
+                  <ul>
+                    <li><b>name</b>: (String)</li>
+                    <li><b>id</b>: (String)</li>
+                  </ul>
+                </li>
+                <li><b>additionalCategories</b>: (Array)
+                  <ul>
+                    <li><b>name</b>: (String)</li>
+                    <li><b>id</b>: (String)</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
- </li>
-</ul>
 </details>
 
 <details>
@@ -1218,74 +1296,114 @@ Content-Type: application/json
 
 Body:
 {
- "locationDescriptor": "API locationDescriptor",
- "address": {
-  "street": "testgatan 4",
-  "zip": "217 41",
-  "city": "Malmö",
-  "country": "Sweden"
- },
- "location": {
-  "lat": 59.333755678571,
-  "lon": 18.056143908447
- },
- "name": "MyBrand",
- "openingDate": "2020-01-01",
- "contact": {
-  "phone": "+46 70 2336879",
-  "email": "test@example.com",
-  "homepage": "http://www.google.com"
- },
- "network": {
-        "facebook": {
-          "categories": {
-            "primaryCategory": {
-              "id": "123456",
-              "name": "Facebook Category"
-            },
-            "additionalCategories": []
-          }
+  "locationDescriptor": "API locationDescriptor",
+  "address": {
+    "street": "testgatan 4",
+    "zip": "217 41",
+    "city": "Malmö",
+    "country": "Sweden"
+  },
+  "location": {
+    "lat": 59.333755678571,
+    "lon": 18.056143908447
+  },
+  "name": "MyBrand",
+  "openingDate": "2020-01-01",
+  "contact": {
+    "phone": "+46 70 2336879",
+    "email": "test@example.com",
+    "homepage": "http://www.google.com"
+  },
+  "network": {
+    "facebook": {
+      "categories": {
+        "primaryCategory": {
+          "id": "123456",
+          "name": "Facebook Category"
         },
-        "google": {
-          "categories": {
-            "primaryCategory": {
-              "name": "Google Category",
-              "id": "gcid:abcde"
-            },
-            "additionalCategories": [
-		    {
-		      "name": "Another Google Category",
-		      "id": "gcid:fghijk"
-		    }
-	    ]
-          }
-        },
-        "bing": {
-          "categories": {
-            "primaryCategory": {
-              "id": "654321",
-              "name": "Bing Category"
-            },
-            "additionalCategories": []
-          }
-        },
-        "apple": {
-         "categories": {
-            "primaryCategory": {
-              "id": "abc.defg.hijk",
-              "name": "Apple Category"
-            },
-            "additionalCategories": [
-		    {
-		      "name": "Another Apple Category",
-		      "id": "lmn.opqr.stuvwxyz"
-		    }
-	    ]
-          }
-        }
+        "additionalCategories": []
       }
+    },
+    "google": {
+      "categories": {
+        "primaryCategory": {
+          "name": "Google Category",
+          "id": "gcid:abcde"
+        },
+        "additionalCategories": [
+          {
+            "name": "Another Google Category",
+            "id": "gcid:fghijk"
+          }
+        ]
+      }
+    },
+    "bing": {
+      "categories": {
+        "primaryCategory": {
+          "id": "654321",
+          "name": "Bing Category"
+        },
+        "additionalCategories": []
+      }
+    },
+    "apple": {
+      "categories": {
+        "primaryCategory": {
+          "id": "abc.defg.hijk",
+          "name": "Apple Category"
+        },
+        "additionalCategories": [
+          {
+            "name": "Another Apple Category",
+            "id": "lmn.opqr.stuvwxyz"
+          }
+        ]
+      }
+    },
+    "foursquare": {
+      "categories": [
+        {
+          "categoryId": "11168"
+        }
+      ]
+    },
+    "overture": {
+      "categories": {
+        "primaryCategory": {
+          "id": "advertising_agency",
+          "name": "advertising agency"
+        },
+        "additionalCategories": [
+          {
+            "id": "marketing_agency",
+            "name": "marketing agency"
+          }
+        ]
+      }
+    },
+    "here": {
+      "categories": {
+        "primaryCategory": {
+          "id": "700-7200-0252",
+          "name": "Advertising-Marketing, PR and Market Research"
+        },
+        "additionalCategories": [
+          {
+            "id": "600-6500-0075",
+            "name": "Computer and Software"
+          }
+        ]
+      }
+    },
+    "tomtom": {
+      "category": {
+        "featureTypeId": "9352",
+        "serviceSubCategoryId": "9352003"
+      }
+    }
+  }
 }
-
 ```
 
 </details>
@@ -1313,98 +1431,102 @@ Note: Only the fields sent in the update request will be updated.
 All properties are optional unless stated otherwise. If an optional property contains <b>required</b> fields, those fields must be included if you wish to include the optional property.
 
 <details>
-<summary><b>List of properties</b></summary>
-<ul>
- <!--li ng-show="customGoogleName"><b>googleName</b>: (String) <b>required</b></li>
-<li ng-show="customFacebookName"><b>facebookName</b>: (String) <b>required</b></li-->
- <li><b>name</b>: (String) <b>required</b></li>
- <li><b>storeId</b>: (String) <b>required</b></li>
- <li><b>description</b>: (Object)
+  <summary><b>List of properties</b></summary>
   <ul>
-   <li><b>short</b>: (String, max length 240)</li>
-   <li><b>long</b>: (String, max length 750)</li>
-  </ul>
- </li>
- <li><b style="text-decoration: line-through;">text</b> (deprecated, use shortDescription) : (String)</li>
- <li><b>name</b>: (String)</li>
- <li><b>openingDate</b>: (ISO Date string, YYYY-MM-DD)</li>
- <li><b>contact</b>: (Object)
-  <ul>
-   <li><b>phone</b>: (String)</li>
-   <li><b>homepage</b>: (String)</li>
-   <li><b>email</b>: (String)</li>
-  </ul>
- </li>
- <li><b>address</b>: (Object) <b>required</b>
-  <ul>
-   <li><b>street</b>: (String) <b>required</b></li>
-   <li><b>zip</b>: (String) <b>required</b></li>
-   <li><b>city</b>: (String) <b>required</b></li>
-   <li><b>state</b>: (String)</li>
-   <li><b>country</b>: (String) <b>required</b></li>
-  </ul>
- </li>
- <li><b>location</b>: (Object) <b>required</b>
-  <ul>
-   <li><b>lat</b>: (Number) <b>required</b></li>
-   <li><b>lon</b>: (Number) <b>required</b></li>
-  </ul>
- </li>
- <li><b>permanentlyClosed</b>: (Boolean)</li>
-  <li><b>temporarilyClosedUntil</b>: (ISO Date string, YYYY-MM-DD)</li>
- <li><b>isAlwaysOpen<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover="" popover-body="{{description.isAlwaysOpen}}"></sup></b>:
-  (Boolean)</li>
- <li><b>locationDescriptor</b>: (String)</li>
- <li><b>openHours</b>: (Object)
-  <ul>
-   <li><b>mon</b>: (Object) <b>required</b>
-    <ul>
-     <li><b>state<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover="" popover-body="{{description.openHours}}"></sup></b>:
-      (String) <b>required</b></li>
-     <li><b>span</b>: (Array) <b>required</b>
+    <!--<li ng-show="customGoogleName"><b>googleName</b>: (String) <b>required</b></li>
+    <li ng-show="customFacebookName"><b>facebookName</b>: (String) <b>required</b></li-->
+    <li><b>name</b>: (String) <b>required</b></li>
+    <li><b>storeId</b>: (String) <b>required</b></li>
+    <li><b>description</b>: (Object)
       <ul>
-       <li><b>open</b>: (String) <b>required</b></li>
-       <li><b>close</b>: (String) <b>required</b></li>
+        <li><b>short</b>: (String, max length 240)</li>
+        <li><b>long</b>: (String, max length 750)</li>
       </ul>
-     </li>
-    </ul>
-   </li>
-   <li>...</li>
-   <li><b>sun</b>: (Object) <b>required</b>
-    <ul>
-     <li><b>state<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover="" popover-body="{{description.openHours}}"></sup></b>:
-      (String) <b>required</b></li>
-     <li><b>span</b>: (Array) <b>required</b>
+    </li>
+    <li><b style="text-decoration: line-through;">text</b> (deprecated, use shortDescription) : (String)</li>
+    <li><b>name</b>: (String)</li>
+    <li><b>openingDate</b>: (ISO Date string, YYYY-MM-DD)</li>
+    <li><b>contact</b>: (Object)
       <ul>
-       <li><b>open</b>: (String) <b>required</b></li>
-       <li><b>close</b>: (String) <b>required</b></li>
+        <li><b>phone</b>: (String)</li>
+        <li><b>homepage</b>: (String)</li>
+        <li><b>email</b>: (String)</li>
       </ul>
-     </li>
-    </ul>
-   </li>
+    </li>
+    <li><b>address</b>: (Object) <b>required</b>
+      <ul>
+        <li><b>street</b>: (String) <b>required</b></li>
+        <li><b>zip</b>: (String) <b>required</b></li>
+        <li><b>city</b>: (String) <b>required</b></li>
+        <li><b>state</b>: (String)</li>
+        <li><b>country</b>: (String) <b>required</b></li>
+      </ul>
+    </li>
+    <li><b>location</b>: (Object) <b>required</b>
+      <ul>
+        <li><b>lat</b>: (Number) <b>required</b></li>
+        <li><b>lon</b>: (Number) <b>required</b></li>
+      </ul>
+    </li>
+    <li><b>permanentlyClosed</b>: (Boolean)</li>
+    <li><b>temporarilyClosedUntil</b>: (ISO Date string, YYYY-MM-DD)</li>
+    <li><b>isAlwaysOpen<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover=""
+          popover-body="{{description.isAlwaysOpen}}"></sup></b>:
+      (Boolean)</li>
+    <li><b>locationDescriptor</b>: (String)</li>
+    <li><b>openHours</b>: (Object)
+      <ul>
+        <li><b>mon</b>: (Object) <b>required</b>
+          <ul>
+            <li><b>state<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover=""
+                  popover-body="{{description.openHours}}"></sup></b>:
+              (String) <b>required</b></li>
+            <li><b>span</b>: (Array) <b>required</b>
+              <ul>
+                <li><b>open</b>: (String) <b>required</b></li>
+                <li><b>close</b>: (String) <b>required</b></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>...</li>
+        <li><b>sun</b>: (Object) <b>required</b>
+          <ul>
+            <li><b>state<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover=""
+                  popover-body="{{description.openHours}}"></sup></b>:
+              (String) <b>required</b></li>
+            <li><b>span</b>: (Array) <b>required</b>
+              <ul>
+                <li><b>open</b>: (String) <b>required</b></li>
+                <li><b>close</b>: (String) <b>required</b></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><b>specialOpenHours<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover=""
+          popover-body="{{description.specialOpenHours}}"></sup></b>:
+      (Array)
+      <ul>
+        <li><b>label</b>: (String) <b>required</b></li>
+        <li><b>start</b>: (ISO Date string, YYYY-MM-DD) <b>required</b></li>
+        <li><b>end</b>: (ISO Date string, YYYY-MM-DD) <b>required</b></li>
+        <li><b>openTime</b>: (String) <b>required</b></li>
+        <li><b>closeTime</b>: (String) <b>required</b></li>
+        <li><b>isClosed</b>: (Boolean) <b>required</b></li>
+      </ul>
+    </li>
+    <li><b>googleName</b>: (String) - if google custom name is enabled</li>
+    <li><b>facebookName</b>: (String) - if facebook custom name is enabled</li>
+    <li><b>wifiSsid</b>: (String, max length 32)</li>
+    <li><b>customData</b>: (Object, depends on your custom data definition)</li>
   </ul>
- </li>
- <li><b>specialOpenHours<sup class="fa fa-info-circle fa-info-circle__small" pmt-popover="" popover-body="{{description.specialOpenHours}}"></sup></b>:
-  (Array)
-  <ul>
-   <li><b>label</b>: (String) <b>required</b></li>
-   <li><b>start</b>: (ISO Date string, YYYY-MM-DD) <b>required</b></li>
-   <li><b>end</b>: (ISO Date string, YYYY-MM-DD) <b>required</b></li>
-   <li><b>openTime</b>: (String) <b>required</b></li>
-   <li><b>closeTime</b>: (String) <b>required</b></li>
-   <li><b>isClosed</b>: (Boolean) <b>required</b></li>
-  </ul>
- </li>
- <li><b>googleName</b>: (String) - if google custom name is enabled</li>
- <li><b>facebookName</b>: (String) - if facebook custom name is enabled</li>
- <li><b>wifiSsid</b>: (String, max length 32)</li>
- <li><b>customData</b>: (Object, depends on your custom data definition)</li>
-</ul>
 </details>
 
 <details>
-<summary><b>Example of POST with token in Authorization-header</b></summary>
-<br>
+  <summary><b>Example of POST with token in Authorization-header</b></summary>
+  <br>
 
 ```
 POST /v2/<<account_id>>/locations HTTP/1.1
@@ -1413,26 +1535,27 @@ Host: https://api.pinmeto.com
 Content-Type: application/json
 
 Body:
-{ 
- "name": "storeName",
- "openingDate": "2020-01-01",
- "storeId": "store-id",
- "locationDescriptor": "API locationDescriptor",
- "address": {
-  "street": "testgatan 4",
-  "zip": "217 41",
-  "city": "Malmö",
-  "country": "Sweden"
- },
- "location": {
-  "lat": 59.333755678571,
-  "lon": 18.056143908447
- },
- "contact": {
-  "phone": "+46 70 2336879",
-  "email": "test@example.com",
-  "homepage": "http://www.google.com"
- }
+{
+  "name": "storeName",
+  "openingDate": "2020-01-01",
+  "storeId": "store-id",
+  "locationDescriptor": "API locationDescriptor",
+  "address": {
+    "street": "testgatan 4",
+    "zip": "217 41",
+    "city": "Malmö",
+    "country": "Sweden"
+  },
+  "location": {
+    "lat": 59.333755678571,
+    "lon": 18.056143908447
+  },
+  "contact": {
+    "phone": "+46 70 2336879",
+    "email": "test@example.com",
+    "homepage": "http://www.google.com"
+  }
+}
 ```
 
 </details>
@@ -1451,7 +1574,7 @@ curl \
 
 If a querystring parameter `upsert=true` is passed to [Create location](#create-a-location) it will check if a location with the storeId in the request body already exists, if it does it will do an update. If the location doesn't exist it will be created.
 
-#### Endpoint POST: `/v2/<<account_id>>/locations?upsert=true`
+### Endpoint POST: `/v2/<<account_id>>/locations?upsert=true`
 
 `https://api.pinmeto.com/v2/<<account_id>>/locations?upsert=true`
 
@@ -1486,29 +1609,29 @@ If a querystring parameter `upsert=true` is passed to [Create location](#create-
 ## Changes from v1
 
 <details>
-<summary><b>List of changes</b></summary>
+  <summary><b>List of changes</b></summary>
 
-<h3>Description</h3>
+  <h3>Description</h3>
 
 `shortDescription` and `longDescription` has been moved to a `description` node and renamed to `short` and `long`.
 
-<h3>Pending Changes</h3>
+  <h3>Pending Changes</h3>
 
 When a location is updated changes to address and location (lat/lon) are put in a pending change state and needs to be reviewed in Listings.
 
 The data returned under `address` and `location` is the values that are presented on the location details in listings, values yet to be applied are returned under the `pendingChanges` node. A change can either be applied or ignored in listings depending on the quality of the data sent.
 
-<h3>Special Open Hours</h3>
+  <h3>Special Open Hours</h3>
 
-`startDate` and `endDate` are now named `start` and `end`, the format has changed to be *YYYY-MM-DD*
+`startDate` and `endDate` are now named `start` and `end`, the format has changed to be _YYYY-MM-DD_
 
-<h3>Images</h3>
+  <h3>Images</h3>
 
 Links to cover and profile images on facebook & google.
 
-<h3>Foursquare</h3>
+  <h3>Foursquare</h3>
 
-Foursquare and Factual have merged. `Foursquare` is removed from `network` since Foursquare no longer has a 2-way API.
+Foursquare and Factual have merged. Foursquare is now available as a network.
 
 If an error not covered by these messages occurs, a status code of 500 will be returned with the message “An error occurred.”
 
