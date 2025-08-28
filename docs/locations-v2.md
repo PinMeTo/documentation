@@ -37,8 +37,8 @@ Follow [these instructions](access_token.md) to get the access token, using the 
   <summary><b>2024-07-26:</b> Network categories added</summary>
   <br>
   <ul>
-    <li>New endpoint added to <a href="#fetch-network-categories">get categories per network</a>: <code>GET
-        /v2/[ACCOUNT_ID]/categories/[NETWORK_NAME]</code>.</li>
+    <li>New endpoint added to <a href="#fetch-network-categories">get categories per network</a>:
+    <code>GET /v2/[ACCOUNT_ID]/categories/[NETWORK_NAME]</code>.</li>
     <li>Optional <code>network</code> attribute added to the request body in <a href="#update-a-location">Update
         Location</a>, to support setting categories per network.</li>
     <li><code>network</code> attribute updated in the response of <a href="#fetch-all-locations">Fetch all locations</a>
@@ -1528,7 +1528,7 @@ All properties are optional unless stated otherwise. If an optional property con
   <summary><b>Example of POST with token in Authorization-header</b></summary>
   <br>
 
-```
+```http
 POST /v2/<<account_id>>/locations HTTP/1.1
 Authorization: Bearer YOUR_TOKEN
 Host: https://api.pinmeto.com
