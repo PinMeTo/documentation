@@ -1,3 +1,7 @@
+# Locations API v4 was officially released on 2020-10-01
+
+Read the technical documentation, using the OpenAPI specification, here: https://api.pinmeto.com/documentation/locations/v4/
+
 # Locations API v2 reference
 
 PinMeTo Locations API v2 is a JSON API that allows you to integrate with PinMeTo to access and manage your location data through your own systems and services. Typically, customers integrate with PinMeTo Locations API to have a single place for managing location data and to use that information for keeping websites, store locators, etc. up-to-date. Please read our [API Help Article](https://help.pinmeto.com/en/article/introducing-the-pinmeto-api-kl3pwj/) for more information.
