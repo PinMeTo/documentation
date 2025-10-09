@@ -30,7 +30,13 @@ Documentation on how to obtain an access token can be found [here](docs/access_t
 
 ### Locations
 
-The [Locations API v2](docs/locations-v2.md) is a REST API for fetching and updating location data that is managed in Listings.
+**Endpoint**: `https://locations.api.pinmeto.com/`
+
+The Locations API v4 is a RESTful API for fetching and updating location data that is managed in Listings.
+
+The Open API specification can be found in [Account Settings](https://places.pinmeto.com/account-settings/) under API > Documentation.
+
+If you do not have an account to login with, you can access the page anonymously using this link (https://api.pinmeto.com/documentation/locations/v4/).
 
 ### Media API 
 
