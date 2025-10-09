@@ -6,7 +6,7 @@ This page has technical documentation on PinMeTo APIs. For an overview of when a
 
 Integration with PinMeTo offers the ability to fetch information and send updates through our APIs for:
 ### Locations and Media
-- Locations
+- Locations <mark> v4 released! </mark>
 - Media
 
 ### Performance
@@ -28,7 +28,7 @@ Documentation on how to obtain an access token can be found [here](docs/access_t
 
 ## Locations and Media
 
-### Locations
+### Locations <mark> v4 released! </mark>
 
 **Endpoint**: `https://locations.api.pinmeto.com/`
 
