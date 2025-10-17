@@ -1439,7 +1439,7 @@ All properties are optional unless stated otherwise. If an optional property con
   <ul>
     <!--<li ng-show="customGoogleName"><b>googleName</b>: (String) <b>required</b></li>
     <li ng-show="customFacebookName"><b>facebookName</b>: (String) <b>required</b></li-->
-    <li><b>name</b>: (String) <b>required</b></li>
+    <li><b>name</b>: (String)</li>
     <li><b>storeId</b>: (String) <b>required</b></li>
     <li><b>description</b>: (Object)
       <ul>
@@ -1447,8 +1447,7 @@ All properties are optional unless stated otherwise. If an optional property con
         <li><b>long</b>: (String, max length 750)</li>
       </ul>
     </li>
-    <li><b style="text-decoration: line-through;">text</b> (deprecated, use shortDescription) : (String)</li>
-    <li><b>name</b>: (String)</li>
+    <li><b style="text-decoration: line-through;">text</b> (deprecated, use shortDescription) : (String)</li>    
     <li><b>openingDate</b>: (ISO Date string, YYYY-MM-DD)</li>
     <li><b>contact</b>: (Object)
       <ul>
