@@ -51,9 +51,9 @@ Metrics coming from Google, Facebook and Apple are available through the Insight
 
 If you do not have an account to login with, you can access the page anonymously using this link (https://api.pinmeto.com/documentation/v4/).
 
-### Ratings
+### Ratings with Reviews
 
-Ratings metrics (reviews without text) can be queried through the Insights API v3 interface in [Account Settings](https://places.pinmeto.com/account-settings/) under API > Documentation.
+Ratings with Reviews (comments and answers) can be queried through the Insights API v3 interface in [Account Settings](https://places.pinmeto.com/account-settings/) under API > Documentation.
 
 If you do not have an account to login with, you can access the page anonymously using this link (https://api.pinmeto.com/documentation/v3/).
 
@@ -63,9 +63,9 @@ Keywords metrics can be queried through the Insights API v3 interface. The docum
 
 If you do not have an account to login with, you can access the page anonymously using this link (https://api.pinmeto.com/documentation/v3/).
 
-### Reviews
+### Conversations Performance
 
-Reviews can be queried through the [Insights API v2 GraphQL interface](docs/insights-v2.md).
+Lifetime and Conversations Performance metrics (inbounds, respond time, closed conversations) can be queried through the [Insights API v2 GraphQL interface](docs/insights-v2.md).
 
 
 
