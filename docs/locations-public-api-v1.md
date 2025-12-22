@@ -68,7 +68,7 @@ curl -X GET "https://public.pinmeto.com/api/v1/pinmeto/9b47e418f21e1768749392/lo
             phone: "+46 73-142 59 13", 
             email: "hello@pinmeto.com" 
         },
-        openingDate: "2017-09-01",
+        openingDate: "2025-01-01",
         permanentlyClosed: false,
         temporarilyClosedUntil: "",
         temporarilyClosedMessage: "",
@@ -152,7 +152,7 @@ curl -X GET "https://public.pinmeto.com/api/v1/pinmeto/9b47e418f21e1768749392/lo
         phone: "+46 73-142 59 13", 
         email: "hello@pinmeto.com" 
     },
-    openingDate: "2017-09-01",
+    openingDate: "2025-01-01",
     permanentlyClosed: false,
     temporarilyClosedUntil: "",
     temporarilyClosedMessage: "",
