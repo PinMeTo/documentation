@@ -334,3 +334,7 @@ All error responses follow a consistent JSON structure:
 - **Batch requests efficiently**: When retrieving multiple locations, use the `/locations` endpoint instead of multiple single-location requests `/locations/{StoreID}`.
 - **Always check status codes**: Don't assume successful responses.
 
+## How to enable it?
+Please contact our support team to discuss your requirements. If the public API aligns with your needs, they can enable access for your account.
+
+
