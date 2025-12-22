@@ -26,10 +26,10 @@ All endpoints are prefixed with `/api/v1/`
 
 Retrieve an array with all locations.
 
-**Endpoint:** `GET /api/v1/{AccountID}/{appId}/locations`
+**Endpoint:** `GET /api/v1/{accountId}/{appId}/locations`
 
 **Query Parameters:**
-- `AccountID` (required): The site/account identifier
+- `accountId` (required): The site/account identifier
 
 **Example Request:**
 ```bash
@@ -111,10 +111,10 @@ curl -X GET "https://public.pinmeto.com/api/v1/pinmeto/9b47e418f21e1768749392/lo
 
 Retrieve a specific location by store ID.
 
-**Endpoint:** `GET /api/v1/{AccountID}/{appId}/locations/{StoreID}`
+**Endpoint:** `GET /api/v1/{accountId}/{appId}/locations/{storeId}`
 
 **Query Parameters:**
-- `AccountID` (required): The site/account identifier
+- `accountId` (required): The site/account identifier
 - `storeId` (required): The unique store identifier
 
 **Example Request:**
@@ -335,6 +335,6 @@ All error responses follow a consistent JSON structure:
 - **Always check status codes**: Don't assume successful responses.
 
 ## How to enable it?
-Please contact our support team to discuss your requirements. If the public API aligns with your needs, they can enable access for your account.
+Please contact our support team to discuss your requirements. If the public API aligns with your needs, they can enable access for your account. Then you can create credentials (Apps) from Account Settings > Public API.
 
 
