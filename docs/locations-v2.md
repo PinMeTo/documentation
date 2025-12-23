@@ -1,4 +1,4 @@
-# Locations API v4 was officially released on 2020-10-01
+# Locations API v4 was officially released on 2025-10-01
 
 Read the technical documentation, using the OpenAPI specification, here: https://api.pinmeto.com/documentation/locations/v4/
 
