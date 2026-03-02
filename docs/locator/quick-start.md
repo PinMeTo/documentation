@@ -168,7 +168,12 @@ shared location link directly would see a
 
 ## Next Steps
 
-Detailed documentation is available covering
-integration instructions, server configuration
-for deep linking, and an overview of the SEO
-benefits provided by the widgets.
+- [Integration Guide](integration-guide.md) —
+  embedding widgets, configuration options,
+  theming, and troubleshooting
+- [Server Configuration](server-configuration.md) —
+  rewrite rules for deep linking, caching, and
+  CORS setup
+- [SEO Benefits](seo-benefits.md) — local search
+  optimization, structured data, meta tags, and
+  verification tools
