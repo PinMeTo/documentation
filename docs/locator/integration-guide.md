@@ -1,6 +1,6 @@
 ---
-version: 1.14.0
-date: 2026-03-02
+version: 1.17.6
+date: 2026-03-09
 ---
 
 # Integration Guide
@@ -83,13 +83,10 @@ and applied at runtime. There are no data attributes
 for theming — the widgets read their theme from the
 server-side configuration tied to your account.
 
-Both widgets render inside a
-[Shadow DOM][shadow-dom], which isolates their styles
-completely. Your existing CSS will not affect the
-widgets, and widget styles will not leak into your
-page.
-
-[shadow-dom]: https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM
+Both widgets use BEM-scoped CSS class names
+(prefixed with `pmt-`) to avoid style collisions
+with your page. Widget styles are injected into a
+`<style>` tag inside the widget element.
 
 ## Events
 
@@ -102,19 +99,17 @@ the widget.
 
 The locator widget fills the full dimensions of its
 parent element (`height: 100%`, `width: 100%`).
-Because it does not grow with content, the parent
-element must have an explicit height or the widget
-will be invisible. Set the height on a wrapper
-element around the widget — not on the widget element
-itself, because the widget's Shadow DOM resets inline
-styles on its host element.
+The widget element **must be the sole child** of its
+container — do not place headings, paragraphs, or
+other elements alongside it. The container must have
+an explicit height, or the widget will be invisible.
 
 The local page widget fills the width of its
 container (`width: 100%`) and grows with its content,
 so no explicit height is needed.
 
 ```html
-<!-- Locator: set a height on a wrapper element -->
+<!-- Locator: sole child of a container with height -->
 <div style="height: 600px">
   <div data-locator-widget
        data-account-id="YOUR_ACCOUNT_ID"
@@ -163,10 +158,12 @@ Logging is disabled by default. Remove the attribute to silence output.
   are both present. The widget silently skips
   mounting if any required attribute is missing.
 - For the locator widget, ensure the widget element
-  is inside a parent with an explicit height (e.g.,
-  a wrapper `<div style="height: 600px">`). The
-  widget fills its parent's height — if the parent
-  has no height, the widget is invisible.
+  is the **sole child** of a container with an
+  explicit height (e.g.,
+  `<div style="height: 600px">`). The widget fills
+  its parent's height — if the parent has no height,
+  or other elements share the container, the widget
+  may overflow or be invisible.
 
 ### 404 errors on location URLs
 
@@ -179,10 +176,12 @@ Logging is disabled by default. Remove the attribute to silence output.
 
 ### Styles look wrong or broken
 
-- The widgets render inside a Shadow DOM, so host
-  page styles should not interfere. If styles appear
-  incorrect, check that no JavaScript on the page is
-  modifying the widget's shadow root.
+- The widgets use BEM-scoped class names prefixed
+  with `pmt-` to minimize style collisions. If your
+  page uses aggressive global CSS resets or styles
+  that target all `div`, `table`, or `a` elements,
+  they may affect the widget. Scope such rules to
+  avoid the widget container.
 - Verify the widget script is loading without errors
   in the browser's Network tab.
 

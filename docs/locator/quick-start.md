@@ -1,6 +1,6 @@
 ---
-version: 1.14.0
-date: 2026-03-02
+version: 1.17.6
+date: 2026-03-09
 ---
 
 # PinMeTo Locator — Quick-Start Guide
@@ -96,8 +96,8 @@ widgets to your location data.
 
 The widgets are lightweight (under 20 KB) and run
 independently from your site's existing code. They
-are isolated in their own container, so they will
-not interfere with your site's styles or scripts.
+use BEM-scoped CSS class names (prefixed with
+`pmt-`) to avoid style collisions with your page.
 
 **Locator widget:**
 

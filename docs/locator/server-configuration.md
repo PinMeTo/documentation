@@ -1,6 +1,6 @@
 ---
-version: 1.14.0
-date: 2026-03-02
+version: 1.17.6
+date: 2026-03-09
 ---
 
 # Server Configuration
