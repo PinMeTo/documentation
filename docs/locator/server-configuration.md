@@ -1,6 +1,6 @@
 ---
-version: 1.17.6
-date: 2026-03-09
+version: 1.18.2
+date: 2026-03-12
 ---
 
 # Server Configuration
@@ -68,11 +68,16 @@ RewriteRule ^locations/(.*)$ /index.html [L]
 ## Cache Configuration
 
 **Widget scripts** (`locator.js`, `local-page.js`)
-are versioned and can be cached aggressively:
+do not contain a content hash in their filenames, so
+use a short cache lifetime with revalidation:
 
 ```text
-Cache-Control: public, max-age=31536000, immutable
+Cache-Control: public, max-age=3600, must-revalidate
 ```
+
+If your CDN or deployment pipeline adds hashed
+filenames, you can cache more aggressively
+(`max-age=31536000, immutable`).
 
 **HTML pages** that contain the widget must be served
 fresh so that deep-linked URLs always return the
@@ -84,14 +89,13 @@ Cache-Control: no-cache
 
 This means the browser will revalidate the HTML on
 each request (typically a fast 304 response) while
-keeping widget scripts cached long-term.
+keeping widget scripts cached short-term.
 
 ## CORS Configuration
 
-CORS headers are generally not required. The widget
-scripts are loaded via a standard `<script>` tag
-from the PinMeTo CDN, which does not trigger
-cross-origin restrictions. API requests from the
-widget go directly from the browser to
+CORS headers are generally not required. Both widget
+scripts and API requests are served from
 `public.pinmeto.com`, which provides its own CORS
-headers.
+headers. The widget scripts are loaded via a
+standard `<script>` tag, which does not trigger
+cross-origin restrictions.

@@ -1,6 +1,6 @@
 ---
-version: 1.17.6
-date: 2026-03-09
+version: 1.18.2
+date: 2026-03-12
 ---
 
 # PinMeTo Locator — Quick-Start Guide
@@ -109,8 +109,8 @@ use BEM-scoped CSS class names (prefixed with
        data-local-page-path="/locations">
   </div>
 </div>
-<script
-  src="https://cdn.pinmeto.com/locator/locator.js">
+<script type="module"
+  src="https://public.pinmeto.com/locator/locator.js">
 </script>
 ```
 
@@ -122,8 +122,8 @@ use BEM-scoped CSS class names (prefixed with
      data-app-id="your-app"
      data-base-path="/locations">
 </div>
-<script
-  src="https://cdn.pinmeto.com/locator/local-page.js">
+<script type="module"
+  src="https://public.pinmeto.com/locator/local-page.js">
 </script>
 ```
 
@@ -149,8 +149,8 @@ shared location link directly would see a
   widgets
 - Location data management through the PinMeTo
   platform
-- Widgets hosted on the PinMeTo CDN — no need to
-  download or maintain widget code
+- Widgets hosted on `public.pinmeto.com` — no
+  need to download or maintain widget code
 - A locator configuration admin tool in the PinMeTo
   system for configuring themes, map settings, and
   other widget options

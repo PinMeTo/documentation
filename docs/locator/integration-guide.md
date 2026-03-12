@@ -1,6 +1,6 @@
 ---
-version: 1.17.6
-date: 2026-03-09
+version: 1.18.2
+date: 2026-03-12
 ---
 
 # Integration Guide
@@ -23,7 +23,7 @@ Locator with search, filtering, and map integration.
        data-local-page-path="/locations">
   </div>
 </div>
-<script src="https://cdn.pinmeto.com/locator/locator.js"></script>
+<script type="module" src="https://public.pinmeto.com/locator/locator.js"></script>
 ```
 
 ### Local Page Widget
@@ -36,7 +36,7 @@ Single location detail page.
      data-app-id="YOUR_APP_ID"
      data-base-path="/locations">
 </div>
-<script src="https://cdn.pinmeto.com/locator/local-page.js"></script>
+<script type="module" src="https://public.pinmeto.com/locator/local-page.js"></script>
 ```
 
 ## Configuration Options
