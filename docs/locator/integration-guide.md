@@ -1,6 +1,6 @@
 ---
-version: 1.18.7
-date: 2026-03-30
+version: 1.18.9
+date: 2026-04-01
 ---
 
 # Integration Guide

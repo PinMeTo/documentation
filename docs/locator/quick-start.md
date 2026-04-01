@@ -1,6 +1,6 @@
 ---
-version: 1.18.7
-date: 2026-03-30
+version: 1.18.9
+date: 2026-04-01
 ---
 
 # PinMeTo Locator — Quick-Start Guide
@@ -84,64 +84,98 @@ through the PinMeTo platform to match your website's
 look and feel. The widgets blend in with your
 existing design.
 
-## What's Needed to Integrate
+## What's Needed for Integration
 
-### Adding the Widgets
+1. **Contact PinMeTo.** Reach out to your Customer
+   Success advisor or support to request the locator
+   and access to its settings.
 
-Integration requires adding a small HTML snippet to
-your website — a container element and a script tag
-for each widget. PinMeTo provides the account and
-application identifiers needed to connect the
-widgets to your location data.
+2. **Choose where to place the locator.** Discuss
+   with your webmaster or IT department which part
+   of your website the locator will live on. This
+   is the path where your customers will go to
+   visit the local pages (e.g., `/locations`).
 
-The widgets are lightweight (under 20 KB) and run
-independently from your site's existing code. They
-use BEM-scoped CSS class names (prefixed with
-`pmt-`) to avoid style collisions with your page.
+3. **Add the widgets to your website.** Your
+   webmaster or IT department needs to add the
+   following snippets to your site. The widgets are
+   lightweight (under 20 KB) and run independently
+   from your site's existing code. They use
+   BEM-scoped CSS class names (prefixed with
+   `pmt-`) to avoid style collisions with your
+   page.
 
-**Locator widget:**
+   **Locator widget:**
 
-```html
-<div style="height: 600px">
-  <div data-locator-widget
-       data-account-id="your-id"
-       data-app-id="your-app"
-       data-local-page-path="/locations">
-  </div>
-</div>
-<script type="module"
-  src="https://public.pinmeto.com/locator/locator.js">
-</script>
-```
+   ```html
+   <div style="height: 600px">
+     <div data-locator-widget
+          data-account-id="your-id"
+          data-app-id="your-app"
+          data-local-page-path="/locations">
+     </div>
+   </div>
+   <script type="module"
+     src="https://public.pinmeto.com/locator/locator.js">
+   </script>
+   ```
 
-**Local page widget:**
+   **Local page widget:**
 
-```html
-<div data-local-page-widget
-     data-account-id="your-id"
-     data-app-id="your-app"
-     data-base-path="/locations">
-</div>
-<script type="module"
-  src="https://public.pinmeto.com/locator/local-page.js">
-</script>
-```
+   ```html
+   <div data-local-page-widget
+        data-account-id="your-id"
+        data-app-id="your-app"
+        data-base-path="/locations">
+   </div>
+   <script type="module"
+     src="https://public.pinmeto.com/locator/local-page.js">
+   </script>
+   ```
 
-### Server Configuration
+   The `data-account-id` and `data-app-id` can be
+   found in **Account Settings > Public API**. The
+   `data-base-path` (and `data-local-page-path`) is
+   the path decided in step 2. The full
+   [Integration Guide](integration-guide.md) has
+   details on all available options.
 
-Your web server needs one configuration change to
-support location page URLs. Because each location
-has its own URL path
-(e.g., `/locations/store-name`), the server must be
-configured to serve your HTML page for all paths
-under the location directory. This is a standard
-"URL rewrite" rule that any web server supports —
-configuration examples are available for Nginx,
-Apache, Vercel, Netlify, and other platforms.
+4. **Configure server URL rewrites.** Your IT
+   department or backend team needs to configure
+   the server to support location page URLs.
+   Because each location has its own URL path
+   (e.g., `/locations/store-name`), the server
+   must be configured to serve your HTML page for
+   all paths under the location directory. This is
+   a standard "URL rewrite" rule that any web
+   server supports — configuration examples are
+   available for Nginx, Apache, Vercel, Netlify,
+   and other platforms. Technical details and
+   examples for the most common servers are
+   available in the
+   [Server Configuration](server-configuration.md)
+   guide.
 
-Without this configuration, visitors who open a
-shared location link directly would see a
-"Page Not Found" error instead of the location page.
+   Without this configuration, visitors who open a
+   shared location link directly would see a
+   "Page Not Found" error instead of the location
+   page.
+
+5. **Customize the appearance.** Once the locator
+   and local pages are working properly, configure
+   the settings to match your website's look and
+   feel. Go to **Account Settings > Locator &
+   Local Pages** to adjust:
+
+   - **Map** — check "Show Map" and provide a
+     Google Maps API key from Google Cloud Console
+     (request it from your IT department or
+     webmaster)
+   - **Language, font family, and colors** — set
+     these to match your brand
+
+   Reload the locator and local pages in your
+   browser to see the changes take effect.
 
 ### What PinMeTo Provides
 
@@ -157,6 +191,11 @@ shared location link directly would see a
 
 ### What Your Team Provides
 
+- A technical person (webmaster, IT department, or
+  backend developer) who can make changes to your
+  website and server configuration — they will add
+  the widget snippets and set up the URL rewrite
+  rules required for local pages
 - Adding the HTML snippets to a page on your
   website where you want the widgets to be embedded
 - A Google Maps API key and Map ID, with optional
