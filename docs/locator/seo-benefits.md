@@ -1,6 +1,6 @@
 ---
-version: 1.18.9
-date: 2026-04-01
+version: 1.20.0
+date: 2026-05-22
 ---
 
 # SEO Benefits

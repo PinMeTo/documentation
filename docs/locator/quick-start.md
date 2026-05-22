@@ -1,6 +1,6 @@
 ---
-version: 1.18.9
-date: 2026-04-01
+version: 1.20.0
+date: 2026-05-22
 ---
 
 # PinMeTo Locator — Quick-Start Guide
@@ -170,7 +170,9 @@ existing design.
    - **Map** — check "Show Map" and provide a
      Google Maps API key from Google Cloud Console
      (request it from your IT department or
-     webmaster)
+     webmaster). The key must meet the
+     [Google Maps API key requirements](#google-maps-api-key-requirements)
+     below.
    - **Language, font family, and colors** — set
      these to match your brand
 
@@ -198,12 +200,53 @@ existing design.
   rules required for local pages
 - Adding the HTML snippets to a page on your
   website where you want the widgets to be embedded
-- A Google Maps API key and Map ID, with optional
-  map styling configured in your Google Cloud
-  Console
+- A Google Maps API key that meets the
+  [Google Maps API key requirements](#google-maps-api-key-requirements)
+  below, and an optional Map ID with map styling
+  configured in your Google Cloud Console
 - Theme configuration using the PinMeTo Locator
   admin tool to match your brand's colors,
   typography, and visual style
+
+## Google Maps API key requirements
+
+The two widgets use different Google Maps APIs.
+The API key you configure for your account must
+have **both** enabled in Google Cloud Console:
+
+- **Maps JavaScript API** — used by the locator
+  widget for the interactive map
+- **Maps Static API** — used by the local page
+  widget for the static map image
+
+A key with only one of these enabled will work
+for one widget but not the other. The most
+common issue after a key rotation is a key that
+has Maps JavaScript API enabled but not Maps
+Static API.
+
+If the key has HTTP referrer restrictions, your
+website's domain (including any subdomains you
+use) must be in the allowed referrers list. The
+same applies to any IP or application
+restrictions. The Google Cloud project that owns
+the key must also have billing enabled.
+
+### Verifying your key
+
+Open the following URL in a browser, replacing
+`YOUR_KEY` with the key from your account
+configuration:
+
+```text
+https://maps.googleapis.com/maps/api/staticmap?center=0,0&zoom=1&size=400x200&key=YOUR_KEY
+```
+
+If a world map appears, the key works for static
+maps from your current network. If an error
+image appears instead, the message text in the
+image names the exact misconfiguration (missing
+API, blocked referrer, billing disabled, etc.).
 
 ## Next Steps
 
