@@ -87,7 +87,7 @@ existing design.
 ## What's Needed for Integration
 
 1. **Contact PinMeTo.** Reach out to your Customer
-   Success advisor or support to request the locator
+   Success Manager or support to request the locator
    and access to its settings.
 
 2. **Choose where to place the locator.** Discuss
