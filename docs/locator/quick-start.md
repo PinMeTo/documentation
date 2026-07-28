@@ -1,6 +1,6 @@
 ---
-version: 1.20.0
-date: 2026-05-22
+version: 1.20.1
+date: 2026-07-28
 ---
 
 # PinMeTo Locator — Quick-Start Guide
@@ -231,6 +231,9 @@ use) must be in the allowed referrers list. The
 same applies to any IP or application
 restrictions. The Google Cloud project that owns
 the key must also have billing enabled.
+
+For instructions on how to set up Google Cloud and
+generating an API key please see the [Google Documentation](https://developers.google.com/maps/documentation/javascript/get-api-key?setupProd=prerequisites#get-a-standard-api-key)
 
 ### Verifying your key
 
