@@ -1,6 +1,6 @@
 ---
-version: 1.20.0
-date: 2026-05-22
+version: 1.36.0
+date: 2026-09-21
 ---
 
 # SEO Benefits
@@ -32,7 +32,8 @@ view, it injects SEO meta tags into the host page's
 **Standard tags:**
 
 - `<title>` — `"{name} - {city}"`
-- `<meta name="description">` — location's short description, or a generated fallback
+- `<meta name="description">` — location's short description, or a
+  generated fallback in the widget language
 - `<link rel="canonical">` — the current page URL
 
 **Open Graph tags (for social sharing):**
@@ -41,6 +42,7 @@ view, it injects SEO meta tags into the host page's
 - `og:type` — `"place"`
 - `og:url` — same as canonical
 - `place:location:latitude`, `place:location:longitude` — coordinates
+- `og:locale` — the resolved widget language
 
 All injected tags are marked with `data-pmt-seo` for
 idempotent cleanup on re-render.
@@ -55,6 +57,7 @@ Schema.org LocalBusiness structured data:
 - Opening hours (OpeningHoursSpecification per day/span)
 - Contact information (phone, email — when available)
 - Geographic coordinates (GeoCoordinates)
+- `inLanguage` — the resolved widget language
 
 ### Client-Side Rendering
 
@@ -142,3 +145,8 @@ Use the generated public URL with the validation tools above.
 2. Ensure consistent NAP (Name, Address, Phone) data
 3. Configure proper canonical URLs
 4. Submit location URLs to search engine sitemaps
+5. On multi-language sites, add `hreflang` links
+   between the language versions of each location
+   page in your page template. The widget sets the
+   canonical URL and `inLanguage` per page but does
+   not know the other language URLs.

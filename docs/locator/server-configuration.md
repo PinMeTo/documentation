@@ -1,6 +1,6 @@
 ---
-version: 1.20.0
-date: 2026-05-22
+version: 1.36.0
+date: 2026-09-21
 ---
 
 # Server Configuration
@@ -64,6 +64,26 @@ RewriteRule ^locations/(.*)$ /index.html [L]
 ```text
 /locations/*  /index.html  200
 ```
+
+### Multiple Base Paths
+
+A multi-language site embeds one local page widget per
+language prefix, each with its own `data-base-path`.
+Add one rule per base path:
+
+```nginx
+location /sv/butiker {
+    try_files $uri $uri/ /sv/butiker/index.html;
+}
+
+location /fr/magasins {
+    try_files $uri $uri/ /fr/magasins/index.html;
+}
+```
+
+Each rule serves that language's HTML page, so the
+`lang` attribute and the widget attributes match the
+URL the visitor requested.
 
 ## Cache Configuration
 

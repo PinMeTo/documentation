@@ -1,6 +1,6 @@
 ---
-version: 1.20.0
-date: 2026-05-22
+version: 1.36.0
+date: 2026-09-21
 ---
 
 # Integration Guide
@@ -87,6 +87,102 @@ Both widgets use BEM-scoped CSS class names
 (prefixed with `pmt-`) to avoid style collisions
 with your page. Widget styles are injected into a
 `<style>` tag inside the widget element.
+
+## Language
+
+Widget labels (search placeholder, buttons, opening
+hours, status text) are translated at runtime. The
+language is chosen in this order:
+
+1. The **Widget language** setting under
+   **Account Settings > Locator & Local Pages**,
+   unless it is set to **Auto (use page language)**.
+2. The `lang` attribute on the host page's `<html>`
+   element (`<html lang="sv-SE">` selects Swedish).
+3. The visitor's browser language.
+4. English.
+
+Location content itself (names, descriptions, custom
+fields) is shown as entered in PinMeTo and is not
+translated.
+
+### Multi-language sites
+
+To serve the same locations in several languages,
+set the widget language to **Auto**, then embed one
+locator and one local page widget per language
+prefix, each on a page with the matching `lang`
+attribute:
+
+```html
+<!-- https://example.com/sv/butiker -->
+<html lang="sv">
+  ...
+  <div data-locator-widget
+       data-account-id="YOUR_ACCOUNT_ID"
+       data-app-id="YOUR_APP_ID"
+       data-local-page-path="/sv/butiker">
+  </div>
+```
+
+```html
+<!-- https://example.com/fr/magasins -->
+<html lang="fr">
+  ...
+  <div data-locator-widget
+       data-account-id="YOUR_ACCOUNT_ID"
+       data-app-id="YOUR_APP_ID"
+       data-local-page-path="/fr/magasins">
+  </div>
+```
+
+Give each local page widget its own `data-base-path`
+(`/sv/butiker`, `/fr/magasins`) and add a rewrite
+rule for every base path; see
+[Server Configuration](server-configuration.md).
+Each language version of a location page gets its
+own canonical URL. Link the versions together with
+`hreflang` tags in your page template; see
+[SEO Benefits](seo-benefits.md).
+
+Translations are available for English, Swedish,
+French, German, Dutch, Polish, Spanish, Finnish and
+Portuguese. Other languages fall back to English.
+
+## Custom Fields
+
+If your account uses custom location data fields (contact our Support team if not)
+you can surface them in both widgets. This is configured in the Store Locator
+settings page in the PinMeTo **Account Settings**.
+
+Before a custom field can appear in the widget, it must first be added to
+the **publicCustomFields** allowlist via the PinMeTo Public API app. Only
+fields on that list are included in the location data served to the widget.
+Any field not listed there is stripped before it reaches the browser,
+regardless of what is set in the Store Locator configuration.
+
+### Sub-header
+
+You can surface a custom field as a sub-header below the location name in both the
+Locator and Local Page widgets.
+
+Once a field is allowlisted, select it as the sub-header source in the
+Store Locator settings page. The widget will then display that field's
+value below the location name for any location where the value is a
+non-empty string. Locations without the field, or with an empty value,
+show no sub-header.
+
+### Page footer
+
+You can surface a custom field as a page footer block on the Local Page widget.
+Unlike the sub-header, the page footer only appears on the Local Page, not in the
+Locator list view.
+
+Once a field is allowlisted, select it as the page footer source in the
+Store Locator settings page. The Local Page widget will then display that
+field's value as a text block below the main location content for any location
+where the value is a non-empty string. Locations without the field, or with an
+empty value, show no page footer section.
 
 ## Events
 

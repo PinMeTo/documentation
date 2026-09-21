@@ -1,6 +1,6 @@
 ---
-version: 1.20.1
-date: 2026-07-28
+version: 1.36.0
+date: 2026-09-21
 ---
 
 # PinMeTo Locator — Quick-Start Guide
@@ -20,14 +20,16 @@ all embedded directly on your site.
 A search-enabled widget that helps visitors find
 your locations. Features include:
 
-- **Search by address or city** — visitors type a
-  location and see nearby results ranked by distance
-- **Adjustable search radius** — filter results by
-  distance
+- **Nearby on load** — when the visitor allows
+  location access, results are ranked by distance
+  and the map zooms to their area
+- **Search by address or city** — filter locations
+  by name or address; the map fits the matching
+  results
 - **Interactive map** — locations shown as pins on a
   Google Maps view
-- **List and map views** — switch between a list of
-  results and a full map
+- **List and map together** — side-by-side on
+  desktop, stacked on mobile
 
 ### Local Pages
 
@@ -87,7 +89,7 @@ existing design.
 ## What's Needed for Integration
 
 1. **Contact PinMeTo.** Reach out to your Customer
-   Success Manager or support to request the locator
+   Success advisor or support to request the locator
    and access to its settings.
 
 2. **Choose where to place the locator.** Discuss
@@ -231,9 +233,6 @@ use) must be in the allowed referrers list. The
 same applies to any IP or application
 restrictions. The Google Cloud project that owns
 the key must also have billing enabled.
-
-For instructions on how to set up Google Cloud and
-generating an API key please see the [Google Documentation](https://developers.google.com/maps/documentation/javascript/get-api-key?setupProd=prerequisites#get-a-standard-api-key)
 
 ### Verifying your key
 
